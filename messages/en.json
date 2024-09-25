@@ -1,4 +1,8 @@
 {
+  "requestCall": "Request call",
+  "connectWithUs": "Contact with us",
+  "send": "Send",
   "vacancies": "Vacancies",
-  "contacts": "Contacts"
+  "contacts": "Contacts",
+  "workExperience": "Work Experience"
 }
