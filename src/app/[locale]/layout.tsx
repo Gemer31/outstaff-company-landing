@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Popup } from '@/UI/Popup';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,15 +30,6 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    // <html lang="en">
-    //   <body
-    //     className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    //   >
-    //   <NextIntlClientProvider>
-    //     {children}
-    //   </NextIntlClientProvider>
-    //   </body>
-    // </html>
     <html lang={locale}>
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center`}>
     <NextIntlClientProvider messages={messages}>

@@ -33,7 +33,7 @@ export interface IButtonProps {
   disabled?: boolean;
   loading?: boolean;
   setLoadingOnClick?: boolean;
-  styleClass?: string;
+  className?: string;
   callback?: (event: MouseEvent) => void;
 }
 
@@ -46,7 +46,7 @@ export function Button({
   loading,
   setLoadingOnClick,
   color,
-  styleClass,
+                         className,
 }: IButtonProps) {
   const [innerLoading, setInnerLoading] = useState(false);
 
@@ -81,7 +81,7 @@ export function Button({
         ' ' +
         COLOR_OPTION_VALUES.get(color || ColorOptions.PINK) +
         ' ' +
-        styleClass
+        className
       }
       onClick={clicked}
       href={href}
@@ -90,7 +90,7 @@ export function Button({
         {children}
       </div>
       <div
-        className={`${loading || innerLoading ? 'w-full h-full flex justify-center text-center absolute top-0' : 'important-hidden'} ${styleClass}`}
+        className={`${loading || innerLoading ? 'w-full h-full flex justify-center text-center absolute top-0' : 'important-hidden'} ${className}`}
       >
         <Loader
           className={
@@ -107,7 +107,7 @@ export function Button({
         ' ' +
         COLOR_OPTION_VALUES.get(color || ColorOptions.PINK) +
         ' ' +
-        styleClass
+        className
       }
       onClick={clicked}
     >
@@ -115,7 +115,7 @@ export function Button({
         {children}
       </div>
       <div
-        className={`${loading || innerLoading ? 'w-full h-full absolute top-0' : 'important-hidden'} ${styleClass}`}
+        className={`${loading || innerLoading ? 'w-full h-full absolute top-0' : 'important-hidden'} ${className}`}
       >
         <Loader
           className={
