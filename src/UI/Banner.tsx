@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface IBannerProps {
     images: { id: string, image: string }[];
     speed: number
@@ -14,7 +16,7 @@ export function Banner({ images, speed = 5000 }: IBannerProps) {
                         return <section key={index} style={{ "--speed": `${speed}ms` }}>
                             {images.map(({ id, image }) => (
                                 <div className="image" key={id}>
-                                    <img src={image} alt={id} />
+                                    <Image className="banner-img" src={image} alt={image} width={120} height={80}/>
                                 </div>
                             ))}
                         </section>

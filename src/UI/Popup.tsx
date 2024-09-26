@@ -12,13 +12,13 @@ export enum PopupIds {
 
 export function Popup() {
   useEffect(() => {
-    if (!document?.['popupContext']) {
-      document['popupContext'] = new PopupContext();
+    if (!document?.[PopupIds.CONTENT]) {
+      document[PopupIds.CONTENT] = new PopupContext();
     }
   }, []);
 
   const closeClick = () => {
-    (document['popupContext'] as PopupContext).closePopup();
+    (document[PopupIds.CONTENT] as PopupContext).closePopup();
   }
 
   return (

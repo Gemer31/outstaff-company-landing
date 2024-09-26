@@ -17,7 +17,7 @@ export enum ColorOptions {
 export const COLOR_OPTION_VALUES = new Map<ColorOptions, string>([
   [
     ColorOptions.PINK,
-    'bg-pink-500 hover:bg-pink-400 active:bg-pink-600 text-white',
+    'bg-custom-red-1 hover:bg-pink-400 active:bg-pink-600 text-white',
   ],
   [
     ColorOptions.GRAY,

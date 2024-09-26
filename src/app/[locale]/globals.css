@@ -1,24 +1,13 @@
-@import "react-alice-carousel/lib/alice-carousel.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /*--background: #ffffff;*/
-  /*--foreground: #171717;*/
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /*--background: #0a0a0a;*/
-    /*--foreground: #ededed;*/
-  }
+  --foreground: white;
 }
 
 body {
-  /*color: var(--foreground);*/
-  /*background: var(--background);*/
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -28,14 +17,33 @@ body {
   }
 }
 
-img {
-  max-width: 150px;
-  height: 5rem;
+
+.bg-main-black-1 {
+  background: rgb(28,28,28);
+}
+
+.bg-main-black-2 {
+  background: rgb(59,59,59);
+}
+
+.bg-main-black-1-gradient {
+  background: rgb(28,28,28);
+  background: linear-gradient(180deg, rgba(28,28,28,1) 0%, rgba(59,59,59,1) 20%, rgba(59,59,59,1) 80%, rgba(28,28,28,1) 100%);
+}
+
+.bg-main-black-2-gradient {
+  background: rgb(59,59,59);
+  background: linear-gradient(180deg, rgba(59,59,59,1) 0%, rgba(28,28,28,1) 20%, rgba(28,28,28,1) 80%, rgba(59,59,59,1) 100%);
+}
+
+.banner-img {
+  max-width: 200px;
+  height: 8rem;
   padding: 0 15px;
   object-fit: cover;
 }
 
-img:last-of-type {
+.banner-img:last-of-type {
   padding-left: 0;
 }
 
@@ -43,7 +51,7 @@ img:last-of-type {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 5rem;
+  height: 8rem;
 }
 
 .wrapper {
@@ -66,3 +74,7 @@ section {
   }
 }
 
+
+.important-hidden {
+  display: none !important;
+}

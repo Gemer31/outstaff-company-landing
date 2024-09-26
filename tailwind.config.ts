@@ -1,15 +1,25 @@
 import type { Config } from 'tailwindcss';
 
+
 const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      colors: {
+        'custom-red-1': '#bd0202',
+        'custom-red-2': '#f76868',
+      },
+      borderColor: {
+        'custom-red-1': '#bd0202',
+        'custom-red-2': '#f76868',
+      },
       backgroundColor: {
         'black-1/2': 'rgba(0, 0, 0, 0.5)',
         'black-1/5': 'rgba(0, 0, 0, 0.2)',
         'black-1/4': 'rgba(0, 0, 0, 0.25)',
+        'main-black': ''
       },
       screens: {
         xs: '320px',

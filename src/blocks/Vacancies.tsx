@@ -1,19 +1,24 @@
-import { ContentContainer } from '@/UI/ContentContainer';
-import { STUB_VACANCIES } from '@/constants/stub-data';
 import { VacancyCard } from '@/components/VacancyCard';
+import { STUB_VACANCIES } from '@/constants/stub-data';
+import { ContentContainer } from '@/UI/ContentContainer';
 import { TitleContainer } from '@/UI/TitleContainer';
 import { useTranslations } from 'next-intl';
 
 export function Vacancies() {
-  const t= useTranslations();
+  const t = useTranslations();
 
-  return <ContentContainer>
-    <TitleContainer title={t('vacancies')}>
-      {
-        STUB_VACANCIES.map((item) => {
-          return <VacancyCard data={item}/>
-        })
-      }
-    </TitleContainer>
-  </ContentContainer>
+  return <article className='w-full bg-main-black-1-gradient  flex justify-center'>
+    <ContentContainer>
+      <TitleContainer title={t('vacancies')}>
+        <div className='flex justify-between gap-x-2'>
+        {
+          STUB_VACANCIES.map((item, index) => {
+            return <VacancyCard key={index} data={item} />
+          })
+        }
+        </div>
+
+      </TitleContainer>
+    </ContentContainer>
+  </article>
 }
