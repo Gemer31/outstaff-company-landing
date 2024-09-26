@@ -10,12 +10,7 @@ export enum PopupIds {
   CONTENT = "popupContent",
 }
 
-export interface IPopupProps {
-  title: string;
-  closeCallback: () => void;
-}
-
-export function Popup({}: IPopupProps) {
+export function Popup() {
   useEffect(() => {
     if (!document?.['popupContext']) {
       document['popupContext'] = new PopupContext();

@@ -5,6 +5,15 @@ import { MouseEvent, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Loader } from '@/UI/Loader';
 
+export enum ButtonTypes {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+}
+export enum ColorOptions {
+  PINK = 'pink',
+  GRAY = 'gray',
+}
+
 export const COLOR_OPTION_VALUES = new Map<ColorOptions, string>([
   [
     ColorOptions.PINK,
@@ -15,15 +24,6 @@ export const COLOR_OPTION_VALUES = new Map<ColorOptions, string>([
     'bg-slate-100 hover:bg-slate-400 active:bg-slate-600 text-black',
   ],
 ]);
-
-export enum ButtonTypes {
-  BUTTON = 'button',
-  SUBMIT = 'submit',
-}
-export enum ColorOptions {
-  PINK = 'pink',
-  GRAY = 'gray',
-}
 
 export interface IButtonProps {
   children: React.ReactNode;

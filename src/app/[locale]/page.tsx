@@ -1,12 +1,10 @@
-import { Header } from '@/blocks/Header';
+import { Customers } from '@/blocks/Customers';
 import { Footer } from '@/blocks/Footer';
-import { useTranslations } from 'next-intl';
+import { Header } from '@/blocks/Header';
 import { Vacancies } from '@/blocks/Vacancies';
 import { Popup } from '@/UI/Popup';
-import { Customers } from '@/blocks/Customers';
 
 export default function Home() {
-  const t= useTranslations();
   return (
     <>
       <Popup/>
