@@ -4,5 +4,8 @@
   "send": "Отправить",
   "vacancies": "Вакансии",
   "contacts": "Контакты",
-  "workExperience": "Опыт работы"
+  "workExperience": "Опыт работы",
+  "phone": "Телефон",
+  "yourOrCompanyName": "Ваше имя или название компании",
+  "youAgreeProcessingPersonalData": "Нажимая на кнопку, вы даете согласие на обработку персональных данных"
 }

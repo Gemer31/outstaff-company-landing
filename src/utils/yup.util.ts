@@ -21,11 +21,11 @@ export class YupUtil {
 
   static get ContactUsFormSchema() {
     return yup.object().shape({
-      name: YupUtil.userName,
+      yourOrCompanyName: YupUtil.userName,
       phone: yup.string(),
-      email: YupUtil.email,
-      password: YupUtil.password,
-      passwordRepeat: YupUtil.passwordRepeat,
+      // email: YupUtil.email,
+      // password: YupUtil.password,
+      // passwordRepeat: YupUtil.passwordRepeat,
     });
   }
 }

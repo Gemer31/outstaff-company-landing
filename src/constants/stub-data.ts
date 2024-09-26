@@ -1,3 +1,10 @@
+import { IConfig } from "@/models/common.model";
+
+export const CONFIG: IConfig = {
+  email: "mail@mail.ru",
+  phone: "80291111111"
+}
+
 export enum JobType {
   DEVELOPER = "Developer",
   SUPPORT = "Support",

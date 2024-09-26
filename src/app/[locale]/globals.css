@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground: white;
+  --foreground: #dad5d5;
 }
 
 body {
@@ -17,23 +17,14 @@ body {
   }
 }
 
-
-.bg-main-black-1 {
-  background: rgb(28,28,28);
-}
-
-.bg-main-black-2 {
-  background: rgb(59,59,59);
-}
-
 .bg-main-black-1-gradient {
-  background: rgb(28,28,28);
-  background: linear-gradient(180deg, rgba(28,28,28,1) 0%, rgba(59,59,59,1) 20%, rgba(59,59,59,1) 80%, rgba(28,28,28,1) 100%);
+  background: rgb(28, 28, 28);
+  background: linear-gradient(180deg, rgba(28, 28, 28, 1) 0%, rgba(59, 59, 59, 1) 20%, rgba(59, 59, 59, 1) 80%, rgba(28, 28, 28, 1) 100%);
 }
 
 .bg-main-black-2-gradient {
-  background: rgb(59,59,59);
-  background: linear-gradient(180deg, rgba(59,59,59,1) 0%, rgba(28,28,28,1) 20%, rgba(28,28,28,1) 80%, rgba(59,59,59,1) 100%);
+  background: rgb(59, 59, 59);
+  background: linear-gradient(180deg, rgba(59, 59, 59, 1) 0%, rgba(28, 28, 28, 1) 20%, rgba(28, 28, 28, 1) 80%, rgba(59, 59, 59, 1) 100%);
 }
 
 .banner-img {
@@ -77,4 +68,10 @@ section {
 
 .important-hidden {
   display: none !important;
+}
+
+.popup {
+  -webkit-box-shadow: 0px 5px 10px 2px #f76868;
+  -moz-box-shadow: 0px 5px 10px 2px #f76868;
+  box-shadow: 0px 5px 10px 2px #f76868;
 }

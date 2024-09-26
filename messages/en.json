@@ -4,5 +4,8 @@
   "send": "Send",
   "vacancies": "Vacancies",
   "contacts": "Contacts",
-  "workExperience": "Work Experience"
+  "workExperience": "Work Experience",
+  "phone": "Phone",
+  "yourOrCompanyName": "Your or company name",
+  "youAgreeProcessingPersonalData": "By clicking the button, you agree to the processing of personal data"
 }

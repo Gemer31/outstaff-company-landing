@@ -10,10 +10,8 @@ const config: Config = {
       colors: {
         'custom-red-1': '#bd0202',
         'custom-red-2': '#f76868',
-      },
-      borderColor: {
-        'custom-red-1': '#bd0202',
-        'custom-red-2': '#f76868',
+        'custom-black-1': 'rgb(28, 28, 28)',
+        'custom-black-2': 'rgb(59, 59, 59)',
       },
       backgroundColor: {
         'black-1/2': 'rgba(0, 0, 0, 0.5)',

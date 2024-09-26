@@ -15,16 +15,16 @@ const hostClass = convertToClass([
   'border-2',
   'border-custom-red-2',
   'hover:bg-custom-red-2',
-  'grow'
+  'grow',
+  'duration-200 transition-colors'
 ])
-
 
 export function VacancyCard({ data }: IVacancyCardProps) {
   return <div className={hostClass}>
     <h4 className='color-custom-red-1'>{data.title}</h4>
     {
       data.hot
-        ? <Image src="/icons/fire.svg" width={20} height={20} />
+        ? <Image src="/icons/fire.svg" width={20} height={20} alt={data.title}/>
         : <></>
     }
   </div>;
