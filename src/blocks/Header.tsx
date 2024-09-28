@@ -2,13 +2,14 @@
 
 import { ContactUsForm } from '@/components/ContactUsForm';
 import { IConfig } from '@/models/common.model';
-import { RouterLinks } from '@/models/enums';
+import { PopupIds, RouterLinks } from '@/models/enums';
 import { Button } from '@/UI/Button';
 import { ContentContainer } from '@/UI/ContentContainer';
 import { PopupController } from '@/utils/popup.util';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 interface IHeaderProps {
   config: IConfig
@@ -17,12 +18,18 @@ interface IHeaderProps {
 export function Header({ config }: IHeaderProps) {
   const t = useTranslations();
 
+  useEffect(() => {
+    if (!document?.[PopupController.NAME]) {
+      document[PopupController.NAME] = new PopupController();
+    }
+  }, []);
+
   const requestCallClick = () => {
     // @ts-ignore
-    (document[PopupController.NAME] as PopupController).openPopup(
-      t('requestCall'),
-      <ContactUsForm translateContext={t} />,
-    );
+    (document[PopupController.NAME] as PopupController)
+    .openPopup({
+      popupId: PopupIds.REQUEST_CALL_POPUP_ID,
+    });
   };
 
   return <header className="bg-custom-black-1 flex justify-center">
