@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs/>
+  <ellipse style="stroke: rgb(241, 79, 77); fill: rgb(241, 79, 77);" cx="105.336" cy="245.62" rx="76.598" ry="97.658"/>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" cx="392.331" cy="250.135" rx="76.598" ry="97.658"/>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" cx="248.561" cy="378.276" rx="95.453" ry="97.658"/>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" cx="254.455" cy="116.348" rx="95.453" ry="97.658"/>
+  <polyline style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" points="56.582 321.189 181.796 448.177 310.831 452.123 438.959 327.307 445.181 179.686 320.704 46.117 194.168 40.586 63.597 163.666"/>
+</svg>

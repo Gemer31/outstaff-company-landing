@@ -11,7 +11,8 @@ interface IFooterProps {
 export function Footer({ config }: IFooterProps) {
   return <footer className="py-6 flex flex-col items-center bg-custom-black-2">
     <ContentContainer className="flex justify-around items-center relative">
-      <Image className="absolute top-0 left-0" src="/images/shape1.png" width={40} height={40} alt="Preview" />
+      <Image className="absolute top-0 left-0" src="/icons/triangle2.svg" width={60} height={60} alt="Preview" />
+      <Image className="absolute bottom-2 right-6" src="/icons/rhomb.svg" width={60} height={60} alt="Preview" />
 
       <ContactLink type={ContactLinkType.PHONE} value={config.phone} />
       <div className='w-[200px] h-[100px] rounded-sm flex items-center overflow-hidden'>

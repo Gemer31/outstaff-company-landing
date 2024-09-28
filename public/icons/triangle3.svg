@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs/>
+  <polygon style="fill: rgb(40, 40, 40); stroke: rgb(40, 40, 40);" points="492.306 49.425 490.677 399.905 299.817 454.246 39.675 185.467 93.836 9.272 441.178 5.487"/>
+  <ellipse style="fill: rgb(40, 40, 40); stroke: rgb(40, 40, 40);" cx="447.31" cy="50.857" rx="45.145" ry="45.656"/>
+  <ellipse style="fill: rgb(40, 40, 40); stroke: rgb(40, 40, 40);" cx="384.339" cy="399.847" rx="106.307" ry="89.952"/>
+  <ellipse style="fill: rgb(40, 40, 40); stroke: rgb(40, 40, 40);" cx="94.477" cy="110.259" rx="83.138" ry="100.855"/>
+  <ellipse style="stroke: rgb(241, 79, 77); fill: rgb(241, 79, 77);" cx="383.629" cy="141.281" rx="23.234" ry="23.234"/>
+</svg>

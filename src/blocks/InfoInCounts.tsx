@@ -27,8 +27,8 @@ export function InfoInCounts() {
                     </section>
                 })
             }
-            <Image className="rotate-180 absolute top-0 left-0" src="/images/triangle.png" width={20} height={20} alt="Preview" />
-            <Image className="absolute bottom-0 right-0" src="/images/triangle.png" width={40} height={40} alt="Preview" />
+            <Image className="rotate-180 absolute top-0 left-0" src="/icons/triangle.svg" width={20} height={20} alt="Preview" />
+            <Image className="absolute bottom-0 right-0" src="/icons/triangle.svg" width={40} height={40} alt="Preview" />
         </ContentContainer>
     </article>
 }

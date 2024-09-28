@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:guide x="83.1397852697885" y="296.28411587254254" angle="0"/>
+  </defs>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" cx="168.001" cy="241.754" rx="85.695" ry="93.181"/>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77); transform-box: fill-box; transform-origin: 50% 50%;" cx="16.489" cy="15.954" rx="15.838" ry="15.41" transform="matrix(0.999971, -0.007556, 0.005702, 0.999985, -0.000017, -0.000027)"/>
+  <ellipse style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" cx="24.735" cy="475.4" rx="22.939" ry="23.008"/>
+  <polygon style="fill: rgb(241, 79, 77); stroke: rgb(241, 79, 77);" points="40.675 491.322 217.898 316.348 207.753 159.067 26.974 4.406 0.723 15.443 2.024 476.313"/>
+</svg>
