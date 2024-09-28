@@ -17,14 +17,10 @@ body {
   }
 }
 
-.bg-main-black-1-gradient {
-  background: rgb(28, 28, 28);
-  background: linear-gradient(180deg, rgba(28, 28, 28, 1) 0%, rgba(59, 59, 59, 1) 20%, rgba(59, 59, 59, 1) 80%, rgba(28, 28, 28, 1) 100%);
-}
-
-.bg-main-black-2-gradient {
-  background: rgb(59, 59, 59);
-  background: linear-gradient(180deg, rgba(59, 59, 59, 1) 0%, rgba(28, 28, 28, 1) 20%, rgba(28, 28, 28, 1) 80%, rgba(59, 59, 59, 1) 100%);
+.bg-shadow::after {
+  -webkit-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
+  -moz-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
+  box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
 }
 
 .important-hidden {
@@ -35,10 +31,14 @@ body {
   border-top: 1px solid var(--foreground);
 }
 
-.popup {
+.shadow-custom-red {
   -webkit-box-shadow: 0px 5px 10px 2px #f76868;
   -moz-box-shadow: 0px 5px 10px 2px #f76868;
   box-shadow: 0px 5px 10px 2px #f76868;
+}
+
+.background-image {
+  background-image: url(/images/background.png);
 }
 
 .custom-banner {
@@ -51,6 +51,6 @@ body {
 
 @keyframes customBanner {
   100% {
-    transform: translate(var(--finalOffset));
+    transform: var(--finalOffset);
   }
 }

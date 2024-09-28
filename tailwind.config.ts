@@ -8,17 +8,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'custom-red-1': '#bd0202',
+        'custom-red-1': '#F14F4D',
         'custom-red-2': '#f76868',
-        'custom-black-1': 'rgb(28, 28, 28)',
-        'custom-black-2': 'rgb(59, 59, 59)',
+        'custom-black-1': '#282828',
+        'custom-black-2': '#1C1C1C',
+        'custom-gray-1': '#2F2F2F'
       },
       backgroundColor: {
         'black-1/2': 'rgba(0, 0, 0, 0.5)',
         'black-1/5': 'rgba(0, 0, 0, 0.2)',
         'black-1/4': 'rgba(0, 0, 0, 0.25)',
         'black-4/5': 'rgba(0, 0, 0, 0.8)',
-        'main-black': ''
       },
       screens: {
         xs: '320px',

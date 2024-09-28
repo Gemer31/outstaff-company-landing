@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 export function Vacancies() {
   const t = useTranslations();
 
-  return <article className='w-full bg-main-black-1-gradient  flex justify-center'>
+  return <article className='w-full bg-custom-black-1 flex justify-center'>
     <ContentContainer>
       <TitleContainer title={t('vacancies')}>
         <div className='flex justify-between gap-x-2'>

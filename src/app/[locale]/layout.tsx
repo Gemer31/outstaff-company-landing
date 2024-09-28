@@ -21,20 +21,23 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-                                           children, params: {locale},
-                                         }: Readonly<{
+  children, params: { locale },
+}: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-    <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center overflow-x-hidden`}>
-    <NextIntlClientProvider messages={messages}>
-      {children}
-    </NextIntlClientProvider>
-    </body>
+    <html lang={locale} className="scroll-smooth">
+      <body
+        id="page"
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center overflow-x-hidden`}
+      >
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

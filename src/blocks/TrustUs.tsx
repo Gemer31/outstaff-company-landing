@@ -16,12 +16,17 @@ const IMAGES = [
     "/companies/google.svg",
     "/companies/spotify.svg",
     "/companies/tinder.svg",
+    "/companies/airbnb.svg",
+    "/companies/bmw.svg",
+    "/companies/google.svg",
+    "/companies/spotify.svg",
+    "/companies/tinder.svg",
 ]
 
 export function TrustUs({config}: ITrustUsProps) {
     const t = useTranslations();
 
-    return <article className="flex justify-center">
+    return <article className="w-full flex justify-center bg-custom-black-1">
 
         <ContentContainer>
             <TitleContainer title={t('trustUs')}>

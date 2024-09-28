@@ -9,5 +9,10 @@
   "yourOrCompanyName": "Ваше имя или название компании",
   "youAgreeProcessingPersonalData": "Нажимая на кнопку, вы даете согласие на обработку персональных данных",
   "trustUs": "Нам доверяют",
-  "youCanAlsoContactUsByPhoneAndEmail": "Вы также можете связаться с нами самостоятельно по телефону или написать на почту"
+  "youCanAlsoContactUsByPhoneAndEmail": "Вы также можете связаться с нами самостоятельно по телефону или написать на почту",
+  "contactUs": "Свяжитесь с нами",
+  "specialization": "Специальзация",
+  "frontend": "Frontend",
+  "backend": "Backend",
+  "mobile": "Mobile"
 }
