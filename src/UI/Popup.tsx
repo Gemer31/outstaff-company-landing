@@ -1,12 +1,9 @@
 'use client';
 
+import { PopupController } from '@/controllers/popup.controller';
 import { PopupIds } from '@/models/enums';
 import { convertToClass } from '@/utils/convert-to-class.util';
-import { PopupController } from '@/controllers/popup.controller';
 import Image from 'next/image';
-import { useEffect } from 'react';
-
-
 
 export interface IPopupProps {
   id?: string;

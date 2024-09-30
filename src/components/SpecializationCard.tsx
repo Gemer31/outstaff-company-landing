@@ -13,8 +13,8 @@ export function SpecializationCard({data}: ISpecializationCardProps) {
         <h3 className="text-center text-xl font-bold">{t(data.title)}</h3>
         <div className="flex flex-wrap justify-around items-center gap-8">
             {
-                data.icons.map((item) => {
-                    return <Image src={item.path} width={50} height={50} alt={item.alt}/>
+                data.icons.map((item, index) => {
+                    return <Image key={index} src={item.path} width={50} height={50} alt={item.alt}/>
                 })
             }
         </div>

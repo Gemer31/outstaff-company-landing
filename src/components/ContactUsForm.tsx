@@ -23,7 +23,7 @@ export function ContactUsForm({ config }: IContactUsFormProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.ContactUsFormSchema),

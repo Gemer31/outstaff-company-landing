@@ -46,10 +46,6 @@ export function Header({ config }: IHeaderProps) {
       });
   };
 
-  const show = () => {
-    (document[NotificationController.NAME] as NotificationController).showNotification("vertwerbtwrebtwevwre vertwerbtwrebtwevwrevertwerbtwrebtwevwrevertwerbtwrebtwevwrevertwerbtwrebtwevwre vertwerbtwrebtwevwre")
-  }
-
   return <>
     <ScrollUpButton isScrollTop={isScrollTop} />
 

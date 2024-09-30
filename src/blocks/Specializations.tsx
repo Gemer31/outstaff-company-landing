@@ -3,7 +3,6 @@ import { ISpecializationCard } from "@/models/common.model";
 import { ContentContainer } from "@/UI/ContentContainer";
 import { TitleContainer } from "@/UI/TitleContainer";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 const SPECIALIZATIONS: ISpecializationCard[] = [
     {

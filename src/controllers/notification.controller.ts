@@ -1,4 +1,3 @@
-import { Notification } from '@/components/Notification';
 import { DomIds } from '@/models/enums';
 
 const TIMEOUT_VALUE = 5000;

@@ -41,7 +41,6 @@ export function PhoneFormField({
   return (
     <FormFieldWrapper label={label} error={error} required={required}>
       <InputMask
-        // @ts-ignore
         placeholder="+375 (XX) XXX-XX-XX"
         mask="+375 (__) ___-__-__"
         replacement={{ _: /\d/ }}
