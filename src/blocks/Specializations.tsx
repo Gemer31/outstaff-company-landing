@@ -89,8 +89,8 @@ export function Specializations() {
             <TitleContainer title={t('specialization')}>
                 <div className="flex gap-x-4">
                     {
-                        SPECIALIZATIONS.map((item) => {
-                            return <SpecializationCard data={item} />
+                        SPECIALIZATIONS.map((item, index) => {
+                            return <SpecializationCard key={index} data={item} />
                         })
                     }
                 </div>

@@ -2,13 +2,9 @@ import 'animate.css';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { Nunito, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import './globals.css';
 
-const nunito = Nunito({
-  subsets: ['latin'],
-  display: 'swap',
-})
 const raleway = Raleway({
   subsets: ['latin'],
   display: 'swap',

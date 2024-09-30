@@ -39,7 +39,7 @@ export function Header({ config }: IHeaderProps) {
   }, []);
 
   const requestCallClick = () => {
-    // @ts-ignore
+    // @ts-expect-error
     (document[PopupController.NAME] as PopupController)
       .openPopup({
         popupId: PopupIds.REQUEST_CALL_POPUP_ID,
