@@ -30,9 +30,9 @@ export function ContactUsForm({ config }: IContactUsFormProps) {
   });
 
   const submitForm = () => {
-    // @ts-expect-error
+    // @ts-expect-error need
     (document[PopupController.NAME] as PopupController).closePopup({ popupId: PopupIds.REQUEST_CALL_POPUP_ID });
-    // @ts-expect-error
+    // @ts-expect-error need
     (document[NotificationController.NAME] as NotificationController).showNotification(t('ourManagersCallYou'));
   };
 
