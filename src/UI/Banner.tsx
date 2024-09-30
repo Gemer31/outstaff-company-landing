@@ -13,10 +13,11 @@ export function Banner({ images, speed = 5000 }: IBannerProps) {
             <div className="wrapper">
                 {
                     frames.map((_, index) => {
+                        // @ts-expect-error need
                         return <section key={index} style={{ "--speed": `${speed}ms` }}>
                             {images.map(({ id, image }) => (
                                 <div className="image" key={id}>
-                                    <Image className="banner-img" src={image} alt={image} width={120} height={80}/>
+                                    <Image className="banner-img" src={image} alt={image} width={120} height={80} />
                                 </div>
                             ))}
                         </section>
