@@ -7,24 +7,26 @@ import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
 import { ContactUsForm } from '@/components/ContactUsForm';
+import { Notification } from '@/components/Notification';
 import { CONFIG } from '@/constants/stub-data';
 import { Popup } from '@/UI/Popup';
 
 export default function HomePage() {
   return (
     <>
-      <Popup/>
-      <ContactUsForm config={CONFIG}/>
-      <Header config={CONFIG}/>
+      <Notification />
+      <Popup />
+      <ContactUsForm config={CONFIG} />
+      <Header config={CONFIG} />
       <main className="w-full flex flex-col items-center">
-        <MainPreview/>
-        <Vacancies/>
-        <Specializations/>
-        <TrustUs/>
-        <InfoInCounts/>
-        <ContactUs/>
+        <MainPreview />
+        <Specializations />
+        <TrustUs />
+        <InfoInCounts />
+        <Vacancies />
+        <ContactUs />
       </main>
-      <Footer config={CONFIG}/>
+      <Footer config={CONFIG} />
     </>
   );
 }

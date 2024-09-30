@@ -13,16 +13,10 @@ export function FormFieldWrapper({
   error,
 }: IFormFieldWrapperProps) {
   return (
-    <label className="w-full pb-4 relative">
+    <label className="w-full pb-1 block">
       <span className={`mr-2 ${required ? 'field-label' : ''}`}>{label}</span>
       {children}
-      {error ? (
-        <div className="absolute text-red-500 text-xs bottom-0">
-          {/* {TRANSLATES[LOCALE][error]} */}
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className={'text-red-500 text-xs ' + (error ? "" : 'invisible')}>{error || "_"}</div>
     </label>
   );
 }

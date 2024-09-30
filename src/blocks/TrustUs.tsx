@@ -23,15 +23,18 @@ const IMAGES = [
     "/companies/tinder.svg",
 ]
 
-export function TrustUs({config}: ITrustUsProps) {
+export function TrustUs({ config }: ITrustUsProps) {
     const t = useTranslations();
 
     return <article className="w-full flex justify-center bg-custom-black-1">
 
-        <ContentContainer>
+        <ContentContainer className="relative">
+            <div className="z-10 inner-shadow absolute w-full h-full"></div>
             <TitleContainer title={t('trustUs')}>
-
-                <CustomBanner images={IMAGES}/>
+                <section className="pb-8 pt-2 w-full flex justify-center">
+                    <div className="w-3/6 text-center">Наши решения работают в крупнейших компаниях России и мира: Роснефть, Россети, Yokohama, Scania, Hoff, Xerox и других.</div>
+                </section>
+                <CustomBanner images={IMAGES} />
             </TitleContainer>
         </ContentContainer>
     </article>

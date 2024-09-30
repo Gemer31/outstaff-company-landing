@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import localFont from 'next/font/local';
+import { Raleway, Nunito } from 'next/font/google'
 import './globals.css';
+import 'animate.css';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -14,6 +16,14 @@ const geistMono = localFont({
   variable: '--font-geist-mono',
   weight: '100 900',
 });
+const nunito = Nunito({
+  subsets: ['latin'],
+  display: 'swap',
+})
+const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -32,7 +42,7 @@ export default async function RootLayout({
     <html lang={locale} className="scroll-smooth">
       <body
         id="page"
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center overflow-x-hidden`}
+        className={`${raleway.className} antialiased flex flex-col justify-center overflow-x-hidden`}
       >
         <NextIntlClientProvider messages={messages}>
           {children}

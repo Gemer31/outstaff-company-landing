@@ -85,7 +85,7 @@ const SPECIALIZATIONS: ISpecializationCard[] = [
 export function Specializations() {
     const t = useTranslations();
 
-    return <article className="w-full flex justify-center bg-custom-black-1">
+    return <article className="w-full flex justify-center bg-custom-black-1 py-10">
         <ContentContainer className="relative">
             <TitleContainer title={t('specialization')}>
                 <div className="flex gap-x-4">

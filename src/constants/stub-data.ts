@@ -12,7 +12,7 @@ export enum JobType {
   IT_INFRASTRUCTURE = "IT Infrastructure",
   TECHNICAL_ARCHITECT = "Technical Architect",
   PRODUCT_MANAGER = "Product Manager",
-  ANALYST = "Analyst"
+  ANALYST = "Analyst",
 }
 
 export enum JobSchedule {
@@ -23,6 +23,7 @@ export enum JobSchedule {
 export interface IVacancy {
   title: string;
   type: JobType;
+  schedule?: JobSchedule,
   experience: string;
   description: string;
   hot: boolean;
@@ -35,6 +36,7 @@ export const STUB_VACANCIES: IVacancy[] = [
     experience: "1.5 years",
     description: "",
     hot: true,
+    schedule: JobSchedule.REMOTE,
   },
   {
     title: "Middle/Senior Java Developer",
@@ -49,6 +51,7 @@ export const STUB_VACANCIES: IVacancy[] = [
     experience: "1.5 years",
     description: "",
     hot: true,
+    schedule: JobSchedule.OFFICE,
   },
   {
     title: "Phyton Developer",

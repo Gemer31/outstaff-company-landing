@@ -14,5 +14,7 @@
   "specialization": "Специальзация",
   "frontend": "Frontend",
   "backend": "Backend",
-  "mobile": "Mobile"
+  "mobile": "Mobile",
+  "ourManagersCallYou": "Спасибо. Наши менеджеры скоро свяжутся с вами",
+  "fieldRequired": "Обязательное поле"
 }

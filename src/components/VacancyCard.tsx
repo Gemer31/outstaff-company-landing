@@ -1,4 +1,5 @@
 import { IVacancy } from '@/constants/stub-data';
+import { Chip } from '@/UI/Chip';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
 
@@ -9,11 +10,8 @@ interface IVacancyCardProps {
 const hostClass = convertToClass([
   'cursor-pointer',
   'p-4',
-  'flex',
-  'justify-between',
   'rounded-md',
-  'border-2',
-  'border-custom-red-2',
+  'bg-custom-black-2',
   'hover:bg-custom-red-2',
   'grow',
   'duration-200 transition-colors'
@@ -21,11 +19,22 @@ const hostClass = convertToClass([
 
 export function VacancyCard({ data }: IVacancyCardProps) {
   return <div className={hostClass}>
-    <h4 className='color-custom-red-1'>{data.title}</h4>
-    {
-      data.hot
-        ? <Image src="/icons/fire.svg" width={20} height={20} alt={data.title}/>
-        : <></>
-    }
+    <div className="flex justify-between">
+      <h4 className="text-lg font-bold">{data.title}</h4>
+      {
+        data.hot
+          ? <Image src="/icons/fire.svg" width={20} height={20} alt={data.title} />
+          : <></>
+      }
+    </div>
+
+    <div className="flex gap-x-2 mt-1">
+      {
+        data.schedule ? <Chip value={data.schedule} /> : <></>
+      }
+      {
+        data.experience ? <Chip value={data.experience} /> : <></>
+      }
+    </div>
   </div>;
 }

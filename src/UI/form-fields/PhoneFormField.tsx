@@ -4,6 +4,7 @@ import { convertToClass } from '@/utils/convert-to-class.util';
 import { useMemo } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { InputMask } from '@react-input/mask';
+import { FormFieldWrapper } from './FormFieldWrapper';
 
 interface IFormField {
   required?: boolean;
@@ -38,8 +39,7 @@ export function PhoneFormField({
   );
 
   return (
-    <label className="w-full pb-4 relative">
-      <span className={`mr-2 ${required ? 'field-label' : ''}`}>{label}</span>
+    <FormFieldWrapper label={label} error={error} required={required}>
       <InputMask
         // @ts-ignore
         placeholder="+375 (XX) XXX-XX-XX"
@@ -49,13 +49,6 @@ export function PhoneFormField({
         type={type}
         {...(register as UseFormRegister<Record<string, unknown>>)(name)}
       />
-      {error ? (
-        <div className="absolute text-red-500 text-xs bottom-0">
-          {/* {TRANSLATES[LOCALE][error]} */}
-        </div>
-      ) : (
-        <></>
-      )}
-    </label>
+    </FormFieldWrapper>
   );
 }

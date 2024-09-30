@@ -22,7 +22,7 @@ export class YupUtil {
   static get ContactUsFormSchema() {
     return yup.object().shape({
       yourOrCompanyName: YupUtil.userName,
-      phone: yup.string(),
+      phone: yup.string().required('fieldRequired'),
       // email: YupUtil.email,
       // password: YupUtil.password,
       // passwordRepeat: YupUtil.passwordRepeat,

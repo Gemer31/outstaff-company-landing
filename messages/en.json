@@ -14,5 +14,7 @@
   "specialization": "Specialization",
   "frontend": "Frontend",
   "backend": "Backend",
-  "mobile": "Mobile"
+  "mobile": "Mobile",
+  "ourManagersCallYou": "Thank you. Our managers will call you soon",
+  "fieldRequired": "Field is required"
 }
