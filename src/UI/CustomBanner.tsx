@@ -34,17 +34,20 @@ export function CustomBanner({ images }: ICustomBannerProps) {
     return <>
         <div className="gap-x-14"></div>
         <section className="overflow-hidden">
-            <div style={{ transform: cssStartPositionValue, '--bannerDuration': cssBannerDurationValue, '--finalOffset': cssEndPositionValue }} className={hostClass}>
-                {
-                    bannerFrames.map((_, index) => {
-                        return <div key={index} className={`flex gap-x-${GAP_VALUE}`}>
-                            {images.map((item, itemIndex) => {
-                                return <Image key={itemIndex} src={item} width={IMAGE_SIZE} height={IMAGE_SIZE} alt={item} />
-                            })}
-                        </div>
-                    })
-                }
-            </div>
+            {
+                // @ts-expect-error need
+                <div style={{ transform: cssStartPositionValue, '--bannerDuration': cssBannerDurationValue, '--finalOffset': cssEndPositionValue }} className={hostClass}>
+                    {
+                        bannerFrames.map((_, index) => {
+                            return <div key={index} className={`flex gap-x-${GAP_VALUE}`}>
+                                {images.map((item, itemIndex) => {
+                                    return <Image key={itemIndex} src={item} width={IMAGE_SIZE} height={IMAGE_SIZE} alt={item} />
+                                })}
+                            </div>
+                        })
+                    }
+                </div>
+            }
         </section>
     </>
 
