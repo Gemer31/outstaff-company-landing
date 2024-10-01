@@ -1,3 +1,4 @@
+import React from 'react';
 import { ContactUs } from '@/blocks/ContactUs';
 import { Footer } from '@/blocks/Footer';
 import { Header } from '@/blocks/Header';

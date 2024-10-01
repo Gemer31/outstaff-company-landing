@@ -1,9 +1,9 @@
 'use client';
 
 import { convertToClass } from '@/utils/convert-to-class.util';
+import { InputMask } from '@react-input/mask';
 import { useMemo } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { InputMask } from '@react-input/mask';
 import { FormFieldWrapper } from './FormFieldWrapper';
 
 interface IFormField {
@@ -41,6 +41,7 @@ export function PhoneFormField({
   return (
     <FormFieldWrapper label={label} error={error} required={required}>
       <InputMask
+        // @ts-expect-error need
         placeholder="+375 (XX) XXX-XX-XX"
         mask="+375 (__) ___-__-__"
         replacement={{ _: /\d/ }}

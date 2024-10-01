@@ -14,7 +14,5 @@ const hostClass = convertToClass([
     'max-w-80',
 ])
 export function Notification() {
-    return <div id={DomIds.NOTIFICATION} className={hostClass}>
-        vertwerbtwrebtwevwre vertwerbtwrebtwevwrevertwerbtwrebtwevwrevertwerbtwrebtwevwrevertwerbtwrebtwevwre vertwerbtwrebtwevwre
-    </div>
+    return <div id={DomIds.NOTIFICATION} className={hostClass}></div>
 }

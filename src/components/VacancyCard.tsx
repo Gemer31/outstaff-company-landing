@@ -1,3 +1,4 @@
+import React from 'react';
 import { IVacancy } from '@/constants/stub-data';
 import { Chip } from '@/UI/Chip';
 import { convertToClass } from '@/utils/convert-to-class.util';
@@ -28,7 +29,7 @@ export function VacancyCard({ data }: IVacancyCardProps) {
       }
     </div>
 
-    <div className="flex gap-x-2 mt-1">
+    <div className="flex items-center gap-x-2 mt-1">
       {
         data.schedule ? <Chip value={data.schedule} /> : <></>
       }

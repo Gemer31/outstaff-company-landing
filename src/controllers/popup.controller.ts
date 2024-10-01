@@ -1,4 +1,4 @@
-import { PopupIds } from '@/models/enums';
+import { DomIds } from '@/models/enums';
 import { createRoot, Root } from 'react-dom/client';
 
 export class PopupController {
@@ -16,9 +16,9 @@ export class PopupController {
     if (popupId) {
       popup = document.getElementById(popupId);
     } else {
-      popup = document.getElementById(PopupIds.POPUP);
-      this.contentRoot = createRoot(document.getElementById(PopupIds.CONTENT));
-      document.getElementById(PopupIds.TITLE).innerHTML = title;
+      popup = document.getElementById(DomIds.POPUP_ID);
+      this.contentRoot = createRoot(document.getElementById(DomIds.POPUP_CONTENT));
+      document.getElementById(DomIds.POPUP_TITLE).innerHTML = title;
       this.contentRoot.render(contentReactNode);
     }
     popup.classList.remove('invisible');
@@ -27,7 +27,7 @@ export class PopupController {
   };
 
   closePopup = ({ popupId }: { popupId: string }) => {
-    const popup: HTMLElement = document.getElementById(popupId || PopupIds.POPUP_ID);
+    const popup: HTMLElement = document.getElementById(popupId || DomIds.POPUP_ID);
     popup.classList.add('invisible');
     popup.classList.add('opacity-0');
     if (!popupId) {

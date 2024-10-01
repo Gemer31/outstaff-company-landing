@@ -1,10 +1,10 @@
 'use client'
 
-import { PopupIds } from "@/models/enums";
+import { PopupController } from "@/controllers/popup.controller";
+import { DomIds } from "@/models/enums";
 import { Button } from "@/UI/Button";
 import { ContentContainer } from "@/UI/ContentContainer";
 import { TitleContainer } from "@/UI/TitleContainer";
-import { PopupController } from "@/controllers/popup.controller";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -15,7 +15,7 @@ export function ContactUs() {
         // @ts-expect-error need
         (document[PopupController.NAME] as PopupController)
             .openPopup({
-                popupId: PopupIds.REQUEST_CALL_POPUP_ID,
+                popupId: DomIds.REQUEST_CALL_POPUP_ID,
             });
     };
 

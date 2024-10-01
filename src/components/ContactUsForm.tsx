@@ -3,7 +3,7 @@
 import { NotificationController } from '@/controllers/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';
 import { IConfig } from '@/models/common.model';
-import { ContactLinkType, PopupIds } from '@/models/enums';
+import { ContactLinkType, DomIds } from '@/models/enums';
 import { Button, ButtonTypes } from '@/UI/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
@@ -31,15 +31,15 @@ export function ContactUsForm({ config }: IContactUsFormProps) {
 
   const submitForm = () => {
     // @ts-expect-error need
-    (document[PopupController.NAME] as PopupController).closePopup({ popupId: PopupIds.REQUEST_CALL_POPUP_ID });
+    (document[PopupController.NAME] as PopupController).closePopup({ popupId: DomIds.REQUEST_CALL_POPUP_ID });
     // @ts-expect-error need
     (document[NotificationController.NAME] as NotificationController).showNotification(t('ourManagersCallYou'));
   };
 
-  return <Popup id={PopupIds.REQUEST_CALL_POPUP_ID} title={t('requestCall')}>
+  return <Popup id={DomIds.REQUEST_CALL_POPUP_ID} title={t('requestCall')}>
     <form onSubmit={handleSubmit(submitForm)}>
       <InputFormField
-        required
+        required={true}
         placeholder={t('yourOrCompanyName')}
         label={t('yourOrCompanyName')}
         name="name"
@@ -48,7 +48,7 @@ export function ContactUsForm({ config }: IContactUsFormProps) {
         register={register}
       />
       <PhoneFormField
-        required
+        required={true}
         label={t('phone')}
         type="text"
         name="phone"

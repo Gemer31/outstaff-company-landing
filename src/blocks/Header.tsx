@@ -5,7 +5,7 @@ import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { NotificationController } from '@/controllers/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';
 import { IConfig } from '@/models/common.model';
-import { ContactLinkType, PopupIds, RouterLinks } from '@/models/enums';
+import { ContactLinkType, DomIds, RouterLinks } from '@/models/enums';
 import { Button } from '@/UI/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { ContentContainer } from '@/UI/ContentContainer';
@@ -47,7 +47,7 @@ export function Header({ config }: IHeaderProps) {
     // @ts-expect-error need
     (document[PopupController.NAME] as PopupController)
       .openPopup({
-        popupId: PopupIds.REQUEST_CALL_POPUP_ID,
+        popupId: DomIds.REQUEST_CALL_POPUP_ID,
       });
   };
 

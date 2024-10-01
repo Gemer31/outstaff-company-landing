@@ -1,7 +1,7 @@
 'use client';
 
 import { PopupController } from '@/controllers/popup.controller';
-import { PopupIds } from '@/models/enums';
+import { DomIds } from '@/models/enums';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
 
@@ -33,7 +33,7 @@ export function Popup({ id, title, children }: IPopupProps) {
 
   return (
     <div
-      id={id || PopupIds.POPUP_ID}
+      id={id || DomIds.POPUP_ID}
       className={hostClass + " invisible opacity-0"}
     >
       <div
@@ -41,14 +41,14 @@ export function Popup({ id, title, children }: IPopupProps) {
       >
         <div className="flex justify-between items-center p-4">
           <span
-            id={PopupIds.TITLE}
+            id={DomIds.POPUP_TITLE}
             className="text-2xl"
           >{title}</span>
           <div className="cursor-pointer" onClick={closeClick}>
             <Image width={60} height={60} src="/icons/close.svg" alt="Close" />
           </div>
         </div>
-        <section id={PopupIds.CONTENT} className="px-4 pb-4">{children}</section>
+        <section id={DomIds.POPUP_CONTENT} className="px-4 pb-4">{children}</section>
       </div>
     </div>
   );
