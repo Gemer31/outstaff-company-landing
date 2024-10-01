@@ -27,6 +27,7 @@ const hostClass = convertToClass([
 
 export function Popup({ id, title, children }: IPopupProps) {
   const closeClick = () => {
+    // @ts-expect-error need
     (document[PopupController.NAME] as PopupController).closePopup({ popupId: id });
   }
 

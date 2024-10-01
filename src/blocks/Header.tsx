@@ -22,10 +22,14 @@ export function Header({ config }: IHeaderProps) {
   const [isScrollTop, setIsScrollTop] = useState(true);
 
   useEffect(() => {
+    // @ts-expect-error need
     if (!document?.[PopupController.NAME]) {
+      // @ts-expect-error need
       document[PopupController.NAME] = new PopupController();
     }
+    // @ts-expect-error need
     if (!document?.[NotificationController.NAME]) {
+      // @ts-expect-error need
       document[NotificationController.NAME] = new NotificationController();
     }
 
