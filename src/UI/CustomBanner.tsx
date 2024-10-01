@@ -1,3 +1,4 @@
+import React from 'react';
 import { convertToClass } from "@/utils/convert-to-class.util";
 import Image from "next/image";
 

@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { NotificationController } from '@/controllers/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';

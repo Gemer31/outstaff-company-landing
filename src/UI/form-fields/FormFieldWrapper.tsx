@@ -2,7 +2,7 @@ export interface IFormFieldWrapperProps {
   required?: boolean;
   label: string;
   error?: string;
-  children: React.ReactDOM,
+  children: React.ReactNode,
   className?: string
 }
 
