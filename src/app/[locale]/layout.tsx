@@ -8,7 +8,7 @@ import './globals.css';
 const raleway = Raleway({
   subsets: ['latin'],
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children, params: { locale },
-}: Readonly<{
+                                           children, params: {locale},
+                                         }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
@@ -25,14 +25,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
-      <body
-        id="page"
-        className={`${raleway.className} antialiased flex flex-col justify-center overflow-x-hidden`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
+    <body
+      id="page"
+      className={`${raleway.className} antialiased flex flex-col justify-center overflow-x-hidden`}
+    >
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+    </body>
     </html>
   );
 }

@@ -35,6 +35,7 @@ export function InputFormField({
   const hostClass: string = useMemo(
     () =>
       convertToClass([
+        'relative',
         'bg-custom-black-2',
         'border-custom-black-2',
         'border-2',

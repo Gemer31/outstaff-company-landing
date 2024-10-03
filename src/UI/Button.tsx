@@ -4,30 +4,22 @@ import { convertToClass } from '@/utils/convert-to-class.util';
 import { MouseEvent, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Loader } from '@/UI/Loader';
+import { ButtonColorOptions, ButtonTypes } from '@/models/enums';
 
-export enum ButtonTypes {
-  BUTTON = 'button',
-  SUBMIT = 'submit',
-}
-export enum ColorOptions {
-  PINK = 'pink',
-  GRAY = 'gray',
-}
-
-export const COLOR_OPTION_VALUES = new Map<ColorOptions, string>([
+export const COLOR_OPTION_VALUES = new Map<ButtonColorOptions, string>([
   [
-    ColorOptions.PINK,
+    ButtonColorOptions.PINK,
     'bg-custom-red-1 hover:bg-custom-red-2 active:bg-pink-600 text-white',
   ],
   [
-    ColorOptions.GRAY,
+    ButtonColorOptions.GRAY,
     'bg-slate-100 hover:bg-slate-400 active:bg-slate-600 text-black',
   ],
 ]);
 
 export interface IButtonProps {
   children: React.ReactNode;
-  color?: ColorOptions;
+  color?: ButtonColorOptions;
   type?: ButtonTypes;
   href?: string;
   disabled?: boolean;
@@ -79,7 +71,7 @@ export function Button({
       className={
         buttonClass +
         ' ' +
-        COLOR_OPTION_VALUES.get(color || ColorOptions.PINK) +
+        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.PINK) +
         ' ' +
         className
       }
@@ -94,7 +86,7 @@ export function Button({
       >
         <Loader
           className={
-            'h-full ' + (color === ColorOptions.GRAY ? 'border-pink-500' : '')
+            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-pink-500' : '')
           }
         />
       </div>
@@ -105,7 +97,7 @@ export function Button({
       className={
         buttonClass +
         ' ' +
-        COLOR_OPTION_VALUES.get(color || ColorOptions.PINK) +
+        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.PINK) +
         ' ' +
         className
       }
@@ -119,7 +111,7 @@ export function Button({
       >
         <Loader
           className={
-            'h-full ' + (color === ColorOptions.GRAY ? 'border-pink-500' : '')
+            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-pink-500' : '')
           }
         />
       </div>

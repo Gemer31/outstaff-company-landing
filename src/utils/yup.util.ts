@@ -28,4 +28,18 @@ export class YupUtil {
       // passwordRepeat: YupUtil.passwordRepeat,
     });
   }
+
+  static get SignInSchema() {
+    return yup.object().shape({
+      email: YupUtil.email,
+      password: YupUtil.password,
+    });
+  }
+
+  static get GeneralEditorFormSchema() {
+    return yup.object().shape({
+      email: YupUtil.email,
+      phone: yup.string().required('fieldRequired'),
+    });
+  }
 }

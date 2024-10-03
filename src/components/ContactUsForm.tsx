@@ -3,8 +3,8 @@
 import { NotificationController } from '@/controllers/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';
 import { IConfig } from '@/models/common.model';
-import { ContactLinkType, DomIds } from '@/models/enums';
-import { Button, ButtonTypes } from '@/UI/Button';
+import { ButtonTypes, ContactLinkType, DomIds } from '@/models/enums';
+import { Button } from '@/UI/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';

@@ -9,16 +9,22 @@ import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
 import { ContactUsForm } from '@/components/ContactUsForm';
 import { Notification } from '@/components/Notification';
-import { CONFIG } from '@/constants/stub-data';
 import { Popup } from '@/UI/Popup';
+import { collection, getDocs } from '@firebase/firestore';
+import { db } from '@/lib/firebase-config';
+import { FirestoreCollections } from '@/models/enums';
+import { IConfig } from '@/models/common.model';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
+  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+
   return (
     <>
       <Notification />
       <Popup />
-      <ContactUsForm config={CONFIG} />
-      <Header config={CONFIG} />
+      <ContactUsForm config={config} />
+      <Header config={config} />
       <main className="w-full flex flex-col items-center">
         <MainPreview />
         <Specializations />
@@ -27,7 +33,7 @@ export default function HomePage() {
         <Vacancies />
         <ContactUs />
       </main>
-      <Footer config={CONFIG} />
+      <Footer config={config} />
     </>
   );
 }

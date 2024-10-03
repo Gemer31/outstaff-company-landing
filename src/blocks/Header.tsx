@@ -11,7 +11,7 @@ import { ContactLink } from '@/UI/ContactLink';
 import { ContentContainer } from '@/UI/ContentContainer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import {Link} from '@/i18n/routing';
 import { useEffect, useState } from 'react';
 
 interface IHeaderProps {
@@ -57,18 +57,19 @@ export function Header({ config }: IHeaderProps) {
     <header className={'z-30 bg-custom-black-2 flex justify-center sticky top-0 ' + (isScrollTop ? '' : 'shadow-lg')}>
       <ContentContainer className="flex justify-between items-center">
         <div className="flex items-center">
-          <div className='w-[100px] h-[50px] rounded-sm flex items-center overflow-hidden'>
-            <Image src="/icons/logo.svg" width={120} height={20} alt="logo" />
-          </div>
-
+          <Link href={RouterLinks.HOME}>
+            <div className="w-[100px] h-[50px] rounded-sm flex items-center overflow-hidden">
+              <Image src="/icons/logo.svg" width={120} height={20} alt="logo"/>
+            </div>
+          </Link>
         </div>
 
         <nav className="ml-4">
           <Link href={RouterLinks.VACANCIES}>{t('vacancies')}</Link>
         </nav>
 
-        <div className='flex items-center'>
-          <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true} />
+        <div className="flex items-center">
+        <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true} />
           <Button className='px-6 py-1' loading={false} callback={requestCallClick}>{t('requestCall')}</Button>
         </div>
       </ContentContainer>

@@ -16,5 +16,12 @@
   "backend": "Backend",
   "mobile": "Mobile",
   "ourManagersCallYou": "Thank you. Our managers will call you soon",
-  "fieldRequired": "Field is required"
+  "fieldRequired": "Field is required",
+  "password": "Password",
+  "enter": "Enter",
+  "enterOnSite": "Login",
+  "infoSaved": "Info saved",
+  "somethingWentWrong": "Something went wrong =(",
+  "general": "General",
+  "save": "Save"
 }
