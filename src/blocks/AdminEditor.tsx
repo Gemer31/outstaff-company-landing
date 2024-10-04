@@ -10,6 +10,7 @@ import { ContentContainer } from '@/UI/ContentContainer';
 import { Button } from '@/UI/Button';
 import { GeneralEditorForm } from '@/components/GeneralEditorForm';
 import { useTranslations } from 'next-intl';
+import { VacanciesEditorForm } from '@/components/VacanciesEditorForm';
 
 export function AdminEditor() {
   const t = useTranslations();
@@ -35,8 +36,7 @@ export function AdminEditor() {
   };
 
   return (
-    <main className="w-full">
-      <ContentContainer styleClass="flex flex-col items-center">
+      <ContentContainer className="py-4 flex flex-col items-center">
         {isDataLoading ? (
           <div className="w-full flex justify-center mt-4 overflow-hidden">
             <Loader className="min-h-[250px]" />
@@ -53,7 +53,7 @@ export function AdminEditor() {
                         ? ButtonColorOptions.PINK
                         : ButtonColorOptions.GRAY
                     }
-                    styleClass="w-full text-amber-50 px-4 py-2"
+                    className="w-full text-amber-50 px-4 py-2"
                     type={ButtonTypes.BUTTON}
                     callback={() => setSelectedGroup(v)}
                   >
@@ -68,10 +68,14 @@ export function AdminEditor() {
               ) : (
                 <></>
               )}
+              {selectedGroup === EditGroup.VACANCIES ? (
+                <VacanciesEditorForm config={config} refreshCallback={loadData} />
+              ) : (
+                <></>
+              )}
             </div>
           </>
         )}
       </ContentContainer>
-    </main>
   );
 }

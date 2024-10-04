@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { NotificationController } from '@/controllers/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';
@@ -11,14 +11,18 @@ import { ContactLink } from '@/UI/ContactLink';
 import { ContentContainer } from '@/UI/ContentContainer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import {Link} from '@/i18n/routing';
-import { useEffect, useState } from 'react';
+import { Link } from '@/i18n/routing';
+import { SessionProvider } from 'next-auth/react';
+import { HeaderAuthActions } from '@/components/HeaderAuthActions';
+import { Notification } from '@/components/Notification';
+import { Popup } from '@/UI/Popup';
+import { ContactUsForm } from '@/components/ContactUsForm';
 
 interface IHeaderProps {
-  config: IConfig
+  config: IConfig;
 }
 
-export function Header({ config }: IHeaderProps) {
+export function Header({config}: IHeaderProps) {
   const t = useTranslations();
   const [isScrollTop, setIsScrollTop] = useState(true);
 
@@ -52,7 +56,10 @@ export function Header({ config }: IHeaderProps) {
   };
 
   return <>
-    <ScrollUpButton isScrollTop={isScrollTop} />
+    <Notification />
+    <Popup />
+    <ContactUsForm config={config} />
+    <ScrollUpButton isScrollTop={isScrollTop}/>
 
     <header className={'z-30 bg-custom-black-2 flex justify-center sticky top-0 ' + (isScrollTop ? '' : 'shadow-lg')}>
       <ContentContainer className="flex justify-between items-center">
@@ -69,11 +76,14 @@ export function Header({ config }: IHeaderProps) {
         </nav>
 
         <div className="flex items-center">
-        <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true} />
-          <Button className='px-6 py-1' loading={false} callback={requestCallClick}>{t('requestCall')}</Button>
+          <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true}/>
+          <Button className="px-6 py-1" loading={false} callback={requestCallClick}>{t('requestCall')}</Button>
+          <SessionProvider>
+            <HeaderAuthActions/>
+          </SessionProvider>
         </div>
       </ContentContainer>
       {/*<Select items={[]}/>*/}
     </header>
-  </>
+  </>;
 }

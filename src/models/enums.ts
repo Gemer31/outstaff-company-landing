@@ -1,6 +1,8 @@
 export enum RouterLinks {
     HOME = '/',
-    VACANCIES = "/vacancies"
+    VACANCIES = "/vacancies",
+    EDITOR = "/editor",
+    SIGN_IN = "/signIn",
 }
 
 export enum DomIds {
@@ -18,6 +20,7 @@ export enum ContactLinkType {
 
 export enum FirestoreCollections {
     SETTINGS = 'settings',
+    VACANCIES = 'vacancies'
 }
 
 export enum ButtonColorOptions {
@@ -32,8 +35,24 @@ export enum ButtonTypes {
 
 export enum EditGroup {
     GENERAL = 'general',
+    VACANCIES = 'vacancies',
 }
 
 export enum FirestoreDocuments {
     CONFIG = 'config',
+}
+
+export enum JobType {
+    DEVELOPER = "Developer",
+    SUPPORT = "Support",
+    QUALITY_ASSURANCE = "Quality Assurance",
+    IT_INFRASTRUCTURE = "IT Infrastructure",
+    TECHNICAL_ARCHITECT = "Technical Architect",
+    PRODUCT_MANAGER = "Product Manager",
+    ANALYST = "Analyst",
+}
+
+export enum JobSchedule {
+    REMOTE = "Remote",
+    OFFICE = "Office",
 }

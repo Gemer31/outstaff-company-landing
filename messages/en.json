@@ -23,5 +23,13 @@
   "infoSaved": "Info saved",
   "somethingWentWrong": "Something went wrong =(",
   "general": "General",
-  "save": "Save"
+  "save": "Save",
+  "invalidLoginOrPassword": "Invalid login or password",
+  "search": "Search",
+  "noVacancies": "No vacancies",
+  "newVacancy": "New vacancy",
+  "enterTitle": "Enter title",
+  "title": "Title",
+  "experience": "Experience",
+  "enterExperience": "Enter Experience"
 }

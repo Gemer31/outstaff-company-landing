@@ -8,12 +8,13 @@ import { YupUtil } from '@/utils/yup.util';
 import { useTranslations } from 'next-intl';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { Button } from '@/UI/Button';
-import { ButtonTypes } from '@/models/enums';
+import { ButtonTypes, RouterLinks } from '@/models/enums';
+import { NotificationController } from '@/controllers/notification.controller';
+import { useRouter } from '@/i18n/routing';
 
 export function SignInForm() {
   const t = useTranslations();
-  // const dispatch = useAppDispatch();
-  // const router = useRouter();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -32,14 +33,11 @@ export function SignInForm() {
         password,
         redirect: false,
       });
-      // dispatch(initStore());
       if (res?.ok) {
-        // router.push(RouterPath.PROFILE);
+        router.push(RouterLinks.EDITOR);
       } else {
         console.error('Login failed: ', res?.error);
-        // dispatch(
-        //   setNotificationMessage(TRANSLATES[LOCALE].invalidLoginOrPassword)
-        // );
+        (document[NotificationController.NAME] as NotificationController).showNotification(t('invalidLoginOrPassword'));
         setIsLoading(false);
       }
     },

@@ -5,23 +5,26 @@ import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
 import { NotificationController } from '@/controllers/notification.controller';
 import { useTranslations } from 'next-intl';
-import { IConfig } from '@/models/common.model';
+import { IConfig, IVacancy } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
-import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
-import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';
+import { ButtonTypes, FirestoreCollections, FirestoreDocuments, JobType } from '@/models/enums';
 import { Button } from '@/UI/Button';
+import { VacanciesViewer } from '@/components/VacanciesViewer';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 
-interface GeneralEditorFormProps {
+interface IVacanciesEditorFormProps {
+  vacancies: IVacancy[];
   config: IConfig;
   refreshCallback?: () => void;
 }
 
-export function GeneralEditorForm({
+export function VacanciesEditorForm({
+                                      vacancies,
   config,
   refreshCallback,
-}: GeneralEditorFormProps) {
+}: IVacanciesEditorFormProps) {
   const t = useTranslations();
+  const [selectedVacancy, setSelectedVacancy] = useState<IVacancy>(null);
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -35,19 +38,26 @@ export function GeneralEditorForm({
 
   useEffect(() => {
     if (config) {
-      setValue('email', config.email);
       setValue('phone', config.phone);
     }
   }, [config]);
 
   const submitForm = async (formData: {
     phone?: string;
-    email?: string;
+    workingHours?: string;
+    currency?: string;
+    shopDescription?: string;
+    deliveryDescription?: string;
+    shopRegistrationDescription?: string;
   }) => {
     setIsLoading(true);
     const data: WithFieldValue<DocumentData> = {
-      phone: formData.phone,
-      email: formData.email,
+      contactPhone: formData.phone,
+      workingHours: formData.workingHours,
+      currency: formData.currency,
+      shopDescription: formData.shopDescription,
+      deliveryDescription: formData.deliveryDescription,
+      shopRegistrationDescription: formData.shopRegistrationDescription,
     };
     try {
       await setDoc(
@@ -63,24 +73,43 @@ export function GeneralEditorForm({
     }
   };
 
+  const deleteVacancy = (v: IVacancy) => {
+    setSelectedVacancy(null);
+    setValue('phone', config.phone);
+  }
+
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
+      <VacanciesViewer
+        selectedVacancy={selectedVacancy}
+        deleteVacancyClick={deleteVacancy}
+        firestoreVacancies={vacancies}
+        editAvailable={true}
+        selectVacancyClick={setSelectedVacancy}
+        />
+      {/*id: '2',*/}
+      {/*type: JobType.DEVELOPER,*/}
+      {/*description: "",*/}
+      {/*hot: false,*/}
       <InputFormField
-        required
-        placeholder="E-mail"
-        label="E-mail"
-        name="email"
+        required={true}
+        placeholder={t('enterTitle')}
+        label={t('title')}
+        name="title"
         type="text"
-        error={t(errors.email?.message)}
-        register={register}
+        error={t(errors.title?.message)}
+        register={register as unknown}
       />
-      <PhoneFormField
-        label={t('phone')}
-        name="phone"
+      <InputFormField
+        required={true}
+        placeholder={t('enterExperience')}
+        label={t('experience')}
+        name="experience"
         type="text"
-        error={t(errors.phone?.message)}
-        register={register}
+        error={t(errors.experience?.message)}
+        register={register as unknown}
       />
+
       <Button
         className="text-amber-50 w-full py-2"
         disabled={isLoading}

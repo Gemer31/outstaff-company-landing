@@ -23,5 +23,13 @@
   "infoSaved": "Информация сохранена",
   "somethingWentWrong": "Что-то пошло не так =(",
   "general": "Основное",
-  "save": "Сохранить"
+  "save": "Сохранить",
+  "invalidLoginOrPassword": "Неправильный логин или пароль",
+  "search": "Поиск",
+  "noVacancies": "Нет вакансий",
+  "newVacancy": "Новая вакансия",
+  "enterTitle": "Введите название",
+  "title": "Название",
+  "experience": "Опыт",
+  "enterExperience": "Введите опыт"
 }

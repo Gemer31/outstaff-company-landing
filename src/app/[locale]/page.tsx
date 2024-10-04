@@ -21,9 +21,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Notification />
-      <Popup />
-      <ContactUsForm config={config} />
       <Header config={config} />
       <main className="w-full flex flex-col items-center">
         <MainPreview />
