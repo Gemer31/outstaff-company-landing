@@ -19,7 +19,7 @@ export const authConfig: AuthOptions = {
             credentials.password,
           );
           return res;
-        } catch (e) {
+        } catch {
           return null;
           // console.error('Login failed: ', e);
         }

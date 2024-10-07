@@ -19,7 +19,7 @@ const hostClass = convertToClass([
 ]);
 
 const NOTIFICATION_ANIMATION_DURATION = 300;
-const NOTIFICATION_DISPLAY_DURATION = 5000;
+const NOTIFICATION_DISPLAY_DURATION = 4000;
 
 export function Notification() {
 
@@ -35,6 +35,7 @@ export function Notification() {
   }, []);
 
   return <div
+    // @ts-expect-error need
     style={{'--notification-animation-duration': `${NOTIFICATION_ANIMATION_DURATION}ms`}}
     id={DomIds.NOTIFICATION} className={hostClass}
   ></div>;

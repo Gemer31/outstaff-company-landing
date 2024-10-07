@@ -7,7 +7,7 @@ import { NotificationController } from '@/components/notification/notification.c
 import { useTranslations } from 'next-intl';
 import { IConfig, IVacancy } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
-import { ButtonTypes, FirestoreCollections, FirestoreDocuments, JobType } from '@/models/enums';
+import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { VacanciesViewer } from '@/components/VacanciesViewer';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
@@ -20,9 +20,9 @@ interface IVacanciesEditorFormProps {
 
 export function VacanciesEditorForm({
                                       vacancies,
-  config,
-  refreshCallback,
-}: IVacanciesEditorFormProps) {
+                                      config,
+                                      refreshCallback,
+                                    }: IVacanciesEditorFormProps) {
   const t = useTranslations();
   const [selectedVacancy, setSelectedVacancy] = useState<IVacancy>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +30,7 @@ export function VacanciesEditorForm({
     register,
     setValue,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: {errors},
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.GeneralEditorFormSchema),
@@ -62,7 +62,7 @@ export function VacanciesEditorForm({
     try {
       await setDoc(
         doc(db, FirestoreCollections.SETTINGS, FirestoreDocuments.CONFIG),
-        data
+        data,
       );
       (document[NotificationController.NAME] as NotificationController).showNotification(t('infoSaved'));
       refreshCallback?.();
@@ -73,10 +73,10 @@ export function VacanciesEditorForm({
     }
   };
 
-  const deleteVacancy = (v: IVacancy) => {
+  const deleteVacancy = () => {
     setSelectedVacancy(null);
     setValue('phone', config.phone);
-  }
+  };
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
@@ -86,11 +86,7 @@ export function VacanciesEditorForm({
         firestoreVacancies={vacancies}
         editAvailable={true}
         selectVacancyClick={setSelectedVacancy}
-        />
-      {/*id: '2',*/}
-      {/*type: JobType.DEVELOPER,*/}
-      {/*description: "",*/}
-      {/*hot: false,*/}
+      />
       <InputFormField
         required={true}
         placeholder={t('enterTitle')}

@@ -55,7 +55,7 @@ export function SearchInput({
   );
 
   const [value, setValue] = useState('');
-  let timer = useRef(null);
+  const timer = useRef(null);
 
   const valueChanged = (
     e: ChangeEvent<HTMLInputElement>,

@@ -18,16 +18,16 @@ interface GeneralEditorFormProps {
 }
 
 export function GeneralEditorForm({
-  config,
-  refreshCallback,
-}: GeneralEditorFormProps) {
+                                    config,
+                                    refreshCallback,
+                                  }: GeneralEditorFormProps) {
   const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     setValue,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: {errors},
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.GeneralEditorFormSchema),
@@ -52,7 +52,7 @@ export function GeneralEditorForm({
     try {
       await setDoc(
         doc(db, FirestoreCollections.SETTINGS, FirestoreDocuments.CONFIG),
-        data
+        data,
       );
       (document[NotificationController.NAME] as NotificationController).showNotification(t('infoSaved'));
       refreshCallback?.();
