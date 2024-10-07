@@ -24,9 +24,7 @@ const NOTIFICATION_DISPLAY_DURATION = 4000;
 export function Notification() {
 
   useEffect(() => {
-    // @ts-expect-error need
     if (!document?.[NotificationController.NAME]) {
-      // @ts-expect-error need
       document[NotificationController.NAME] = new NotificationController(
         NOTIFICATION_ANIMATION_DURATION,
         NOTIFICATION_DISPLAY_DURATION,

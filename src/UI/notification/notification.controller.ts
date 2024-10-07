@@ -59,6 +59,5 @@ export class NotificationController {
 }
 
 export function showNotification(msg: string): void {
-  // @ts-expect-error need
   (document[NotificationController.NAME] as NotificationController).showNotification(msg);
 }
