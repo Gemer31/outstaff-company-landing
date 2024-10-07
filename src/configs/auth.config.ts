@@ -1,12 +1,11 @@
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { RouterLinks } from '@/models/enums';
 import { auth } from '@/lib/firebase-config';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import Credentials from 'next-auth/providers/credentials';
 
 export const authConfig = {
   providers: [
-    CredentialsProvider({
-      id: '', name: '', type: 'credentials',
+    Credentials({
       credentials: {
         email: {label: 'email', type: 'email', required: true},
         password: {label: 'password', type: 'password', required: true},

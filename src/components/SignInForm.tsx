@@ -28,17 +28,21 @@ export function SignInForm() {
   const submitForm = useCallback(
     async ({email, password}: { email?: string; password?: string }) => {
       setIsLoading(true);
-      const res = await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-      });
-      if (res?.ok) {
-        router.push(RouterLinks.EDITOR);
-      } else {
-        console.error('Login failed: ', res?.error);
+      try {
+        const res = await signIn('credentials', {
+          email,
+          password,
+          redirect: false,
+        });
+        if (res?.ok) {
+          router.push(RouterLinks.EDITOR);
+        } else {
+          console.error('Login failed: ', res?.error);
+          showNotification(t('invalidLoginOrPassword'));
+          setIsLoading(false);
+        }
+      } catch {
         showNotification(t('invalidLoginOrPassword'));
-        setIsLoading(false);
       }
     },
     [],
