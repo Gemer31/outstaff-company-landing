@@ -7,9 +7,9 @@ import { signIn } from 'next-auth/react';
 import { YupUtil } from '@/utils/yup.util';
 import { useTranslations } from 'next-intl';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
-import { Button } from '@/UI/Button';
+import { Button } from '@/UI/banner/Button';
 import { ButtonTypes, RouterLinks } from '@/models/enums';
-import { NotificationController } from '@/controllers/notification.controller';
+import { NotificationController } from '@/components/notification/notification.controller';
 import { useRouter } from '@/i18n/routing';
 
 export function SignInForm() {

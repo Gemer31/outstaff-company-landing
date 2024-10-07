@@ -3,8 +3,9 @@
 import { convertToClass } from '@/utils/convert-to-class.util';
 import { MouseEvent, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Loader } from '@/UI/Loader';
+import { Loader } from '@/UI/loader/Loader';
 import { ButtonColorOptions, ButtonTypes } from '@/models/enums';
+import './banner.css';
 
 export const COLOR_OPTION_VALUES = new Map<ButtonColorOptions, string>([
   [
@@ -30,16 +31,16 @@ export interface IButtonProps {
 }
 
 export function Button({
-  children,
-  href,
-  callback,
-  type,
-  disabled,
-  loading,
-  setLoadingOnClick,
-  color,
+                         children,
+                         href,
+                         callback,
+                         type,
+                         disabled,
+                         loading,
+                         setLoadingOnClick,
+                         color,
                          className,
-}: IButtonProps) {
+                       }: IButtonProps) {
   const [innerLoading, setInnerLoading] = useState(false);
 
   const buttonClass: string = useMemo(
@@ -56,7 +57,7 @@ export function Button({
         'hover:scale-105',
         disabled || innerLoading ? 'pointer-events-none opacity-75' : '',
       ]),
-    [disabled, innerLoading]
+    [disabled, innerLoading],
   );
 
   const clicked = (event: MouseEvent) => {

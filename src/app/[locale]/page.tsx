@@ -8,7 +8,7 @@ import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
 import { ContactUsForm } from '@/components/ContactUsForm';
-import { Notification } from '@/components/Notification';
+import { Notification } from '@/components/notification/Notification';
 import { Popup } from '@/UI/Popup';
 import { collection, getDocs } from '@firebase/firestore';
 import { db } from '@/lib/firebase-config';

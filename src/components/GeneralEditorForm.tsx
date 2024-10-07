@@ -3,13 +3,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
-import { NotificationController } from '@/controllers/notification.controller';
+import { NotificationController } from '@/components/notification/notification.controller';
 import { useTranslations } from 'next-intl';
 import { IConfig } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
 import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
 import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';
-import { Button } from '@/UI/Button';
+import { Button } from '@/UI/banner/Button';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 
 interface GeneralEditorFormProps {

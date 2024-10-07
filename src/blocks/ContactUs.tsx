@@ -2,7 +2,7 @@
 
 import { PopupController } from "@/controllers/popup.controller";
 import { DomIds } from "@/models/enums";
-import { Button } from "@/UI/Button";
+import { Button } from "@/UI/banner/Button";
 import { ContentContainer } from "@/UI/ContentContainer";
 import { TitleContainer } from "@/UI/TitleContainer";
 import { useTranslations } from "next-intl";

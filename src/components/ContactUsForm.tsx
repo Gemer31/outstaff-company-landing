@@ -1,10 +1,10 @@
 'use client';
 
-import { NotificationController } from '@/controllers/notification.controller';
+import { NotificationController } from '@/components/notification/notification.controller';
 import { PopupController } from '@/controllers/popup.controller';
 import { IConfig } from '@/models/common.model';
 import { ButtonTypes, ContactLinkType, DomIds } from '@/models/enums';
-import { Button } from '@/UI/Button';
+import { Button } from '@/UI/banner/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';

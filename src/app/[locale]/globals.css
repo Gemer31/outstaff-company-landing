@@ -3,104 +3,77 @@
 @tailwind utilities;
 
 :root {
-  --foreground: #dad5d5;
+    --foreground: #dad5d5;
 }
 
 body {
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 .bg-shadow::after {
-  -webkit-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
-  -moz-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
-  box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
+    -webkit-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
+    -moz-box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
+    box-shadow: 0px 0px 50px 70px rgba(40, 40, 40, 0.2) inset;
 }
 
 .important-hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .separator {
-  width: 100%;
-  border-top: 1px solid var(--foreground);
+    width: 100%;
+    border-top: 1px solid var(--foreground);
 }
 
 .shadow-custom-red {
-  -webkit-box-shadow: 0px 5px 10px 2px #f76868;
-  -moz-box-shadow: 0px 5px 10px 2px #f76868;
-  box-shadow: 0px 5px 10px 2px #f76868;
+    -webkit-box-shadow: 0px 5px 10px 2px #f76868;
+    -moz-box-shadow: 0px 5px 10px 2px #f76868;
+    box-shadow: 0px 5px 10px 2px #f76868;
 }
 
 .inner-shadow {
-  background: radial-gradient(circle, rgba(40,40,40,0) 0%, rgba(40,40,40,1) 100%);
-
+    background: radial-gradient(circle, rgba(40, 40, 40, 0) 0%, rgba(40, 40, 40, 1) 100%);
 }
-
-/* .inner-shadow-vertical {
-  background: linear-gradient(180deg, rgba(40,40,40,1) 0%, rgba(40,40,40,1) 2%, rgba(40,40,40,0.499124649859944) 15%, rgba(0,0,0,0) 50%, rgba(40,40,40,0.499124649859944) 85%, rgba(40,40,40,1) 98%, rgba(40,40,40,1) 100%);
-
-} */
 
 .background-image {
-  background-image: url(/images/background.png);
+    background-image: url(/images/background.png);
 }
-
-.custom-banner {
-  animation-name: customBanner;
-  animation-duration: var(--bannerDuration);
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-iteration-count: infinite;
-}
-
-@keyframes customBanner {
-  100% {
-    transform: var(--finalOffset);
-  }
-}
-
-.notification {
-  overflow-wrap: break-word;
-  position: fixed;
-  top: 20px;
-  right: -330px;
-  transition: all .3s ease-in-out;
-  transform: translate(0);
-}
-
-.notification.show {
-  transform: translate(-340px);
-}
-
 
 .field-label::after {
-  content: '*';
-  margin-left: 2px;
-  font-size: 1rem;
-  font-weight: normal;
-  color: rgba(239, 68, 68, 1);
-}
-
-.loader {
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+    content: '*';
+    margin-left: 2px;
+    font-size: 1rem;
+    font-weight: normal;
+    color: rgba(239, 68, 68, 1);
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.text-focus-in {
+    animation: text-focus-in 1s cubic-bezier(.55, .085, .68, .53) both
+}
+
+@keyframes text-focus-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1
+    }
 }

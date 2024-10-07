@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { Button } from '@/UI/Button';
+import { Button } from '@/UI/banner/Button';
 import { RouterLinks } from '@/models/enums';
 import Image from 'next/image';
 import React from 'react';

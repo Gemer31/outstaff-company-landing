@@ -3,12 +3,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
-import { NotificationController } from '@/controllers/notification.controller';
+import { NotificationController } from '@/components/notification/notification.controller';
 import { useTranslations } from 'next-intl';
 import { IConfig, IVacancy } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
 import { ButtonTypes, FirestoreCollections, FirestoreDocuments, JobType } from '@/models/enums';
-import { Button } from '@/UI/Button';
+import { Button } from '@/UI/banner/Button';
 import { VacanciesViewer } from '@/components/VacanciesViewer';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 

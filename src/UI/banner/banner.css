@@ -1,0 +1,13 @@
+.custom-banner {
+    animation-name: customBanner;
+    animation-duration: var(--bannerDuration);
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes customBanner {
+    100% {
+        transform: var(--finalOffset);
+    }
+}
