@@ -11,24 +11,20 @@ interface ITextEditorFormFieldProps {
   onChange: (value: string) => void;
 }
 
+const editorClass: string = convertToClass([
+  'field-editor',
+  'border-2',
+  'bg-white',
+  'rounded-md',
+  'mt-1',
+  'w-full',
+]);
+
 export function TextEditor({
   value,
   placeholder,
   onChange,
 }: ITextEditorFormFieldProps) {
-  const editorClass: string = useMemo(
-    () =>
-      convertToClass([
-        'field-editor',
-        'border-2',
-        'bg-white',
-        'rounded-md',
-        'mt-1',
-        'w-full',
-      ]),
-    []
-  );
-
   const [innerValue, setInnerValue] = useState<string>('');
 
   useEffect(() => {
