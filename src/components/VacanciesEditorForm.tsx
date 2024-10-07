@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
-import { NotificationController } from '@/components/notification/notification.controller';
+import { showNotification } from '@/UI/notification/notification.controller';
 import { useTranslations } from 'next-intl';
 import { IConfig, IVacancy } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
@@ -20,7 +20,6 @@ interface IVacanciesEditorFormProps {
 
 export function VacanciesEditorForm({
                                       vacancies,
-                                      config,
                                       refreshCallback,
                                     }: IVacanciesEditorFormProps) {
   const t = useTranslations();
@@ -28,46 +27,31 @@ export function VacanciesEditorForm({
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
-    setValue,
     handleSubmit,
     formState: {errors},
   } = useForm({
     mode: 'onSubmit',
-    resolver: yupResolver(YupUtil.GeneralEditorFormSchema),
+    resolver: yupResolver(YupUtil.VacanciesFormSchema),
   });
 
-  useEffect(() => {
-    if (config) {
-      setValue('phone', config.phone);
-    }
-  }, [config]);
-
   const submitForm = async (formData: {
-    phone?: string;
-    workingHours?: string;
-    currency?: string;
-    shopDescription?: string;
-    deliveryDescription?: string;
-    shopRegistrationDescription?: string;
+    title?: string;
+    experience?: string;
   }) => {
     setIsLoading(true);
     const data: WithFieldValue<DocumentData> = {
-      contactPhone: formData.phone,
-      workingHours: formData.workingHours,
-      currency: formData.currency,
-      shopDescription: formData.shopDescription,
-      deliveryDescription: formData.deliveryDescription,
-      shopRegistrationDescription: formData.shopRegistrationDescription,
+      title: formData.title,
+      experience: formData.experience,
     };
     try {
       await setDoc(
         doc(db, FirestoreCollections.SETTINGS, FirestoreDocuments.CONFIG),
         data,
       );
-      (document[NotificationController.NAME] as NotificationController).showNotification(t('infoSaved'));
+      showNotification(t('infoSaved'));
       refreshCallback?.();
     } catch {
-      (document[NotificationController.NAME] as NotificationController).showNotification(t('somethingWentWrong'));
+      showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -75,7 +59,6 @@ export function VacanciesEditorForm({
 
   const deleteVacancy = () => {
     setSelectedVacancy(null);
-    setValue('phone', config.phone);
   };
 
   return (

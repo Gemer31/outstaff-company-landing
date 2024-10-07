@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { IConfig } from '@/models/common.model';
+import { IConfig, IVacancy } from '@/models/common.model';
 import { collection, getDocs } from '@firebase/firestore';
 import { db } from '@/lib/firebase-config';
 import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections } from '@/models/enums';
@@ -15,6 +15,7 @@ import { VacanciesEditorForm } from '@/components/VacanciesEditorForm';
 export function AdminEditor() {
   const t = useTranslations();
   const [config, setConfig] = useState<IConfig>();
+  const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [selectedGroup, setSelectedGroup] = useState<EditGroup | string>(
     EditGroup.GENERAL
   );
@@ -28,11 +29,14 @@ export function AdminEditor() {
   const loadData = async () => {
     const [
       settingsQuerySnapshot,
+      vacanciesQuerySnapshot,
     ] = await Promise.all([
       getDocs(collection(db, FirestoreCollections.SETTINGS)),
+      getDocs(collection(db, FirestoreCollections.VACANCIES)),
     ]);
 
     setConfig(settingsQuerySnapshot.docs[0].data() as IConfig);
+    setVacancies(vacanciesQuerySnapshot.docs[0].data() as IVacancy[]);
   };
 
   return (
@@ -69,7 +73,7 @@ export function AdminEditor() {
                 <></>
               )}
               {selectedGroup === EditGroup.VACANCIES ? (
-                <VacanciesEditorForm config={config} refreshCallback={loadData} />
+                <VacanciesEditorForm vacancies={vacancies} config={config} refreshCallback={loadData} />
               ) : (
                 <></>
               )}

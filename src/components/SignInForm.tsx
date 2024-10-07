@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { Button } from '@/UI/banner/Button';
 import { ButtonTypes, RouterLinks } from '@/models/enums';
-import { NotificationController } from '@/components/notification/notification.controller';
+import { showNotification } from '@/UI/notification/notification.controller';
 import { useRouter } from '@/i18n/routing';
 
 export function SignInForm() {
@@ -19,14 +19,14 @@ export function SignInForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.SignInSchema),
   });
 
   const submitForm = useCallback(
-    async ({ email, password }: { email?: string; password?: string }) => {
+    async ({email, password}: { email?: string; password?: string }) => {
       setIsLoading(true);
       const res = await signIn('credentials', {
         email,
@@ -37,11 +37,11 @@ export function SignInForm() {
         router.push(RouterLinks.EDITOR);
       } else {
         console.error('Login failed: ', res?.error);
-        (document[NotificationController.NAME] as NotificationController).showNotification(t('invalidLoginOrPassword'));
+        showNotification(t('invalidLoginOrPassword'));
         setIsLoading(false);
       }
     },
-    []
+    [],
   );
 
   return (

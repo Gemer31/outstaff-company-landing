@@ -42,4 +42,11 @@ export class YupUtil {
       phone: yup.string().required('fieldRequired'),
     });
   }
+
+  static get VacanciesFormSchema() {
+    return yup.object().shape({
+      title: yup.string(),
+      experience: yup.string(),
+    });
+  }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { PopupController } from '@/controllers/popup.controller';
+import { closePopup } from '@/UI/popup/popup.controller';
 import { DomIds } from '@/models/enums';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
@@ -22,19 +22,18 @@ const hostClass = convertToClass([
   'h-full',
   'bg-black-4/5',
   'transition-all',
-  'duration-500'
+  'duration-500',
 ]);
 
-export function Popup({ id, title, children }: IPopupProps) {
+export function Popup({id, title, children}: IPopupProps) {
   const closeClick = () => {
-    // @ts-expect-error need
-    (document[PopupController.NAME] as PopupController).closePopup({ popupId: id });
-  }
+    closePopup({popupId: id});
+  };
 
   return (
     <div
       id={id || DomIds.POPUP_ID}
-      className={hostClass + " invisible opacity-0"}
+      className={hostClass + ' invisible opacity-0'}
     >
       <div
         className="shadow-custom-red flex flex-col justify-center bg-custom-black-1 rounded-md"
@@ -45,7 +44,7 @@ export function Popup({ id, title, children }: IPopupProps) {
             className="text-2xl"
           >{title}</span>
           <div className="cursor-pointer" onClick={closeClick}>
-            <Image width={60} height={60} src="/icons/close.svg" alt="Close" />
+            <Image width={60} height={60} src="/icons/close.svg" alt="Close"/>
           </div>
         </div>
         <section id={DomIds.POPUP_CONTENT} className="px-4 pb-4">{children}</section>

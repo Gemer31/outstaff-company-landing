@@ -4,7 +4,7 @@ import { DomIds } from '@/models/enums';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import './notification.css';
 import { useEffect } from 'react';
-import { NotificationController } from '@/components/notification/notification.controller';
+import { NotificationController } from '@/UI/notification/notification.controller';
 
 const hostClass = convertToClass([
   'notification',

@@ -36,6 +36,19 @@ export class PopupController {
       }, 500);
     }
     document.body.classList.remove('overflow-hidden');
-
   };
+}
+
+export function closePopup(payload: { popupId: string }): void {
+  // @ts-expect-error need
+  (document[PopupController.NAME] as PopupController).closePopup(payload);
+}
+
+export function openPopup(payload: {
+  popupId?: string;
+  title?: string,
+  contentReactNode?: React.ReactNode
+}): void {
+  // @ts-expect-error need
+  (document[PopupController.NAME] as PopupController).openPopup(payload);
 }

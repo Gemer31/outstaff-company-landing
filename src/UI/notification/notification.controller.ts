@@ -57,3 +57,8 @@ export class NotificationController {
     }, this.displayDuration);
   }
 }
+
+export function showNotification(msg: string): void {
+  // @ts-expect-error need
+  (document[NotificationController.NAME] as NotificationController).showNotification(msg);
+}

@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { ScrollUpButton } from '@/components/ScrollUpButton';
-import { NotificationController } from '@/components/notification/notification.controller';
-import { PopupController } from '@/controllers/popup.controller';
+import { openPopup, PopupController } from '@/UI/popup/popup.controller';
 import { IConfig } from '@/models/common.model';
 import { ContactLinkType, DomIds, RouterLinks } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
@@ -14,8 +13,8 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { SessionProvider } from 'next-auth/react';
 import { HeaderAuthActions } from '@/components/HeaderAuthActions';
-import { Notification } from '@/components/notification/Notification';
-import { Popup } from '@/UI/Popup';
+import { Notification } from '@/UI/notification/Notification';
+import { Popup } from '@/UI/popup/Popup';
 import { ContactUsForm } from '@/components/ContactUsForm';
 
 interface IHeaderProps {
@@ -32,11 +31,6 @@ export function Header({config}: IHeaderProps) {
       // @ts-expect-error need
       document[PopupController.NAME] = new PopupController();
     }
-    // // @ts-expect-error need
-    // if (!document?.[NotificationController.NAME]) {
-    //   // @ts-expect-error need
-    //   document[NotificationController.NAME] = new NotificationController();
-    // }
 
     window.onscroll = () => {
       const el = document.documentElement.clientHeight
@@ -48,21 +42,15 @@ export function Header({config}: IHeaderProps) {
   }, []);
 
   const requestCallClick = () => {
-    // @ts-expect-error need
-    (document[PopupController.NAME] as PopupController)
-      .openPopup({
-        popupId: DomIds.REQUEST_CALL_POPUP_ID,
-      });
+    openPopup({
+      popupId: DomIds.REQUEST_CALL_POPUP_ID,
+    });
   };
 
-  const show = () => {
-    (document[NotificationController.NAME] as NotificationController).showNotification(t('ourManagersCallYou'));
-  }
-
   return <>
-    <Notification />
-    <Popup />
-    <ContactUsForm config={config} />
+    <Notification/>
+    <Popup/>
+    <ContactUsForm config={config}/>
     <ScrollUpButton isScrollTop={isScrollTop}/>
 
     <header className={'z-30 bg-custom-black-2 flex justify-center sticky top-0 ' + (isScrollTop ? '' : 'shadow-lg')}>
@@ -82,7 +70,6 @@ export function Header({config}: IHeaderProps) {
         <div className="flex items-center">
           <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true}/>
           <Button className="px-6 py-1" loading={false} callback={requestCallClick}>{t('requestCall')}</Button>
-          <Button className="px-6 py-1" loading={false} callback={show}>Show</Button>
           <SessionProvider>
             <HeaderAuthActions/>
           </SessionProvider>

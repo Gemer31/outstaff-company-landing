@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
-import { NotificationController } from '@/components/notification/notification.controller';
+import { showNotification } from '@/UI/notification/notification.controller';
 import { useTranslations } from 'next-intl';
 import { IConfig } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
@@ -54,10 +54,10 @@ export function GeneralEditorForm({
         doc(db, FirestoreCollections.SETTINGS, FirestoreDocuments.CONFIG),
         data,
       );
-      (document[NotificationController.NAME] as NotificationController).showNotification(t('infoSaved'));
+      showNotification(t('infoSaved'));
       refreshCallback?.();
     } catch {
-      (document[NotificationController.NAME] as NotificationController).showNotification(t('somethingWentWrong'));
+      showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }

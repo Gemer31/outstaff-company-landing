@@ -1,39 +1,37 @@
 'use client';
 
-import { NotificationController } from '@/components/notification/notification.controller';
-import { PopupController } from '@/controllers/popup.controller';
+import { showNotification } from '@/UI/notification/notification.controller';
+import { closePopup } from '@/UI/popup/popup.controller';
 import { IConfig } from '@/models/common.model';
 import { ButtonTypes, ContactLinkType, DomIds } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';
-import { Popup } from '@/UI/Popup';
+import { Popup } from '@/UI/popup/Popup';
 import { YupUtil } from '@/utils/yup.util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 interface IContactUsFormProps {
-  config: IConfig
+  config: IConfig;
 }
 
-export function ContactUsForm({ config }: IContactUsFormProps) {
+export function ContactUsForm({config}: IContactUsFormProps) {
   const t = useTranslations();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.ContactUsFormSchema),
   });
 
   const submitForm = () => {
-    // @ts-expect-error need
-    (document[PopupController.NAME] as PopupController).closePopup({ popupId: DomIds.REQUEST_CALL_POPUP_ID });
-    // @ts-expect-error need
-    (document[NotificationController.NAME] as NotificationController).showNotification(t('ourManagersCallYou'));
+    closePopup({popupId: DomIds.REQUEST_CALL_POPUP_ID});
+    showNotification(t('ourManagersCallYou'));
   };
 
   return <Popup id={DomIds.REQUEST_CALL_POPUP_ID} title={t('requestCall')}>
@@ -65,9 +63,9 @@ export function ContactUsForm({ config }: IContactUsFormProps) {
       <span>{t('youCanAlsoContactUsByPhoneAndEmail')}</span>
 
       <div className="flex gap-x-6">
-        <ContactLink className="ml-2" type={ContactLinkType.MAIL} value={config.email} icon={true} />
-        <ContactLink className="ml-2" type={ContactLinkType.PHONE} value={config.phone} icon={true} />
+        <ContactLink className="ml-2" type={ContactLinkType.MAIL} value={config.email} icon={true}/>
+        <ContactLink className="ml-2" type={ContactLinkType.PHONE} value={config.phone} icon={true}/>
       </div>
     </form>
-  </Popup>
+  </Popup>;
 }

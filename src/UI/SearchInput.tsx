@@ -23,7 +23,6 @@ export function SearchInput({
   onSubmit,
   onBlur,
   onFocus,
-  required,
   placeholder,
   pattern,
   searchButtonVisible,
