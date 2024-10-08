@@ -2,7 +2,7 @@
 
 import { convertToClass } from '@/utils/convert-to-class.util';
 import { MouseEvent, useMemo, useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { Loader } from '@/UI/loader/Loader';
 import { ButtonColorOptions, ButtonTypes } from '@/models/enums';
 import './banner.css';

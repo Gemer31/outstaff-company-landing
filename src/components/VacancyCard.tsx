@@ -1,8 +1,9 @@
-import React from 'react';
+import { Link } from '@/i18n/routing';
+import { IVacancy } from '@/models/common.model';
+import { RouterLinks } from '@/models/enums';
 import { Chip } from '@/UI/Chip';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
-import { IVacancy } from '@/models/common.model';
 
 interface IVacancyCardProps {
   data: IVacancy;
@@ -19,7 +20,7 @@ const hostClass = convertToClass([
 ]);
 
 export function VacancyCard({data}: IVacancyCardProps) {
-  return <div className={hostClass}>
+  return <Link className={hostClass} href={`${RouterLinks.VACANCIES}/${data.id}`}>
     <div className="flex justify-between">
       <h4 className="text-lg font-bold">{data.title}</h4>
       {
@@ -37,5 +38,5 @@ export function VacancyCard({data}: IVacancyCardProps) {
         data.experience ? <Chip value={data.experience}/> : <></>
       }
     </div>
-  </div>;
+  </Link>
 }

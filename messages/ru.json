@@ -31,5 +31,12 @@
   "enterTitle": "Введите название",
   "title": "Название",
   "experience": "Опыт",
-  "enterExperience": "Введите опыт"
+  "enterExperience": "Введите опыт",
+  "office": "Офис",
+  "remote": "Удаленно",
+  "description": "Описание",
+  "enterDescription": "Введите описание",
+  "selectWorkSchedule": "Выберите график работы",
+  "hotVacancy": "'Горячая вакансия'",
+  "speciality": "Специальность"
 }

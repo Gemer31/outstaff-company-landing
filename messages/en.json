@@ -31,5 +31,11 @@
   "enterTitle": "Enter title",
   "title": "Title",
   "experience": "Experience",
-  "enterExperience": "Enter Experience"
+  "enterExperience": "Enter Experience",
+  "office": "Office",
+  "remote": "Remote",
+  "description": "Description",
+  "enterDescription": "Enter description",
+  "hotVacancy": "'Hot vacancy'",
+  "speciality": "Speciality"
 }

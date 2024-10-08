@@ -11,6 +11,7 @@ import { Button } from '@/UI/banner/Button';
 import { GeneralEditorForm } from '@/components/GeneralEditorForm';
 import { useTranslations } from 'next-intl';
 import { VacanciesEditorForm } from '@/components/VacanciesEditorForm';
+import { docsToData } from '@/utils/firebase.util';
 
 export function AdminEditor() {
   const t = useTranslations();
@@ -36,7 +37,8 @@ export function AdminEditor() {
     ]);
 
     setConfig(settingsQuerySnapshot.docs[0].data() as IConfig);
-    setVacancies(vacanciesQuerySnapshot.docs[0].data() as IVacancy[]);
+    console.log(vacanciesQuerySnapshot.docs[0].data());
+    setVacancies(docsToData<IVacancy>(vacanciesQuerySnapshot.docs));
   };
 
   return (

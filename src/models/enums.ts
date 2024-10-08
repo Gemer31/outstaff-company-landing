@@ -53,6 +53,6 @@ export enum JobType {
 }
 
 export enum JobSchedule {
-    REMOTE = "Remote",
-    OFFICE = "Office",
+    REMOTE = "remote",
+    OFFICE = "office",
 }

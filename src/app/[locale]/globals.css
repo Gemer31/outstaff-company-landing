@@ -1,3 +1,5 @@
+@import 'react-quill/dist/quill.snow.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,6 +55,30 @@ body {
     font-weight: normal;
     color: rgba(239, 68, 68, 1);
 }
+
+/*text editor*/
+.readonly-ql-editor {
+    height: fit-content !important;
+  }
+  
+  .ql-editor.ql-blank::before {
+    font-style: normal !important;
+  }
+  
+  .ql-container {
+    font-family: inherit !important;
+    font-size: inherit !important;
+  }
+  
+  .ql-toolbar.ql-snow {
+    border-right: none !important;
+    border-top: none !important;
+    border-left: none !important;
+  }
+  
+  .ql-container.ql-snow {
+    border: none !important;
+  }
 
 @keyframes rotation {
     0% {

@@ -18,7 +18,7 @@ export interface IVacancy {
     id: string;
     title: string;
     type: JobType;
-    schedule?: JobSchedule,
+    schedule: JobSchedule,
     experience: string;
     description: string;
     hot: boolean;

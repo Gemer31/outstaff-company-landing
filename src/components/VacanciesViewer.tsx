@@ -37,7 +37,7 @@ export function VacanciesViewer({
     setChosenVacancy(selectedVacancy);
   }, [selectedVacancy]);
 
-  const selectCategory = (category: IVacancy) => {
+  const selectVacancy = (category: IVacancy) => {
     setChosenVacancy(category);
     selectVacancyClick?.(category);
   };
@@ -54,7 +54,7 @@ export function VacanciesViewer({
           <div className="px-2 py-1">
             {editAvailable ? (
               <div
-                onClick={() => selectCategory(undefined)}
+                onClick={() => selectVacancy(undefined)}
                 key="new"
                 className={`cursor-pointer flex justify-between items-center px-2 py-1 ${!chosenVacancy ? 'rounded-md bg-custom-red-1' : ''}`}
               >
@@ -63,16 +63,11 @@ export function VacanciesViewer({
             ) : (
               <></>
             )}
-            {(searchValue
-                ? firestoreVacancies.filter((item) =>
-                  item.title.toLowerCase().includes(searchValue.toLowerCase()),
-                )
-                : firestoreVacancies
-            )?.map((item) => (
+            {(searchValue ? firestoreVacancies.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) : firestoreVacancies)?.map((item) => (
               <div
-                onClick={() => selectCategory(item)}
+                onClick={() => selectVacancy(item)}
                 key={item.id}
-                className={`${itemClass} ${chosenVacancy?.id === item.id ? 'rounded-md bg-pink-300' : ''}`}
+                className={`${itemClass} ${chosenVacancy?.id === item.id ? 'rounded-md bg-custom-red-1' : ''}`}
               >
                 <span>{item.title}</span>
                 {editAvailable ? (
