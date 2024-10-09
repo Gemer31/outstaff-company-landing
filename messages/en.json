@@ -37,5 +37,8 @@
   "description": "Description",
   "enterDescription": "Enter description",
   "hotVacancy": "'Hot vacancy'",
-  "speciality": "Speciality"
+  "speciality": "Speciality",
+  "allVacancies": "All vacancies",
+  "deletedSuccessfully": "Deleted successfully",
+  "nothingFound": "Nothing found"
 }

@@ -38,5 +38,8 @@
   "enterDescription": "Введите описание",
   "selectWorkSchedule": "Выберите график работы",
   "hotVacancy": "'Горячая вакансия'",
-  "speciality": "Специальность"
+  "speciality": "Специальность",
+  "allVacancies": "Все вакансии",
+  "deletedSuccessfully": "Удалено успешно",
+  "nothingFound": "Ничего не найдено"
 }

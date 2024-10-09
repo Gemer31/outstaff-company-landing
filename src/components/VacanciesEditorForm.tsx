@@ -14,7 +14,7 @@ import { SelectFormField } from "@/UI/form-fields/SelectFormField";
 import { showNotification } from "@/UI/notification/notification.controller";
 import { TextEditor } from "@/UI/TextEditor";
 import { YupUtil } from "@/utils/yup.util";
-import { doc, DocumentData, setDoc, WithFieldValue } from "@firebase/firestore";
+import { deleteDoc, doc, DocumentData, setDoc, WithFieldValue } from "@firebase/firestore";
 import { uuidv4 } from "@firebase/util";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
@@ -68,7 +68,6 @@ export function VacanciesEditorForm({
       await setDoc(doc(db, FirestoreCollections.VACANCIES, data.id), data);
       setSelectedVacancy(null);
       reset();
-      refreshCallback?.();
       showNotification(t("infoSaved"));
       refreshCallback?.();
     } catch {
@@ -78,9 +77,41 @@ export function VacanciesEditorForm({
     }
   };
 
-  const deleteVacancy = () => {
-    setSelectedVacancy(null);
+  const deleteVacancy = async (deletedVacancy: IVacancy) => {
+    setIsLoading(true);
+
+    try {
+      await deleteDoc(
+        doc(db, FirestoreCollections.VACANCIES, deletedVacancy.id)
+      );
+      setSelectedVacancy(null);
+      showNotification(t("deletedSuccessfully"));
+      reset();
+      refreshCallback?.();
+    } catch (e) {
+      console.error('Delete product error: ', e);
+      showNotification(t("somethingWentWrong"));
+    } finally {
+      setIsLoading(false);
+    }
+
+    setIsLoading(false);
   };
+
+  const selectVacancy = (newVacancy: IVacancy) => {
+    if (newVacancy) {
+      setValue("title", newVacancy.title);
+      setValue("experience", newVacancy.experience);
+      setValue("hot", newVacancy.hot);
+      setValue("schedule", newVacancy.schedule);
+      setValue("type", newVacancy.type);
+      descriptionChange(newVacancy.description);
+      setSelectedVacancy(newVacancy);
+    } else {
+      reset();
+      descriptionChange('');
+    }
+  }
 
   const descriptionChange = (newValue: string) => {
     setValue("description", newValue);
@@ -94,7 +125,7 @@ export function VacanciesEditorForm({
         deleteVacancyClick={deleteVacancy}
         firestoreVacancies={vacancies}
         editAvailable={true}
-        selectVacancyClick={setSelectedVacancy}
+        selectVacancyClick={selectVacancy}
       />
       <InputFormField
         required={true}

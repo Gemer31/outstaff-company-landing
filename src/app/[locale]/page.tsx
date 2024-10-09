@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContactUs } from '@/blocks/ContactUs';
 import { Footer } from '@/blocks/Footer';
 import { Header } from '@/blocks/Header';
@@ -7,14 +6,24 @@ import { MainPreview } from '@/blocks/MainPreview';
 import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
-import { collection, getDocs } from '@firebase/firestore';
 import { db } from '@/lib/firebase-config';
+import { IConfig, IVacancy } from '@/models/common.model';
 import { FirestoreCollections } from '@/models/enums';
-import { IConfig } from '@/models/common.model';
+import { docsToData } from '@/utils/firebase.util';
+import { collection, getDocs, limit, query } from '@firebase/firestore';
 
 export default async function HomePage() {
-  const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
+  const [settingsQuerySnapshot, vacanciesQuerySnapshot] = await Promise.all([
+    getDocs(collection(db, FirestoreCollections.SETTINGS)),
+    getDocs(
+      query(
+        collection(db, FirestoreCollections.VACANCIES),
+        limit(4)
+      )
+    ),
+  ]);
   const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const vacancies: IVacancy[] = docsToData<IVacancy>(vacanciesQuerySnapshot.docs)
 
   return (
     <>
@@ -24,7 +33,7 @@ export default async function HomePage() {
         <Specializations />
         <TrustUs />
         <InfoInCounts />
-        <Vacancies />
+        { vacancies.length ? <Vacancies vacancies={vacancies} /> : <></>}
         <ContactUs />
       </main>
       <Footer config={config} />

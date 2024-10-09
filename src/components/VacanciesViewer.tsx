@@ -75,7 +75,7 @@ export function VacanciesViewer({
                     onClick={() => deleteVacancyClick?.(item)}
                     width={30}
                     height={30}
-                    src="/icons/cross.svg"
+                    src="/icons/close.svg"
                     alt="Close"
                   />
                 ) : (

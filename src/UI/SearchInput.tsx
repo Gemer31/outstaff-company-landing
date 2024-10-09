@@ -10,6 +10,7 @@ export interface ISearchInputProps {
   pattern?: string;
   required?: boolean;
   placeholder?: string;
+  delay?: number;
   onChange: (searchValue: string) => void;
   onValueChange?: (searchValue: string) => void;
   onBlur?: () => void;
@@ -23,6 +24,7 @@ export function SearchInput({
   onSubmit,
   onBlur,
   onFocus,
+  delay,
   placeholder,
   pattern,
   searchButtonVisible,
@@ -76,7 +78,7 @@ export function SearchInput({
     } else {
       timer.current = setTimeout(() => {
         onChange(newValue);
-      }, 1000);
+      }, delay ?? 1000);
     }
   };
   const onSubmitClick = (e: ChangeEvent<HTMLFormElement>) => {
