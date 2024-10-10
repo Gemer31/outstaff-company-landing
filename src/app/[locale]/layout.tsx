@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Increment - Интегратор digital-решений для бизнеса и государства',
     description: 'Разработчик портальных решений',
-    url: 'https://nextjs.org',
+    url: 'https://outstaff-company-landing.vercel.app',
     siteName: 'Next.js',
     images: [
       {
-        url: '/icons/logo.svg',
+        url: 'https://outstaff-company-landing.vercel.app/icons/logo.svg',
         width: 800,
         height: 600,
       },
