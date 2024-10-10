@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export class YupUtil {
-  private static userName = yup.string().matches(/^[A-Za-zА-Яа-я ]+$/);
+  private static userName = yup.string().matches(/^[A-Za-zА-Яа-я ]+$/).required('fieldRequired');
   private static email = yup
     .string()
     .required('fieldRequired')
@@ -26,6 +26,15 @@ export class YupUtil {
       // email: YupUtil.email,
       // password: YupUtil.password,
       // passwordRepeat: YupUtil.passwordRepeat,
+    });
+  }
+
+  static get ContactUsFormDetailedSchema() {
+    return yup.object().shape({
+      yourOrCompanyName: YupUtil.userName,
+      phone: yup.string().required('fieldRequired'),
+      email: YupUtil.email,
+      message: yup.string(),
     });
   }
 

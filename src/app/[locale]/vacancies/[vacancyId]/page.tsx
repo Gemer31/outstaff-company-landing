@@ -4,12 +4,7 @@ import { db } from "@/lib/firebase-config";
 import { IConfig, IVacancy } from "@/models/common.model";
 import { FirestoreCollections } from "@/models/enums";
 import { ContentContainer } from "@/UI/ContentContainer";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs
-} from "@firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
@@ -49,14 +44,24 @@ export default async function VacancyPage({
               <></>
             )}
           </section>
-          <article className="rounded-md shadow-custom-red px-6 py-4">
-            <section className="bg-custom-black-1 sticky top-12 flex justify-around text-xl font-bold border-b-2 py-2">
-              <span>{t(vacancy.schedule)}</span>
-              <span>{vacancy.experience}</span>
-              <span>{t(vacancy.type)}</span>
+
+          <article className="px-6 py-4 flex gap-4">
+            <section className="w-2/6 rounded-md h-fit shadow-custom-red bg-custom-black-1 sticky top-14 text-xl font-bold p-2 overflow-hidden">
+              <div>{t(vacancy.type)}</div>
+              <div>{t(vacancy.schedule)}</div>
+              <div>{vacancy.experience}</div>
+
+              <Image
+                className="absolute bottom-0 right-0"
+                src="/icons/triangle.svg"
+                width={40}
+                height={40}
+                alt="Preview"
+              />
             </section>
+
             <section
-              className="pt-2"
+              className="w-4/6 rounded-md p-4 shadow-custom-red"
               dangerouslySetInnerHTML={{ __html: vacancy?.description || "" }}
             ></section>
           </article>

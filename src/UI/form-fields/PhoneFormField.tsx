@@ -43,9 +43,9 @@ export function PhoneFormField({
       <InputMask
         // @ts-expect-error need
         placeholder="+375 (XX) XXX-XX-XX"
+        className={inputClass + ' ' + (error ? 'border-custom-red-1' : '')}
         mask="+375 (__) ___-__-__"
         replacement={{ _: /\d/ }}
-        className={inputClass}
         type={type}
         {...(register as UseFormRegister<Record<string, unknown>>)(name)}
       />

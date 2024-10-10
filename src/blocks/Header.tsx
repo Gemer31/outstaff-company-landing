@@ -1,27 +1,28 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { ScrollUpButton } from '@/components/ScrollUpButton';
-import { openPopup, PopupController } from '@/UI/popup/popup.controller';
-import { IConfig } from '@/models/common.model';
-import { ContactLinkType, DomIds, RouterLinks } from '@/models/enums';
-import { Button } from '@/UI/banner/Button';
-import { ContactLink } from '@/UI/ContactLink';
-import { ContentContainer } from '@/UI/ContentContainer';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Link } from '@/i18n/routing';
-import { SessionProvider } from 'next-auth/react';
-import { HeaderAuthActions } from '@/components/HeaderAuthActions';
-import { Notification } from '@/UI/notification/Notification';
-import { Popup } from '@/UI/popup/Popup';
-import { ContactUsForm } from '@/components/ContactUsForm';
+import React, { useEffect, useState } from "react";
+import { ScrollUpButton } from "@/components/ScrollUpButton";
+import { openPopup, PopupController } from "@/UI/popup/popup.controller";
+import { IConfig } from "@/models/common.model";
+import { ContactLinkType, DomIds, RouterLinks } from "@/models/enums";
+import { Button } from "@/UI/banner/Button";
+import { ContactLink } from "@/UI/ContactLink";
+import { ContentContainer } from "@/UI/ContentContainer";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Link } from "@/i18n/routing";
+import { SessionProvider } from "next-auth/react";
+import { HeaderAuthActions } from "@/components/HeaderAuthActions";
+import { Notification } from "@/UI/notification/Notification";
+import { Popup } from "@/UI/popup/Popup";
+import { ContactUsFormPopup } from "@/components/ContactUsFormPopup";
+import { LINK_CLASS } from "@/constants/common.constant";
 
 interface IHeaderProps {
   config: IConfig;
 }
 
-export function Header({config}: IHeaderProps) {
+export function Header({ config }: IHeaderProps) {
   const t = useTranslations();
   const [isScrollTop, setIsScrollTop] = useState(true);
 
@@ -45,35 +46,58 @@ export function Header({config}: IHeaderProps) {
     });
   };
 
-  return <>
-    <Notification/>
-    <Popup/>
-    <ContactUsForm config={config}/>
-    <ScrollUpButton isScrollTop={isScrollTop}/>
+  return (
+    <>
+      <Notification />
+      <Popup />
+      <ContactUsFormPopup config={config} />
+      <ScrollUpButton isScrollTop={isScrollTop} />
 
-    <header className={'z-30 bg-custom-black-2 flex justify-center sticky top-0 ' + (isScrollTop ? '' : 'shadow-lg')}>
-      <ContentContainer className="flex justify-between items-center">
-        <div className="flex items-center">
-          <Link href={RouterLinks.HOME}>
-            <div className="w-[100px] h-[50px] rounded-sm flex items-center overflow-hidden">
-              <Image src="/icons/logo.svg" width={120} height={20} alt="logo"/>
-            </div>
-          </Link>
-        </div>
+      <header
+        className={
+          "z-30 bg-custom-black-2 flex justify-center sticky top-0 " +
+          (isScrollTop ? "" : "shadow-lg")
+        }
+      >
+        <ContentContainer className="flex justify-between items-center">
+          <div className="flex items-center">
+            <Link href={RouterLinks.HOME}>
+              <div className="w-[100px] h-[50px] rounded-sm flex items-center overflow-hidden">
+                <Image
+                  src="/icons/logo.svg"
+                  width={120}
+                  height={20}
+                  alt="logo"
+                />
+              </div>
+            </Link>
+            <nav className="ml-4 flex gap-4">
+              <Link className={LINK_CLASS} href={RouterLinks.VACANCIES}>{t("vacancies")}</Link>
+              <Link className={LINK_CLASS} href={RouterLinks.CONTACTS}>{t("contacts")}</Link>
+            </nav>
+          </div>
 
-        <nav className="ml-4">
-          <Link href={RouterLinks.VACANCIES}>{t('vacancies')}</Link>
-        </nav>
-
-        <div className="flex items-center">
-          <ContactLink className="mr-2" type={ContactLinkType.PHONE} value={config.phone} icon={true}/>
-          <Button className="px-6 py-1" loading={false} callback={requestCallClick}>{t('requestCall')}</Button>
-          <SessionProvider>
-            <HeaderAuthActions/>
-          </SessionProvider>
-        </div>
-      </ContentContainer>
-      {/*<Select items={[]}/>*/}
-    </header>
-  </>;
+          <div className="flex items-center">
+            <ContactLink
+              className="mr-2"
+              type={ContactLinkType.PHONE}
+              value={config.phone}
+              icon={true}
+            />
+            <Button
+              className="px-6 py-1"
+              loading={false}
+              callback={requestCallClick}
+            >
+              {t("requestCall")}
+            </Button>
+            <SessionProvider>
+              <HeaderAuthActions />
+            </SessionProvider>
+          </div>
+        </ContentContainer>
+        {/*<Select items={[]}/>*/}
+      </header>
+    </>
+  );
 }

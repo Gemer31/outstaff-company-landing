@@ -40,5 +40,9 @@
   "speciality": "Speciality",
   "allVacancies": "All vacancies",
   "deletedSuccessfully": "Deleted successfully",
-  "nothingFound": "Nothing found"
+  "nothingFound": "Nothing found",
+  "connectWith": "Connect with",
+  "message": "Message",
+  "enterMessage": "Enter message",
+  "connectUsMessage": "We are not afraid of complex tasks and are ready to implement any of your ideas with a guarantee of quality and meeting deadlines."
 }

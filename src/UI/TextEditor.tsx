@@ -15,7 +15,8 @@ interface ITextEditorFormFieldProps {
 const editorClass: string = convertToClass([
   'field-editor',
   'border-2',
-  'bg-white',
+  'border-custom-black-2',
+  'bg-custom-black-2',
   'rounded-md',
   'mt-1',
   'w-full',

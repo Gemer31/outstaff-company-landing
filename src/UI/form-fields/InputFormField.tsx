@@ -46,7 +46,7 @@ export function InputFormField({
   return (
     <FormFieldWrapper label={label} error={error} required={required}>
       <input
-        className={hostClass}
+        className={hostClass + ' ' + (error ? 'border-custom-red-1' : '')}
         placeholder={placeholder}
         type={hideValueAvailable && hideValue ? "password" : type}
         onBlur={onBlur}
