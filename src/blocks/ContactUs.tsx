@@ -23,7 +23,7 @@ export function ContactUs() {
 
   return (
     <article className="w-full flex justify-center bg-custom-black-1 py-10">
-      <ContentContainer className="relative">
+      <ContentContainer className="relative main-preview-shadow-gorizontal">
         <Image
           ref={ref}
           className={

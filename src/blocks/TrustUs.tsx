@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { IConfig } from "@/models/common.model";
-import { ContentContainer } from "@/UI/ContentContainer";
-import { CustomBanner } from "@/UI/CustomBanner";
-import { TitleContainer } from "@/UI/TitleContainer";
-import { useTranslations } from "next-intl";
+import { IConfig } from '@/models/common.model';
+import { ContentContainer } from '@/UI/ContentContainer';
+import { TitleContainer } from '@/UI/TitleContainer';
+import { useTranslations } from 'next-intl';
+import { InfinitySlider } from '@/UI/Caurusel';
 
 interface ITrustUsProps {
     config?: IConfig;
@@ -34,7 +34,7 @@ export function TrustUs({  }: ITrustUsProps) {
                 <section className="pb-8 pt-2 w-full flex justify-center">
                     <div className="w-3/6 text-center">Наши решения работают в крупнейших компаниях России и мира: Роснефть, Россети, Yokohama, Scania, Hoff, Xerox и других.</div>
                 </section>
-                <CustomBanner images={IMAGES} />
+                <InfinitySlider images={IMAGES}/>
             </TitleContainer>
         </ContentContainer>
     </article>

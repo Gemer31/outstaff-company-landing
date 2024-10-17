@@ -25,7 +25,7 @@ export enum FirestoreCollections {
 }
 
 export enum ButtonColorOptions {
-    PINK = 'pink',
+    RED = 'red',
     GRAY = 'gray',
 }
 
@@ -56,4 +56,9 @@ export enum JobType {
 export enum JobSchedule {
     REMOTE = "remote",
     OFFICE = "office",
+}
+
+export enum SpecializationCardSize {
+    LARGE = 'large',
+    NORMAL = 'normal',
 }

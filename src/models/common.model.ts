@@ -7,10 +7,7 @@ export interface IConfig {
 
 export interface ISpecializationCard {
     title: string;
-    icons: {
-        path: string;
-        alt: string;
-    }[];
+    icons: string[];
     description: string;
 }
 

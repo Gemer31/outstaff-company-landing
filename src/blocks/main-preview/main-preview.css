@@ -1,0 +1,7 @@
+.main-preview-shadow-gorizontal {
+    background: radial-gradient(circle, rgba(40, 40, 40, 0) 0%, rgba(40, 40, 40, 1) 85%, rgba(40, 40, 40, 1) 100%);
+}
+
+.main-preview-shadow-vertical {
+    background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(0,0,0,0) 50%, rgba(40,40,40,1) 100%);
+}

@@ -2,7 +2,7 @@ import { ContactUs } from '@/blocks/ContactUs';
 import { Footer } from '@/blocks/Footer';
 import { Header } from '@/blocks/Header';
 import { InfoInCounts } from '@/blocks/InfoInCounts';
-import { MainPreview } from '@/blocks/MainPreview';
+import { MainPreview } from '@/blocks/main-preview/MainPreview';
 import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';

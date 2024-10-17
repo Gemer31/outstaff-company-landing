@@ -1,100 +1,91 @@
-import { SpecializationCard } from "@/components/SpecializationCard";
-import { ISpecializationCard } from "@/models/common.model";
-import { ContentContainer } from "@/UI/ContentContainer";
-import { TitleContainer } from "@/UI/TitleContainer";
-import { useTranslations } from "next-intl";
+import { SpecializationCard } from '@/components/SpecializationCard';
+import { ISpecializationCard } from '@/models/common.model';
+import { ContentContainer } from '@/UI/ContentContainer';
+import { TitleContainer } from '@/UI/TitleContainer';
+import { useTranslations } from 'next-intl';
+import { SpecializationCardSize } from '@/models/enums';
 
-const SPECIALIZATIONS: ISpecializationCard[] = [
+const SPECIALIZATIONS: ISpecializationCard[][] = [
+  [
     {
-        title: 'frontend',
-        description: 'Порталы, панели управления, spa/ssr/pwa приложения',
-        icons: [
-            {
-                path: '/icons/specializations/angular.svg',
-                alt: 'Angular'
-            },
-            {
-                path: '/icons/specializations/java.svg',
-                alt: 'Java'
-            },
-            {
-                path: '/icons/specializations/javascript.svg',
-                alt: 'Javascript'
-            },
-            {
-                path: '/icons/specializations/python.svg',
-                alt: 'Python'
-            },
-            {
-                path: '/icons/specializations/react.svg',
-                alt: 'React'
-            },
-            {
-                path: '/icons/specializations/svelte.svg',
-                alt: 'Svelte'
-            },
-            {
-                path: '/icons/specializations/typescript.svg',
-                alt: 'Typescript'
-            },
-            {
-                path: '/icons/specializations/vue.svg',
-                alt: 'Vue'
-            },
-        ],
+      title: 'backend',
+      description: 'High Load, микросервисная архитектура, монолитные приложения',
+      icons: [
+        'ruby',
+        'java',
+        'php',
+        'laravel',
+        'mysql',
+        'postgresql',
+      ],
     },
     {
-        title: 'backend',
-        description: 'High Load, микросервисная архитектура, монолитные приложения',
-        icons: [
-            {
-                path: '/icons/specializations/php.svg',
-                alt: 'PHP'
-            },
-            {
-                path: '/icons/specializations/laravel.svg',
-                alt: 'Laravel'
-            },
-            {
-                path: '/icons/specializations/mysql.svg',
-                alt: 'Mysql'
-            },
-            {
-                path: '/icons/specializations/postgresql.svg',
-                alt: 'Postgresql'
-            },
-        ]
+      title: 'frontend',
+      description: 'Порталы, панели управления, spa/ssr/pwa приложения',
+      icons: [
+        'javascript',
+        'python',
+        'angular',
+        'react',
+        'vue',
+        'svelte',
+      ],
+    },
+  ],
+  [
+    {
+      title: 'mobile',
+      description: 'Нативные и кроссплатформенные приложения',
+      icons: [
+        'swift',
+        'kotlin',
+        'flutter',
+        'nativescript',
+      ],
     },
     {
-        title: 'mobile',
-        description: 'Нативные и кроссплатформенные приложения',
-        icons: [
-            {
-                path: '/icons/specializations/swift.svg',
-                alt: 'Swift'
-            },
-            {
-                path: '/icons/specializations/kotlin.svg',
-                alt: 'Kotlin'
-            },
-        ]
-    }
-]
+      title: 'QA',
+      description: 'Нативные и кроссплатформенные приложения',
+      icons: [
+        'apache-jmeter',
+        'cucumber',
+        'protractor',
+        'selenium',
+      ],
+    },
+    {
+      title: 'Analytics',
+      description: 'Нативные и кроссплатформенные приложения',
+      icons: [
+        'apache-spark',
+        'qlik',
+        'sas',
+        'tableau',
+      ],
+    },
+  ],
+];
 
 export function Specializations() {
-    const t = useTranslations();
+  const t = useTranslations();
 
-    return <article className="w-full flex justify-center bg-custom-black-1 py-10">
-        <ContentContainer className="relative">
-            <TitleContainer title={t('specialization')}>
-                <div className="flex gap-x-4">
-                    {
-                        SPECIALIZATIONS.map((item, index) => {
-                            return <SpecializationCard key={index} data={item} />
-                        })
-                    }
-                </div>
-            </TitleContainer>
-        </ContentContainer>
-    </article>
+  return <article className="w-full flex justify-center bg-custom-black-1">
+    <ContentContainer className="relative">
+      <TitleContainer title={t('specialization')}>
+        <div className="flex flex-col gap-4">
+          {
+            SPECIALIZATIONS.map((blocks, blockIndex) => {
+              return <div key={blockIndex} className="flex gap-4">
+                {
+                  blocks.map((item, index) => {
+                    return <SpecializationCard key={index} data={item} size={blockIndex ? SpecializationCardSize.NORMAL : SpecializationCardSize.LARGE}/>;
+                  })
+                }
+              </div>
+            })
+          }
+        </div>
+      </TitleContainer>
+    </ContentContainer>
+  </article>;
 }

@@ -56,7 +56,7 @@ export function AdminEditor() {
                     key={v}
                     color={
                       selectedGroup === v
-                        ? ButtonColorOptions.PINK
+                        ? ButtonColorOptions.RED
                         : ButtonColorOptions.GRAY
                     }
                     className="w-full text-amber-50 px-4 py-2"

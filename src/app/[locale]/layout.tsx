@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Raleway } from "next/font/google";
 import "./globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -43,8 +45,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       className="scroll-smooth"
-      // @ts-expect-error need
-      style={{ "font-size": "18px" }}
+      style={{ fontSize: '18px' }}
     >
       <body
         id="page"

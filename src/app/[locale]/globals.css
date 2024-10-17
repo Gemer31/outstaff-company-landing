@@ -60,22 +60,22 @@ body {
 .readonly-ql-editor {
     height: fit-content !important;
   }
-  
+
   .ql-editor.ql-blank::before {
     font-style: normal !important;
   }
-  
+
   .ql-container {
     font-family: inherit !important;
     font-size: inherit !important;
   }
-  
+
   .ql-toolbar.ql-snow {
     border-right: none !important;
     border-top: none !important;
     border-left: none !important;
   }
-  
+
   .ql-container.ql-snow {
     border: none !important;
   }
@@ -90,7 +90,8 @@ body {
 }
 
 .text-focus-in {
-    animation: text-focus-in 1s cubic-bezier(.55, .085, .68, .53) both
+    animation: text-focus-in 1s cubic-bezier(.55, .085, .68, .53) both;
+    animation-delay: .5s;
 }
 
 @keyframes text-focus-in {
@@ -134,5 +135,5 @@ body {
       opacity: 1;
     }
   }
-  
-  
+
+

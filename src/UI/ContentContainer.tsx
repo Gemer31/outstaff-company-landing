@@ -11,14 +11,14 @@ export function ContentContainer({
   return type === 'article' ? (
     <article
       id={id || ''}
-      className={'w-full max-w-screen-xl px-2 ' + (className || '')}
+      className={'w-full max-w-screen-2xl px-2 ' + (className || '')}
     >
       {children}
     </article>
   ) : (
     <div
       id={id || ''}
-      className={'w-full max-w-screen-xl px-2 ' + (className || '')}
+      className={'w-full max-w-screen-2xl px-2 ' + (className || '')}
     >
       {children}
     </div>

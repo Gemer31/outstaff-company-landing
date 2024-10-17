@@ -9,7 +9,7 @@ import './banner.css';
 
 export const COLOR_OPTION_VALUES = new Map<ButtonColorOptions, string>([
   [
-    ButtonColorOptions.PINK,
+    ButtonColorOptions.RED,
     'bg-custom-red-1 hover:bg-custom-red-2 active:bg-pink-600 text-white',
   ],
   [
@@ -72,7 +72,7 @@ export function Button({
       className={
         buttonClass +
         ' ' +
-        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.PINK) +
+        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.RED) +
         ' ' +
         className
       }
@@ -98,7 +98,7 @@ export function Button({
       className={
         buttonClass +
         ' ' +
-        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.PINK) +
+        COLOR_OPTION_VALUES.get(color || ButtonColorOptions.RED) +
         ' ' +
         className
       }

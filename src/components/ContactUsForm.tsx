@@ -70,8 +70,8 @@ export function ContactUsForm({
           required={true}
           placeholder={t("yourOrCompanyName")}
           label={t("yourOrCompanyName")}
-          name="name"
           type="text"
+          name="yourOrCompanyName"
           error={t(errors?.yourOrCompanyName?.message)}
           register={register}
         />
