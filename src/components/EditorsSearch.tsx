@@ -6,7 +6,7 @@ export interface IEditorsSearchProps {
 
 export function EditorsSearch({ onChange }: IEditorsSearchProps) {
   return (
-    <div className="sticky top-0 p-2 bg-custom-red-1">
+    <div className="sticky top-0 p-2 bg-custom-red-1 shadow-md">
       <SearchInput onChange={onChange} />
     </div>
   );

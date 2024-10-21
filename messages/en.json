@@ -44,5 +44,16 @@
   "connectWith": "Connect with",
   "message": "Message",
   "enterMessage": "Enter message",
-  "connectUsMessage": "We are not afraid of complex tasks and are ready to implement any of your ideas with a guarantee of quality and meeting deadlines."
+  "connectUsMessage": "We are not afraid of complex tasks and are ready to implement any of your ideas with a guarantee of quality and meeting deadlines.",
+  "number": "Number",
+  "enterNumber": "Enter number",
+  "postfix": "Postfix",
+  "enterPostfix": "Enter postfix",
+  "text": "Text",
+  "enterText": "Enter text",
+  "newBlock": "New block",
+  "counterBlocks": "Counter blocks",
+  "analytics": "Analytics",
+  "analyst": "Analyst",
+  "qa": "QA"
 }

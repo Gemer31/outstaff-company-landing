@@ -71,14 +71,14 @@ export function GeneralEditorForm({
         label="E-mail"
         name="email"
         type="text"
-        error={t(errors.email?.message)}
+        error={errors?.email?.message ? t(errors.email.message) : ''}
         register={register}
       />
       <PhoneFormField
         label={t('phone')}
         name="phone"
         type="text"
-        error={t(errors.phone?.message)}
+        error={errors?.phone?.message ? t(errors.phone.message) : ''}
         register={register}
       />
       <Button

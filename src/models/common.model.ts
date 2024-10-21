@@ -11,7 +11,7 @@ export interface ISpecializationCard {
     description: string;
 }
 
-export interface IVacancy {
+export interface IVacancy extends IOrder {
     id: string;
     title: string;
     type: JobType;
@@ -19,4 +19,15 @@ export interface IVacancy {
     experience: string;
     description: string;
     hot: boolean;
+}
+
+export interface ICounterBlock extends IOrder {
+    id: string;
+    number: number;
+    text: string;
+    numberPostfix?: string;
+}
+
+export interface IOrder {
+    order: number;
 }

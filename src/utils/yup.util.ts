@@ -52,6 +52,16 @@ export class YupUtil {
     });
   }
 
+  static get CounterBlockSchema() {
+    return yup.object().shape({
+      id: yup.string(),
+      order: yup.number(),
+      number: yup.number().required('fieldRequired'),
+      text: yup.string().required('fieldRequired'),
+      numberPostfix: yup.string(),
+    });
+}
+
   static get VacanciesFormSchema() {
     return yup.object().shape({
       title: yup.string().required(),

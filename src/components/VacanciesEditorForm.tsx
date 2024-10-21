@@ -1,25 +1,20 @@
-import { VacanciesViewer } from "@/components/VacanciesViewer";
-import { db } from "@/lib/firebase-config";
-import { IConfig, IVacancy } from "@/models/common.model";
-import {
-  ButtonTypes,
-  FirestoreCollections,
-  JobSchedule,
-  JobType
-} from "@/models/enums";
-import { Button } from "@/UI/banner/Button";
-import { FormFieldWrapper } from "@/UI/form-fields/FormFieldWrapper";
-import { InputFormField } from "@/UI/form-fields/InputFormField";
-import { SelectFormField } from "@/UI/form-fields/SelectFormField";
-import { showNotification } from "@/UI/notification/notification.controller";
-import { TextEditor } from "@/UI/TextEditor";
-import { YupUtil } from "@/utils/yup.util";
-import { deleteDoc, doc, DocumentData, setDoc, WithFieldValue } from "@firebase/firestore";
-import { uuidv4 } from "@firebase/util";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { db } from '@/lib/firebase-config';
+import { IConfig, IVacancy } from '@/models/common.model';
+import { ButtonTypes, FirestoreCollections, JobSchedule, JobType } from '@/models/enums';
+import { Button } from '@/UI/banner/Button';
+import { FormFieldWrapper } from '@/UI/form-fields/FormFieldWrapper';
+import { InputFormField } from '@/UI/form-fields/InputFormField';
+import { SelectFormField } from '@/UI/form-fields/SelectFormField';
+import { showNotification } from '@/UI/notification/notification.controller';
+import { TextEditor } from '@/UI/TextEditor';
+import { YupUtil } from '@/utils/yup.util';
+import { deleteDoc, doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
+import { uuidv4 } from '@firebase/util';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { ListViewer } from '@/components/ListViewer';
 
 interface IVacanciesEditorFormProps {
   vacancies: IVacancy[];
@@ -120,12 +115,15 @@ export function VacanciesEditorForm({
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
-      <VacanciesViewer
-        selectedVacancy={selectedVacancy}
-        deleteVacancyClick={deleteVacancy}
-        firestoreVacancies={vacancies}
-        editAvailable={true}
-        selectVacancyClick={selectVacancy}
+      <ListViewer
+        editAvailable
+        selectedItem={selectedVacancy}
+        items={vacancies}
+        deleteItemClick={deleteVacancy}
+        selectItemClick={selectVacancy}
+        itemTitle={{ prop: 'title' }}
+        newItemText={t('newVacancy')}
+        emptyText={t('noVacancies')}
       />
       <InputFormField
         required={true}

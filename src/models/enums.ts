@@ -21,6 +21,7 @@ export enum ContactLinkType {
 
 export enum FirestoreCollections {
     SETTINGS = 'settings',
+    COUNTER_BLOCKS = 'counterBlocks',
     VACANCIES = 'vacancies'
 }
 
@@ -36,6 +37,7 @@ export enum ButtonTypes {
 
 export enum EditGroup {
     GENERAL = 'general',
+    COUNTER_BLOCKS = 'counterBlocks',
     VACANCIES = 'vacancies',
 }
 

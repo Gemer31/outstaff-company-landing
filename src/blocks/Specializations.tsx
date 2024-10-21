@@ -44,7 +44,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
       ],
     },
     {
-      title: 'QA',
+      title: 'qa',
       description: 'Нативные и кроссплатформенные приложения',
       icons: [
         'apache-jmeter',
@@ -54,7 +54,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
       ],
     },
     {
-      title: 'Analytics',
+      title: 'analytics',
       description: 'Нативные и кроссплатформенные приложения',
       icons: [
         'apache-spark',

@@ -72,7 +72,7 @@ export function ContactUsForm({
           label={t("yourOrCompanyName")}
           type="text"
           name="yourOrCompanyName"
-          error={t(errors?.yourOrCompanyName?.message)}
+          error={errors?.yourOrCompanyName?.message ? t(errors.yourOrCompanyName.message) : ''}
           register={register}
         />
         <PhoneFormField
@@ -80,9 +80,10 @@ export function ContactUsForm({
           label={t("phone")}
           type="text"
           name="phone"
-          error={t(errors?.phone?.message)}
+          error={errors?.phone?.message ? t(errors.phone.message) : ''}
           register={register}
         />
+
 
         {detailedView ? (
           <>
