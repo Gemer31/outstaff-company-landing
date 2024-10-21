@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export class YupUtil {
-  private static userName = yup.string().matches(/^[A-Za-zА-Яа-я ]+$/).required('fieldRequired');
+  private static userName = yup.string().required('fieldRequired');
   private static email = yup
     .string()
     .required('fieldRequired')

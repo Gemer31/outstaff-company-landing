@@ -37,7 +37,20 @@ export function ContactUsForm({
     ),
   });
 
-  const submitForm = () => {
+  const submitForm = async (formData: {
+    yourOrCompanyName?: string;
+    phone?: string;
+    message?: string;
+    email?: string;
+  }) => {
+    let message: string = `Заказать звонок\n\nИмя: ${formData.yourOrCompanyName};\nТелефон: ${formData.phone}`;
+    if (formData.message?.length) {
+      message += `;\nКомментарий: ${formData.message}`;
+    }
+    await fetch(`${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/api/bot`, {
+      method: 'POST',
+      body: JSON.stringify({ message: encodeURI(message) }),
+    });
     submitCallback();
   };
 
@@ -93,8 +106,7 @@ export function ContactUsForm({
               label={t("Email")}
               name="Email"
               type="text"
-              // @ts-expect-error need
-              error={t(errors?.email?.message)}
+              error={errors?.email?.message ? t(errors.email.message) : ''}
               register={register}
             />
             <TextareaFormField
@@ -102,7 +114,7 @@ export function ContactUsForm({
               label={t("message")}
               name="message"
               // @ts-expect-error need
-              error={t(errors?.message?.message)}
+              error={errors?.message?.message ? t(errors.message.message) : ''}
               register={register}
             />
           </>
