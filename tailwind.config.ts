@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      scale: {
+        '101': '1.01',
+      },
       colors: {
         'custom-red-1': '#F14F4D',
         'custom-red-2': '#f76868',

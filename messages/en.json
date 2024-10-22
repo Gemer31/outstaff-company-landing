@@ -36,6 +36,8 @@
   "remote": "Remote",
   "description": "Description",
   "enterDescription": "Enter description",
+  "selectWorkSchedule": "Select work schedule",
+  "selectVacancy": "Select vacancy",
   "hotVacancy": "'Hot vacancy'",
   "speciality": "Speciality",
   "allVacancies": "All vacancies",
@@ -64,5 +66,6 @@
   "selectImage": "Select image",
   "noImages": "No images",
   "images": "Images",
-  "customersBlock": "Customers block"
+  "customersBlock": "Customers block",
+  "selectedItems": "selected items"
 }

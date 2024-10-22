@@ -56,7 +56,7 @@ export function ImagesEditorForm({
   };
 
   return (
-    <>
+    <form onSubmit={uploadFiles}>
       <ImagesViewer
         deleteAvailable={true}
         images={images}
@@ -80,14 +80,13 @@ export function ImagesEditorForm({
       </label>
 
       <Button
-        styleClass="text-amber-50 w-full py-2"
+        className="text-amber-50 w-full py-2"
         disabled={loading}
         loading={loading}
         type={ButtonTypes.SUBMIT}
-        callback={uploadFiles}
       >
         {t('save')}
       </Button>
-    </>
+    </form>
   );
 }

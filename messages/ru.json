@@ -37,6 +37,7 @@
   "description": "Описание",
   "enterDescription": "Введите описание",
   "selectWorkSchedule": "Выберите график работы",
+  "selectVacancy": "Выберите вакансию",
   "hotVacancy": "'Горячая вакансия'",
   "speciality": "Специальность",
   "allVacancies": "Все вакансии",
@@ -65,5 +66,6 @@
   "selectImage": "Выберите картинку",
   "noImages": "Нет картинок",
   "images": "Картинки",
-  "customersBlock": "Блок с компаниями"
+  "customersBlock": "Блок с компаниями",
+  "selectedItems": "выбранных элементов"
 }

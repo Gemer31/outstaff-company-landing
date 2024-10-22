@@ -34,12 +34,12 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
     resolver: yupResolver(YupUtil.CounterBlockSchema),
   });
 
-  const selectCounterBlock = (newItem?: ICounterBlock) => {
-    setValue('id', newItem?.id);
-    setValue('order', newItem?.order);
-    setValue('number', newItem?.number);
-    setValue('text', newItem?.text);
-    setValue('numberPostfix', newItem?.numberPostfix);
+  const selectCounterBlock = (newItems?: ICounterBlock[]) => {
+    setValue('id', newItems[0]?.id);
+    setValue('order', newItems[0]?.order);
+    setValue('number', newItems[0]?.number);
+    setValue('text', newItems[0]?.text);
+    setValue('numberPostfix', newItems[0]?.numberPostfix);
   };
 
   const submitForm = async (formData: {
@@ -50,7 +50,7 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
   }) => {
     setIsLoading(true);
 
-    const data: ICounterBlock = { ...formData } as ICounterBlock;
+    const data: ICounterBlock = {...formData} as ICounterBlock;
 
     if (!formData.id) {
       data.id = uuidv4();
@@ -61,10 +61,10 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
       await setDoc(doc(db, FirestoreCollections.COUNTER_BLOCKS, data.id), data);
       selectCounterBlock();
       reset();
-      showNotification(t("infoSaved"));
+      showNotification(t('infoSaved'));
       refreshCallback?.();
     } catch {
-      showNotification(t("somethingWentWrong"));
+      showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -98,10 +98,10 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
 
       await setDoc(
         doc(db, FirestoreCollections.COUNTER_BLOCKS, blockFrom.id),
-        { ...blockFrom, order: blockTo.order });
+        {...blockFrom, order: blockTo.order});
       await updateDoc(
         doc(db, FirestoreCollections.COUNTER_BLOCKS, blockTo.id),
-        { ...blockTo, order: blockFrom.order }
+        {...blockTo, order: blockFrom.order},
       );
 
       selectCounterBlock(null);
@@ -119,8 +119,11 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
     <ListViewer
       editAvailable
       newItemText={t('newBlock')}
+      propsMapper={{
+        idProp: 'id',
+        itemTitle: {transformFunction: (item: ICounterBlock) => (`${item.number}${item.numberPostfix || ''} ${item.text}`)},
+      }}
       items={counterBlocks}
-      itemTitle={{transformFunction: (item: ICounterBlock) => (`${item.number}${item.numberPostfix || ''} ${item.text}`)}}
       deleteItemClick={deleteCounterBlocks}
       selectItemClick={selectCounterBlock}
       changeItemsPosition={changeCounterBlocksPosition}

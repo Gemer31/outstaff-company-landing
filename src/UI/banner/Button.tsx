@@ -54,7 +54,7 @@ export function Button({
         'h-fit',
         'duration-200',
         'active:scale-100',
-        'hover:scale-105',
+        'hover:scale-101',
         disabled || innerLoading ? 'pointer-events-none opacity-75' : '',
       ]),
     [disabled, innerLoading],

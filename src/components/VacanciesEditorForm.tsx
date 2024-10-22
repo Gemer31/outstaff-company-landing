@@ -23,21 +23,21 @@ interface IVacanciesEditorFormProps {
 }
 
 export function VacanciesEditorForm({
-  vacancies,
-  refreshCallback,
-}: IVacanciesEditorFormProps) {
+                                      vacancies,
+                                      refreshCallback,
+                                    }: IVacanciesEditorFormProps) {
   const t = useTranslations();
   const [selectedVacancy, setSelectedVacancy] = useState<IVacancy>(null);
-  const [description, setDescription] = useState<string>("");
+  const [description, setDescription] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
     reset,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     resolver: yupResolver(YupUtil.VacanciesFormSchema),
   });
 
@@ -63,10 +63,10 @@ export function VacanciesEditorForm({
       await setDoc(doc(db, FirestoreCollections.VACANCIES, data.id), data);
       setSelectedVacancy(null);
       reset();
-      showNotification(t("infoSaved"));
+      showNotification(t('infoSaved'));
       refreshCallback?.();
     } catch {
-      showNotification(t("somethingWentWrong"));
+      showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -77,15 +77,15 @@ export function VacanciesEditorForm({
 
     try {
       await deleteDoc(
-        doc(db, FirestoreCollections.VACANCIES, deletedVacancy.id)
+        doc(db, FirestoreCollections.VACANCIES, deletedVacancy.id),
       );
       setSelectedVacancy(null);
-      showNotification(t("deletedSuccessfully"));
+      showNotification(t('deletedSuccessfully'));
       reset();
       refreshCallback?.();
     } catch (e) {
       console.error('Delete product error: ', e);
-      showNotification(t("somethingWentWrong"));
+      showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -93,23 +93,23 @@ export function VacanciesEditorForm({
     setIsLoading(false);
   };
 
-  const selectVacancy = (newVacancy: IVacancy) => {
-    if (newVacancy) {
-      setValue("title", newVacancy.title);
-      setValue("experience", newVacancy.experience);
-      setValue("hot", newVacancy.hot);
-      setValue("schedule", newVacancy.schedule);
-      setValue("type", newVacancy.type);
-      descriptionChange(newVacancy.description);
-      setSelectedVacancy(newVacancy);
+  const selectVacancy = (newVacancies: IVacancy[]) => {
+    if (newVacancies[0]) {
+      setValue('title', newVacancies[0].title);
+      setValue('experience', newVacancies[0].experience);
+      setValue('hot', newVacancies[0].hot);
+      setValue('schedule', newVacancies[0].schedule);
+      setValue('type', newVacancies[0].type);
+      descriptionChange(newVacancies[0].description);
+      setSelectedVacancy(newVacancies[0]);
     } else {
       reset();
       descriptionChange('');
     }
-  }
+  };
 
   const descriptionChange = (newValue: string) => {
-    setValue("description", newValue);
+    setValue('description', newValue);
     setDescription(newValue);
   };
 
@@ -121,61 +121,65 @@ export function VacanciesEditorForm({
         items={vacancies}
         deleteItemClick={deleteVacancy}
         selectItemClick={selectVacancy}
-        itemTitle={{ prop: 'title' }}
+        propsMapper={{
+          idProp: 'id',
+          itemTitle: {prop: 'title'},
+        }}
         newItemText={t('newVacancy')}
         emptyText={t('noVacancies')}
       />
       <InputFormField
+        className="mt-4"
         required={true}
-        placeholder={t("enterTitle")}
-        label={t("title")}
+        placeholder={t('enterTitle')}
+        label={t('title')}
         name="title"
         type="text"
-        error={t(errors.title?.message)}
+        error={errors?.title?.message ? t(errors.title.message) : ''}
         register={register as unknown}
       />
       <InputFormField
         required={true}
-        placeholder={t("enterExperience")}
-        label={t("experience")}
+        placeholder={t('enterExperience')}
+        label={t('experience')}
         name="experience"
         type="text"
-        error={t(errors.experience?.message)}
+        error={errors?.experience?.message ? t(errors.experience.message) : ''}
         register={register as unknown}
       />
       <div className="flex justify-between gap-x-2">
         <SelectFormField
           options={Object.values(JobSchedule).map((item) => t(item))}
           required={true}
-          label={t("selectWorkSchedule")}
+          label={t('selectWorkSchedule')}
           name="schedule"
-          error={t(errors.schedule?.message)}
+          error={errors?.schedule?.message ? t(errors.schedule.message) : ''}
           register={register as unknown}
         />
         <SelectFormField
           options={Object.values(JobType).map((item) => t(item))}
           required={true}
-          label={t("selectWorkSchedule")}
+          label={t('selectVacancy')}
           name="type"
-          error={t(errors.type?.message)}
+          error={errors?.type?.message ? t(errors.type.message) : ''}
           register={register as unknown}
         />
         <InputFormField
-          placeholder={t("hotVacancy")}
-          label={t("hotVacancy")}
+          placeholder={t('hotVacancy')}
+          label={t('hotVacancy')}
           name="hot"
           type="checkbox"
-          error={t(errors.hot?.message)}
+          error={errors?.hot?.message ? t(errors.hot.message) : ''}
           register={register as unknown}
         />
       </div>
       <FormFieldWrapper
-        label={t("description")}
+        label={t('description')}
         required={true}
-        error={errors.description?.message}
+        error={errors?.description?.message ? t(errors.description.message) : ''}
       >
         <TextEditor
-          placeholder={t("enterDescription")}
+          placeholder={t('enterDescription')}
           value={description}
           onChange={descriptionChange}
         />
@@ -186,7 +190,7 @@ export function VacanciesEditorForm({
         loading={isLoading}
         type={ButtonTypes.SUBMIT}
       >
-        {t("save")}
+        {t('save')}
       </Button>
     </form>
   );

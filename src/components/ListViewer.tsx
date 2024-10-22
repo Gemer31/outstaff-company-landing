@@ -3,19 +3,25 @@ import { useEffect, useState } from 'react';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import { EditorsSearch } from '@/components/EditorsSearch';
 import DragListView from 'react-drag-listview';
+import { CTRL_CODE } from '@/constants/common.constant';
 
 interface IVacanciesViewerProps {
+  className?: string;
   selectedItem?: unknown;
   items: unknown[];
   editAvailable?: boolean;
+  multiSelect?: boolean;
   emptyText?: string;
   newItemText?: string;
-  itemTitle: {
-    prop?: string;
-    transformFunction?: (item: unknown) => string;
+  propsMapper?: {
+    idProp: string;
+    itemTitle: {
+      prop?: string;
+      transformFunction?: (item: unknown) => string;
+    };
   };
   deleteItemClick?: (item: unknown) => void;
-  selectItemClick?: (item: unknown) => void;
+  selectItemClick?: (items: unknown[], lastSelectedItem: unknown) => void;
   changeItemsPosition?: (fromIndex: number, toIndex: number) => void;
 }
 
@@ -30,6 +36,8 @@ const itemClass = convertToClass([
 
 export function ListViewer(
   {
+    multiSelect,
+    className,
     selectedItem,
     items,
     editAvailable,
@@ -38,21 +46,49 @@ export function ListViewer(
     changeItemsPosition,
     emptyText,
     newItemText,
-    itemTitle: {prop, transformFunction},
+    propsMapper,
   }: IVacanciesViewerProps,
 ) {
-  const [chosenItem, setChosenItem] = useState<unknown>();
+  const [tabPressed, setTabPressed] = useState<boolean>();
+  const [chosenItems, setChosenItems] = useState<Record<string, unknown>>({});
   const [searchValue, setSearchValue] = useState('');
 
-  useEffect(() => setChosenItem(selectedItem), [selectedItem]);
+  useEffect(() => {
+    document.body.addEventListener('keydown', (event) => {
+      if (event.keyCode === CTRL_CODE) {
+        setTabPressed(true);
+      }
+    });
+    document.body.addEventListener('keyup', (event) => {
+      if (event.keyCode === CTRL_CODE) {
+        setTabPressed(false);
+      }
+    });
+  }, []);
 
-  const selectItem = (category: unknown) => {
-    setChosenItem(category);
-    selectItemClick?.(category);
+  const selectItem = (newItem: unknown) => {
+    setChosenItems((prev) => {
+      let newItems;
+
+      if (multiSelect && tabPressed) {
+        newItems = {...prev};
+        if (newItems[newItem[propsMapper.idProp]]) {
+          delete newItems[newItem[propsMapper.idProp]];
+        } else {
+          newItems[newItem[propsMapper.idProp]] = newItem;
+        }
+      } else {
+        newItems = {
+          [newItem[propsMapper.idProp]]: newItem,
+        };
+      }
+
+      selectItemClick?.(Object.values(newItems), newItem);
+      return newItems;
+    });
   };
 
-  return (
-    <>
+  return (<div className={'w-full' + (className || '')}>
       {!items?.length && !editAvailable ? (
         <div className="w-full text-center rounded-md border-custom-red-1 border-2 px-2 py-1">
           {emptyText}
@@ -66,7 +102,7 @@ export function ListViewer(
                 <div
                   onClick={() => selectItem(undefined)}
                   key="new"
-                  className={`cursor-pointer flex justify-between items-center px-2 py-1 ${!chosenItem ? 'rounded-md bg-custom-red-1' : ''}`}
+                  className={`cursor-pointer flex justify-between items-center px-2 py-1 ${!Object.values(chosenItems)?.length ? 'rounded-md bg-custom-red-1' : ''}`}
                 >
                   <span>{newItemText}</span>
                 </div>
@@ -74,16 +110,16 @@ export function ListViewer(
                 <></>
               )}
               {(searchValue
-                ? items.filter((item) => (prop ? item[prop]
-                  : transformFunction(item)).toLowerCase().includes(searchValue.toLowerCase())) : items)?.map((item, index) => (
+                ? items.filter((item) => (propsMapper.itemTitle.prop ? item[propsMapper.itemTitle.prop]
+                  : propsMapper.itemTitle.transformFunction(item)).toLowerCase().includes(searchValue.toLowerCase())) : items)?.map((item, index) => (
                 <li
                   onClick={() => selectItem(item)}
                   // @ts-expect-error need
-                  key={item.id || index}
+                  key={item[propsMapper.idProp || 'id'] || index}
                   // @ts-expect-error need
-                  className={`${itemClass} ${chosenItem?.id === item.id ? 'rounded-md bg-custom-red-1' : ''}`}
+                  className={`mb-1 ${itemClass} ${chosenItems?.[item[propsMapper.idProp || 'id']] ? 'rounded-md bg-custom-red-1' : ''}`}
                 >
-                  <span>{(prop ? item[prop] : transformFunction(item))}</span>
+                  <span>{(propsMapper.itemTitle.prop ? item[propsMapper.itemTitle.prop] : propsMapper.itemTitle.transformFunction(item))}</span>
                   {editAvailable ? (
                     <Image
                       onClick={() => deleteItemClick?.(item)}
@@ -101,6 +137,6 @@ export function ListViewer(
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

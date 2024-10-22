@@ -18,6 +18,8 @@ interface ICounterBlocksEditorProps {
 
 export function CustomersBlockEditorForm({images, refreshCallback}: ICounterBlocksEditorProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]);
+
   const t = useTranslations();
   const {
     register,
@@ -48,11 +50,14 @@ export function CustomersBlockEditorForm({images, refreshCallback}: ICounterBloc
 
   return <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
     <ImagesViewer
+      multiSelect
+      selectedItemsCounterVisible
       images={images}
-      deleteAvailable={true}
+      deleteAvailable={false}
+      selectImageClick={setSelectedImages}
     />
     <Button
-      className="text-amber-50 w-full py-2"
+      className="text-amber-50 w-full py-2 mt-4"
       disabled={isLoading}
       loading={isLoading}
       type={ButtonTypes.SUBMIT}

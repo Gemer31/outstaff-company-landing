@@ -6,103 +6,77 @@ import { StorageReference } from '@firebase/storage';
 import { useEffect, useState } from 'react';
 import { CTRL_CODE } from '@/constants/common.constant';
 import { useTranslations } from 'next-intl';
-import { ICounterBlock } from '@/models/common.model';
 import { ListViewer } from '@/components/ListViewer';
 
 interface ImagesViewerProps {
   deleteAvailable?: boolean;
-  multiple?: boolean;
+  multiSelect?: boolean;
+  selectedItemsCounterVisible?: boolean;
   selectedImages?: StorageReference[];
   deleteImageClick?: (image: StorageReference) => void;
   selectImageClick?: (images: StorageReference[]) => void;
   images?: StorageReference[];
 }
 
-export function ImagesViewer({
-                               deleteAvailable,
-                               images,
-                               deleteImageClick,
-                               selectImageClick,
-                               multiple,
-                               selectedImages,
-                             }: ImagesViewerProps) {
+export function ImagesViewer(
+  {
+    deleteAvailable,
+    images,
+    deleteImageClick,
+    selectImageClick,
+    multiSelect,
+    selectedImages,
+    selectedItemsCounterVisible,
+  }: ImagesViewerProps,
+) {
   const t = useTranslations();
-  const [chosenImages, setChosenImages] = useState<
-    Record<string, StorageReference>
-  >({});
-  const [lastSelectedImage, setLastSelectedImage] =
-    useState<StorageReference>(undefined);
-  const [tabPressed, setTabPressed] = useState<boolean>();
-  const [searchValue, setSearchValue] = useState('');
+  const [chosenImages, setChosenImages] = useState<StorageReference[]>([]);
+  const [lastSelectedImage, setLastSelectedImage] = useState<StorageReference>(undefined);
 
   useEffect(() => {
-    const newData: Record<string, StorageReference> = {};
-    selectedImages?.forEach((img) => {
-      newData[img.name] = img;
-    });
-    setChosenImages(newData);
+    setChosenImages(selectedImages);
     setLastSelectedImage(selectedImages?.at(-1));
   }, [selectedImages]);
 
-  useEffect(() => {
-    document.body.addEventListener('keydown', (event) => {
-      if (event.keyCode === CTRL_CODE) {
-        setTabPressed(true);
-      }
-    });
-    document.body.addEventListener('keyup', (event) => {
-      if (event.keyCode === CTRL_CODE) {
-        setTabPressed(false);
-      }
-    });
-  }, []);
-
-  const selectImage = (image: StorageReference) => {
-    setChosenImages((prev) => {
-      let newImages;
-
-      if (multiple && tabPressed) {
-        newImages = {...prev};
-        if (newImages[image.name]) {
-          delete newImages[image.name];
-        } else {
-          newImages[image.name] = image;
-        }
-      } else {
-        newImages = {
-          [image.name]: image,
-        };
-      }
-
-      selectImageClick?.(Object.values(newImages));
-      return newImages;
-    });
-    setLastSelectedImage(image);
+  const selectImage = (newImages: StorageReference[], lastSelectedImage: StorageReference) => {
+    setChosenImages(newImages);
+    setLastSelectedImage(lastSelectedImage);
+    selectImageClick?.(newImages);
   };
 
   return (
-    <div className="flex justify-between gap-2">
+    <div>
       {images?.length ? (
         <>
-          <ListViewer
-            editAvailable={deleteAvailable}
-            items={images}
-            itemTitle={{transformFunction: (item: ICounterBlock) => (`${item.number}${item.numberPostfix || ''} ${item.text}`)}}
-            deleteItemClick={deleteImageClick}
-            selectItemClick={selectImage}
-          />
-          <div className="w-6/12 flex items-center justify-center text-center rounded-md border-custom-red-1 border-2">
-            {lastSelectedImage ? (
-              <Image
-                width={200}
-                height={200}
-                src={getStorageImageSrc(lastSelectedImage)}
-                alt={lastSelectedImage.name}
-              />
-            ) : (
-              <>{t('selectImage')}</>
-            )}
+          <div className="flex justify-between gap-2">
+            <ListViewer
+              multiSelect={multiSelect}
+              editAvailable={deleteAvailable}
+              items={images}
+              deleteItemClick={deleteImageClick}
+              selectItemClick={selectImage}
+              propsMapper={{idProp: 'fullPath', itemTitle: {prop: 'name'}}}
+            />
+            <div
+              className="w-6/12 flex items-center justify-center text-center rounded-md border-custom-red-1 border-2">
+              {lastSelectedImage ? (
+                <Image
+                  width={200}
+                  height={200}
+                  src={getStorageImageSrc(lastSelectedImage)}
+                  alt={lastSelectedImage.name}
+                />
+              ) : (
+                <>{t('selectImage')}</>
+              )}
+            </div>
           </div>
+          {
+            selectedItemsCounterVisible
+              ? <span>{chosenImages?.length || 0} {t('selectedItems')}</span>
+              : <></>
+          }
+
         </>
       ) : (
         <div className="w-full text-center rounded-md border-custom-red-1 border-2 px-2 py-1">
