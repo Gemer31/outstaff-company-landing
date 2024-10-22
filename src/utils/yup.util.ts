@@ -4,7 +4,6 @@ export class YupUtil {
   private static userName = yup.string().required('fieldRequired');
   private static email = yup
     .string()
-    .required('fieldRequired')
     .email('fieldInvalid');
   private static price = yup
     .string()
@@ -23,9 +22,6 @@ export class YupUtil {
     return yup.object().shape({
       yourOrCompanyName: YupUtil.userName,
       phone: yup.string().required('fieldRequired'),
-      // email: YupUtil.email,
-      // password: YupUtil.password,
-      // passwordRepeat: YupUtil.passwordRepeat,
     });
   }
 

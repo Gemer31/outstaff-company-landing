@@ -26,7 +26,7 @@ const IMAGES = [
 export function TrustUs({  }: ITrustUsProps) {
     const t = useTranslations();
 
-    return <article className="w-full flex justify-center bg-custom-black-1">
+    return <article className="w-full flex justify-center bg-custom-black-1 py-10">
 
         <ContentContainer className="relative">
             <div className="z-10 inner-shadow absolute w-full h-full"></div>

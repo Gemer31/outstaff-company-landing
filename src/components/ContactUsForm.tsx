@@ -100,7 +100,6 @@ export function ContactUsForm({
         {detailedView ? (
           <>
             <InputFormField
-              required={true}
               placeholder={t('Email')}
               label={t('Email')}
               name="Email"

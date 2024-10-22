@@ -22,7 +22,7 @@ export enum ContactLinkType {
 export enum FirestoreCollections {
     SETTINGS = 'settings',
     COUNTER_BLOCKS = 'counterBlocks',
-    VACANCIES = 'vacancies'
+    VACANCIES = 'vacancies',
 }
 
 export enum ButtonColorOptions {
@@ -39,6 +39,8 @@ export enum EditGroup {
     GENERAL = 'general',
     COUNTER_BLOCKS = 'counterBlocks',
     VACANCIES = 'vacancies',
+    CUSTOMERS_BLOCK = 'customersBlock',
+    IMAGES = 'images',
 }
 
 export enum FirestoreDocuments {

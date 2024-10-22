@@ -62,7 +62,7 @@ export function ListViewer(
           <EditorsSearch onChange={setSearchValue}/>
           <div className="px-2 py-1">
             <DragListView onDragEnd={changeItemsPosition} nodeSelector="li">
-              {editAvailable ? (
+              {newItemText ? (
                 <div
                   onClick={() => selectItem(undefined)}
                   key="new"

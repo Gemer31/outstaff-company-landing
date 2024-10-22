@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { IConfig, ICounterBlock, IVacancy } from '@/models/common.model';
 import { collection, getDocs } from '@firebase/firestore';
-import { db } from '@/lib/firebase-config';
+import { db, storage } from '@/lib/firebase-config';
 import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections } from '@/models/enums';
 import { Loader } from '@/UI/loader/Loader';
 import { ContentContainer } from '@/UI/ContentContainer';
@@ -13,12 +13,16 @@ import { useTranslations } from 'next-intl';
 import { VacanciesEditorForm } from '@/components/VacanciesEditorForm';
 import { docsToData } from '@/utils/firebase.util';
 import { CounterBlocksEditorForm } from '@/components/CounterBlocksEditorForm';
+import { listAll, ref, StorageReference } from '@firebase/storage';
+import { ImagesEditorForm } from '@/components/ImagesEditorForm';
+import { CustomersBlockEditorForm } from '@/components/CustomersBlockEditorForm';
 
 export function AdminEditor() {
   const t = useTranslations();
   const [config, setConfig] = useState<IConfig>();
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [counterBlocks, setCounterBlocks] = useState<ICounterBlock[]>([]);
+  const [images, setImages] = useState<StorageReference[]>();
   const [selectedGroup, setSelectedGroup] = useState<EditGroup | string>(
     EditGroup.GENERAL
   );
@@ -40,11 +44,15 @@ export function AdminEditor() {
       getDocs(collection(db, FirestoreCollections.VACANCIES)),
     ]);
 
+    const images = await listAll(ref(storage));
+
     const counterBlocks: ICounterBlock[] = docsToData<ICounterBlock>(counterBlocksQuerySnapshot.docs)
       ?.sort((a, b) => (a.order - b.order));
     const vacancies: IVacancy[] = docsToData<IVacancy>(vacanciesQuerySnapshot.docs)
       ?.sort((a, b) => (a.order - b.order));
 
+    console.log(images.items);
+    setImages(images.items);
     setConfig(settingsQuerySnapshot.docs[0].data() as IConfig);
     setCounterBlocks(counterBlocks);
     setVacancies(vacancies);
@@ -90,6 +98,16 @@ export function AdminEditor() {
               )}
               {selectedGroup === EditGroup.COUNTER_BLOCKS ? (
                 <CounterBlocksEditorForm counterBlocks={counterBlocks} refreshCallback={loadData}/>
+              ) : (
+                <></>
+              )}
+              {selectedGroup === EditGroup.CUSTOMERS_BLOCK ? (
+                <CustomersBlockEditorForm images={images} refreshCallback={loadData}/>
+              ) : (
+                <></>
+              )}
+              {selectedGroup === EditGroup.IMAGES ? (
+                <ImagesEditorForm images={images} refreshCallback={loadData} />
               ) : (
                 <></>
               )}

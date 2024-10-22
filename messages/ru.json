@@ -58,5 +58,12 @@
   "analyst": "Аналитик",
   "qa": "QA",
   "counterBlocksVisible": "Отображать блок с цифрами",
-  "customersBlockVisible": "Отображать блок с компаниями"
+  "customersBlockVisible": "Отображать блок с компаниями",
+  "imagesUploaded": "Картинки загружены",
+  "imageDeleted": "Картинка удалена",
+  "chooseFiles": "Выберите файлы",
+  "selectImage": "Выберите картинку",
+  "noImages": "Нет картинок",
+  "images": "Картинки",
+  "customersBlock": "Блок с компаниями"
 }

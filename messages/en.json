@@ -57,5 +57,12 @@
   "analyst": "Analyst",
   "qa": "QA",
   "counterBlocksVisible": "Counter blocks visible",
-  "customersBlockVisible": "Customers block visible"
+  "customersBlockVisible": "Customers block visible",
+  "imagesUploaded": "Images uploaded",
+  "imageDeleted": "Image deleted",
+  "chooseFiles": "Choose files",
+  "selectImage": "Select image",
+  "noImages": "No images",
+  "images": "Images",
+  "customersBlock": "Customers block"
 }
