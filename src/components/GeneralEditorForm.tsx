@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl';
 import { IConfig } from '@/models/common.model';
 import { db } from '@/lib/firebase-config';
 import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
-import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';
 import { Button } from '@/UI/banner/Button';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 
@@ -36,23 +35,21 @@ export function GeneralEditorForm({
   useEffect(() => {
     if (config) {
       setValue('email', config.email);
-      setValue('phone', config.phone);
+      setValue('counterBlocksVisible', config.counterBlocksVisible);
+      setValue('customersBlockVisible', config.customersBlockVisible);
     }
   }, [config]);
 
   const submitForm = async (formData: {
-    phone?: string;
     email?: string;
+    counterBlocksVisible?: boolean;
+    customersBlockVisible?: boolean;
   }) => {
     setIsLoading(true);
-    const data: WithFieldValue<DocumentData> = {
-      phone: formData.phone,
-      email: formData.email,
-    };
     try {
       await setDoc(
         doc(db, FirestoreCollections.SETTINGS, FirestoreDocuments.CONFIG),
-        data,
+        formData,
       );
       showNotification(t('infoSaved'));
       refreshCallback?.();
@@ -74,13 +71,31 @@ export function GeneralEditorForm({
         error={errors?.email?.message ? t(errors.email.message) : ''}
         register={register}
       />
-      <PhoneFormField
-        label={t('phone')}
-        name="phone"
-        type="text"
-        error={errors?.phone?.message ? t(errors.phone.message) : ''}
-        register={register}
-      />
+      {/*<PhoneFormField*/}
+      {/*  label={t('phone')}*/}
+      {/*  name="phone"*/}
+      {/*  type="text"*/}
+      {/*  error={errors?.phone?.message ? t(errors.phone.message) : ''}*/}
+      {/*  register={register}*/}
+      {/*/>*/}
+      <div className="flex justify-around">
+        <InputFormField
+          inLine
+          label={t("counterBlocksVisible")}
+          name="counterBlocksVisible"
+          type="checkbox"
+          error={t(errors.counterBlocksVisible?.message)}
+          register={register}
+        />
+        <InputFormField
+          inLine
+          label={t("customersBlockVisible")}
+          name="customersBlockVisible"
+          type="checkbox"
+          error={t(errors.customersBlockVisible?.message)}
+          register={register}
+        />
+      </div>
       <Button
         className="text-amber-50 w-full py-2"
         disabled={isLoading}

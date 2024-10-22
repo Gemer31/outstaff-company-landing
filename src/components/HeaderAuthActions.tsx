@@ -6,6 +6,13 @@ import { Link } from '@/i18n/routing';
 
 export function HeaderAuthActions() {
   const session = useSession();
+  // const pathname = usePathname();
+  // const router = useRouter();
+  // useEffect(() => {
+  //   if (pathname === RouterLinks.EDITOR && !session?.data?.user) {
+  //     router.push(RouterLinks.HOME);
+  //   }
+  // }, [pathname]);
 
   return session?.data?.user ?
     <Link className="ml-2" href={RouterLinks.EDITOR}>

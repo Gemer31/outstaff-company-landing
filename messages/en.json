@@ -55,5 +55,7 @@
   "counterBlocks": "Counter blocks",
   "analytics": "Analytics",
   "analyst": "Analyst",
-  "qa": "QA"
+  "qa": "QA",
+  "counterBlocksVisible": "Counter blocks visible",
+  "customersBlockVisible": "Customers block visible"
 }

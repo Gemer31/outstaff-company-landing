@@ -1,22 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ScrollUpButton } from "@/components/ScrollUpButton";
-import { openPopup, PopupController } from "@/UI/popup/popup.controller";
-import { IConfig } from "@/models/common.model";
-import { ContactLinkType, DomIds, RouterLinks } from "@/models/enums";
-import { Button } from "@/UI/banner/Button";
-import { ContactLink } from "@/UI/ContactLink";
-import { ContentContainer } from "@/UI/ContentContainer";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { Link } from "@/i18n/routing";
-import { SessionProvider } from "next-auth/react";
-import { HeaderAuthActions } from "@/components/HeaderAuthActions";
-import { Notification } from "@/UI/notification/Notification";
-import { Popup } from "@/UI/popup/Popup";
-import { ContactUsFormPopup } from "@/components/ContactUsFormPopup";
-import { LINK_CLASS } from "@/constants/common.constant";
+import React, { useEffect, useState } from 'react';
+import { ScrollUpButton } from '@/components/ScrollUpButton';
+import { openPopup, PopupController } from '@/UI/popup/popup.controller';
+import { IConfig } from '@/models/common.model';
+import { DomIds, RouterLinks } from '@/models/enums';
+import { Button } from '@/UI/banner/Button';
+import { ContentContainer } from '@/UI/ContentContainer';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { Link } from '@/i18n/routing';
+import { SessionProvider } from 'next-auth/react';
+import { HeaderAuthActions } from '@/components/HeaderAuthActions';
+import { Notification } from '@/UI/notification/Notification';
+import { Popup } from '@/UI/popup/Popup';
+import { ContactUsFormPopup } from '@/components/ContactUsFormPopup';
+import { LINK_CLASS } from '@/constants/common.constant';
 
 interface IHeaderProps {
   config: IConfig;
@@ -78,12 +77,12 @@ export function Header({ config }: IHeaderProps) {
           </div>
 
           <div className="flex items-center">
-            <ContactLink
-              className="mr-2"
-              type={ContactLinkType.PHONE}
-              value={config.phone}
-              icon={true}
-            />
+            {/*<ContactLink*/}
+            {/*  className="mr-2"*/}
+            {/*  type={ContactLinkType.PHONE}*/}
+            {/*  value={config.phone}*/}
+            {/*  icon={true}*/}
+            {/*/>*/}
             <Button
               className="px-6 py-1"
               loading={false}
@@ -96,7 +95,6 @@ export function Header({ config }: IHeaderProps) {
             </SessionProvider>
           </div>
         </ContentContainer>
-        {/*<Select items={[]}/>*/}
       </header>
     </>
   );

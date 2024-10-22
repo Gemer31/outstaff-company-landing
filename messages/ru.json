@@ -56,5 +56,7 @@
   "counterBlocks": "Блоки с цифрами",
   "analytics": "Аналитика",
   "analyst": "Аналитик",
-  "qa": "QA"
+  "qa": "QA",
+  "counterBlocksVisible": "Отображать блок с цифрами",
+  "customersBlockVisible": "Отображать блок с компаниями"
 }

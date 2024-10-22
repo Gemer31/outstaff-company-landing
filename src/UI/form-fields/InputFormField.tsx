@@ -5,11 +5,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { FormFieldWrapper } from "./FormFieldWrapper";
+import inline from 'parchment/src/blot/inline';
 
 interface IInputFormFieldProps {
+  inLine?: boolean;
   hideValueAvailable?: boolean;
   required?: boolean;
-  placeholder: string;
+  placeholder?: string;
   label: string;
   type: string;
   name: string;
@@ -40,11 +42,12 @@ export function InputFormField({
   placeholder,
   hideValueAvailable,
   onBlur,
+  inLine,
 }: IInputFormFieldProps) {
   const [hideValue, setHideValue] = useState(true);
 
   return (
-    <FormFieldWrapper label={label} error={error} required={required}>
+    <FormFieldWrapper label={label} error={error} required={required} className={inLine ? 'flex items-center' : ''}>
       <input
         className={hostClass + ' ' + (error ? 'border-custom-red-1' : '')}
         placeholder={placeholder}

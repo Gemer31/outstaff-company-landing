@@ -1,8 +1,10 @@
 import { JobSchedule, JobType } from '@/models/enums';
+import * as yup from 'yup';
 
 export interface IConfig {
     email: string;
-    phone: string;
+    counterBlocksVisible?: boolean;
+    customersBlockVisible?: boolean;
 }
 
 export interface ISpecializationCard {

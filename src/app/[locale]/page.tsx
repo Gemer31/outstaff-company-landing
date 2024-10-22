@@ -42,8 +42,8 @@ export default async function HomePage() {
       <main className="w-full flex flex-col items-center">
         <MainPreview/>
         <Specializations/>
-        <TrustUs/>
-        <InfoInCounts counterBlocks={counterBlocks}/>
+        {config.customersBlockVisible ? <TrustUs/> : <></>}
+        {config.counterBlocksVisible ? <InfoInCounts counterBlocks={counterBlocks}/> : <></>}
         {vacancies.length ? <Vacancies vacancies={vacancies}/> : <></>}
         <ContactUs/>
       </main>

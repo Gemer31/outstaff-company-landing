@@ -16,7 +16,6 @@ interface IVacanciesViewerProps {
   };
   deleteItemClick?: (item: unknown) => void;
   selectItemClick?: (item: unknown) => void;
-  // changeItemsPosition?: (items: unknown[]) => void;
   changeItemsPosition?: (fromIndex: number, toIndex: number) => void;
 }
 
@@ -52,22 +51,6 @@ export function ListViewer(
     selectItemClick?.(category);
   };
 
-  // const onDragEnd = (fromIndex, toIndex) => {
-  //   const itemFromChange = {...items[fromIndex]};
-  //   const itemToChange = {...items[toIndex]};
-  //   const newItems = items.map((item, index) => {
-  //     if (index === fromIndex) {
-  //       return itemToChange;
-  //     }
-  //     if (index === toIndex) {
-  //       return itemFromChange;
-  //     }
-  //     return item;
-  //   });
-  //
-  //   changeItemsPosition(newItems);
-  // };
-
   return (
     <>
       {!items?.length && !editAvailable ? (
@@ -92,10 +75,12 @@ export function ListViewer(
               )}
               {(searchValue
                 ? items.filter((item) => (prop ? item[prop]
-                  : transformFunction(item)).toLowerCase().includes(searchValue.toLowerCase())) : items)?.map((item) => (
+                  : transformFunction(item)).toLowerCase().includes(searchValue.toLowerCase())) : items)?.map((item, index) => (
                 <li
                   onClick={() => selectItem(item)}
-                  key={item.id}
+                  // @ts-expect-error need
+                  key={item.id || index}
+                  // @ts-expect-error need
                   className={`${itemClass} ${chosenItem?.id === item.id ? 'rounded-md bg-custom-red-1' : ''}`}
                 >
                   <span>{(prop ? item[prop] : transformFunction(item))}</span>

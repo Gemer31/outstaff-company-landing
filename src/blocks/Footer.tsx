@@ -11,18 +11,6 @@ interface IFooterProps {
 
 export function Footer({config}: IFooterProps) {
   return <footer className="pt-6 pb-2 flex flex-col items-center bg-custom-black-2">
-    {/*<ContentContainer className="flex justify-around items-center relative">*/}
-    {/*  <Image className="absolute top-0 left-0" src="/icons/triangle2.svg" width={60} height={60} alt="Preview" />*/}
-    {/*  <Image className="absolute bottom-2 right-6" src="/icons/rhomb.svg" width={60} height={60} alt="Preview" />*/}
-
-    {/*  <ContactLink type={ContactLinkType.PHONE} value={config.phone} icon={true} />*/}
-    {/*  <div className='w-[200px] h-[100px] rounded-sm flex items-center overflow-hidden'>*/}
-    {/*    <Image src="/icons/logo-transparent.svg" width={200} height={200} alt="logo" />*/}
-    {/*  </div>*/}
-    {/*  <ContactLink type={ContactLinkType.MAIL} value={config.email} icon={true} />*/}
-    {/*</ContentContainer>*/}
-
-
     <ContentContainer className="flex justify-between items-center">
       <section className="w-[200px] h-[100px] rounded-sm flex items-center overflow-hidden">
         <Image src="/icons/logo-transparent.svg" width={200} height={200} alt="logo"/>
@@ -30,10 +18,10 @@ export function Footer({config}: IFooterProps) {
 
 
       <section className="flex gap-x-6">
-        <OffsetBlock>
-          <Image src="/icons/phone.svg" width={30} height={30} alt="Phone Icon"/>
-          <ContactLink type={ContactLinkType.PHONE} value={config.phone}/>
-        </OffsetBlock>
+        {/*<OffsetBlock>*/}
+        {/*  <Image src="/icons/phone.svg" width={30} height={30} alt="Phone Icon"/>*/}
+        {/*  <ContactLink type={ContactLinkType.PHONE} value={config.phone}/>*/}
+        {/*</OffsetBlock>*/}
         <OffsetBlock>
           <Image src="/icons/mail.svg" width={30} height={30} alt="Email Icon"/>
           <ContactLink type={ContactLinkType.MAIL} value={config.email}/>

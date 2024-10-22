@@ -10,7 +10,7 @@ import { YupUtil } from '@/utils/yup.util';
 import { Button } from '@/UI/banner/Button';
 import { ButtonTypes, FirestoreCollections } from '@/models/enums';
 import { ListViewer } from '@/components/ListViewer';
-import { deleteDoc, doc, DocumentData, setDoc, updateDoc, WithFieldValue } from '@firebase/firestore';
+import { deleteDoc, doc, setDoc, updateDoc } from '@firebase/firestore';
 import { db } from '@/lib/firebase-config';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { uuidv4 } from '@firebase/util';
