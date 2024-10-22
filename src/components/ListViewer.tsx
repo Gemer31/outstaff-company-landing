@@ -38,7 +38,6 @@ export function ListViewer(
   {
     multiSelect,
     className,
-    selectedItem,
     items,
     editAvailable,
     deleteItemClick,
@@ -114,9 +113,7 @@ export function ListViewer(
                   : propsMapper.itemTitle.transformFunction(item)).toLowerCase().includes(searchValue.toLowerCase())) : items)?.map((item, index) => (
                 <li
                   onClick={() => selectItem(item)}
-                  // @ts-expect-error need
                   key={item[propsMapper.idProp || 'id'] || index}
-                  // @ts-expect-error need
                   className={`mb-1 ${itemClass} ${chosenItems?.[item[propsMapper.idProp || 'id']] ? 'rounded-md bg-custom-red-1' : ''}`}
                 >
                   <span>{(propsMapper.itemTitle.prop ? item[propsMapper.itemTitle.prop] : propsMapper.itemTitle.transformFunction(item))}</span>

@@ -11,6 +11,7 @@ import { YupUtil } from '@/utils/yup.util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
+import { showNotification } from '@/UI/notification/notification.controller';
 
 interface IContactUsFormProps {
   config: IConfig;
@@ -27,6 +28,7 @@ export function ContactUsForm({
   const {
     register,
     handleSubmit,
+    reset,
     formState: {errors},
   } = useForm({
     mode: 'onSubmit',
@@ -43,7 +45,10 @@ export function ContactUsForm({
     message?: string;
     email?: string;
   }) => {
-    let message: string = `Заказать звонок\n\nИмя: ${formData.yourOrCompanyName};\nТелефон: ${formData.phone}`;
+    let message: string = `Запрос\n\nИмя: ${formData.yourOrCompanyName};\nТелефон: ${formData.phone}`;
+    if (formData.email?.length) {
+      message += `;\nEmail: ${formData.email}`;
+    }
     if (formData.message?.length) {
       message += `;\nКомментарий: ${formData.message}`;
     }
@@ -51,7 +56,9 @@ export function ContactUsForm({
       method: 'POST',
       body: JSON.stringify({message: encodeURI(message)}),
     });
-    submitCallback();
+    reset();
+    showNotification(t("ourManagersCallYou"));
+    submitCallback?.();
   };
 
   return (
@@ -102,7 +109,7 @@ export function ContactUsForm({
             <InputFormField
               placeholder={t('Email')}
               label={t('Email')}
-              name="Email"
+              name="email"
               type="text"
               // @ts-expect-error need
               error={errors?.email?.message ? t(errors.email.message) : ''}

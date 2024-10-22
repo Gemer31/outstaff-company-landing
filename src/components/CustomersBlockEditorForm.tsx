@@ -18,27 +18,26 @@ interface ICounterBlocksEditorProps {
 
 export function CustomersBlockEditorForm({images, refreshCallback}: ICounterBlocksEditorProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedImages, setSelectedImages] = useState([]);
 
   const t = useTranslations();
   const {
-    register,
-    setValue,
     handleSubmit,
-    reset,
-    formState: {errors},
+    formState: {},
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(YupUtil.CounterBlockSchema),
   });
 
-  const submitForm = async (formData: {
-    id: string;
-    number: number;
-    text: string;
-    numberPostfix?: string;
-  }) => {
+  const submitForm = async (
+  //   formData: {
+  //   id: string;
+  //   number: number;
+  //   text: string;
+  //   numberPostfix?: string;
+  // }
+  ) => {
     setIsLoading(true);
+
     try {
       refreshCallback?.();
     } catch {
@@ -54,7 +53,6 @@ export function CustomersBlockEditorForm({images, refreshCallback}: ICounterBloc
       selectedItemsCounterVisible
       images={images}
       deleteAvailable={false}
-      selectImageClick={setSelectedImages}
     />
     <Button
       className="text-amber-50 w-full py-2 mt-4"

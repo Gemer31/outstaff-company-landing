@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { getStorageImageSrc } from '@/utils/firebase.util';
 import { StorageReference } from '@firebase/storage';
 import { useEffect, useState } from 'react';
-import { CTRL_CODE } from '@/constants/common.constant';
 import { useTranslations } from 'next-intl';
 import { ListViewer } from '@/components/ListViewer';
 
