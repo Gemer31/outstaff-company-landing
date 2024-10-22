@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
-import { doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
+import { doc, setDoc } from '@firebase/firestore';
 import { YupUtil } from '@/utils/yup.util';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { useTranslations } from 'next-intl';

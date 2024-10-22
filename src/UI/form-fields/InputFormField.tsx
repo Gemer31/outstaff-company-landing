@@ -1,11 +1,10 @@
 "use client";
 
-import { convertToClass } from "@/utils/convert-to-class.util";
-import Image from "next/image";
-import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
-import { FormFieldWrapper } from "./FormFieldWrapper";
-import inline from 'parchment/src/blot/inline';
+import { convertToClass } from '@/utils/convert-to-class.util';
+import Image from 'next/image';
+import { useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
+import { FormFieldWrapper } from './FormFieldWrapper';
 
 interface IInputFormFieldProps {
   inLine?: boolean;

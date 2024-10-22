@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { openPopup, PopupController } from '@/UI/popup/popup.controller';
 import { IConfig } from '@/models/common.model';
-import { DomIds, RouterLinks } from '@/models/enums';
+import { ContactLinkType, DomIds, RouterLinks } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { ContentContainer } from '@/UI/ContentContainer';
 import { useTranslations } from 'next-intl';
@@ -16,6 +16,7 @@ import { Notification } from '@/UI/notification/Notification';
 import { Popup } from '@/UI/popup/Popup';
 import { ContactUsFormPopup } from '@/components/ContactUsFormPopup';
 import { LINK_CLASS } from '@/constants/common.constant';
+import { ContactLink } from '@/UI/ContactLink';
 
 interface IHeaderProps {
   config: IConfig;
@@ -77,12 +78,12 @@ export function Header({ config }: IHeaderProps) {
           </div>
 
           <div className="flex items-center">
-            {/*<ContactLink*/}
-            {/*  className="mr-2"*/}
-            {/*  type={ContactLinkType.PHONE}*/}
-            {/*  value={config.phone}*/}
-            {/*  icon={true}*/}
-            {/*/>*/}
+            <ContactLink
+              className="mr-2"
+              type={ContactLinkType.PHONE}
+              value={config.email}
+              icon={true}
+            />
             <Button
               className="px-6 py-1"
               loading={false}
