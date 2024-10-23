@@ -57,7 +57,15 @@ export class YupUtil {
       text: yup.string().required('fieldRequired'),
       numberPostfix: yup.string(),
     });
-}
+  }
+
+  static get customersBlockSchema() {
+    return yup.object().shape({
+      itemsAmountOnPage: yup.number().required('fieldRequired'),
+      images: yup.array().required('fieldRequired'),
+      autoplay: yup.boolean(),
+    });
+  }
 
   static get VacanciesFormSchema() {
     return yup.object().shape({

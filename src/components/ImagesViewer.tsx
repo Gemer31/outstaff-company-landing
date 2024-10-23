@@ -10,7 +10,6 @@ import { ListViewer } from '@/components/ListViewer';
 interface ImagesViewerProps {
   deleteAvailable?: boolean;
   multiSelect?: boolean;
-  selectedItemsCounterVisible?: boolean;
   selectedImages?: StorageReference[];
   deleteImageClick?: (image: StorageReference) => void;
   selectImageClick?: (images: StorageReference[]) => void;
@@ -25,7 +24,6 @@ export function ImagesViewer(
     selectImageClick,
     multiSelect,
     selectedImages,
-    selectedItemsCounterVisible,
   }: ImagesViewerProps,
 ) {
   const t = useTranslations();
@@ -52,6 +50,7 @@ export function ImagesViewer(
               multiSelect={multiSelect}
               editAvailable={deleteAvailable}
               items={images}
+              selectedItems={chosenImages}
               deleteItemClick={deleteImageClick}
               selectItemClick={selectImage}
               propsMapper={{idProp: 'fullPath', itemTitle: {prop: 'name'}}}
@@ -71,8 +70,11 @@ export function ImagesViewer(
             </div>
           </div>
           {
-            selectedItemsCounterVisible
-              ? <span>{chosenImages?.length || 0} {t('selectedItems')}</span>
+            multiSelect
+              ? <div className="flex justify-between">
+                <span>{chosenImages?.length || 0} {t('selectedItems')}</span>
+                <span>{t('useCtrlForMultiSelect')}</span>
+              </div>
               : <></>
           }
 

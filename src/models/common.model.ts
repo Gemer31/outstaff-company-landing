@@ -6,6 +6,18 @@ export interface IConfig {
     customersBlockVisible?: boolean;
 }
 
+export interface ICustomersBlock {
+    images: string[];
+    itemsAmountOnPage: number;
+    autoplay?: boolean;
+}
+
+export interface PlainStorageReference {
+    name: string;
+    bucket: string;
+    fullPath: string;
+}
+
 export interface ISpecializationCard {
     title: string;
     icons: string[];

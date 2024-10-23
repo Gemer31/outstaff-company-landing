@@ -56,7 +56,11 @@ export function ImagesEditorForm({
   };
 
   return (
-    <form onSubmit={uploadFiles}>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      uploadFiles();
+    }}>
       <ImagesViewer
         deleteAvailable={true}
         images={images}

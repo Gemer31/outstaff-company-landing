@@ -117,7 +117,7 @@ export function VacanciesEditorForm({
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
       <ListViewer
         editAvailable
-        selectedItem={selectedVacancy}
+        selectedItems={[selectedVacancy]}
         items={vacancies}
         deleteItemClick={deleteVacancy}
         selectItemClick={selectVacancy}

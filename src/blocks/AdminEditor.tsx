@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { IConfig, ICounterBlock, IVacancy } from '@/models/common.model';
+import { IConfig, ICounterBlock, ICustomersBlock, IVacancy } from '@/models/common.model';
 import { collection, getDocs } from '@firebase/firestore';
 import { db, storage } from '@/lib/firebase-config';
 import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections } from '@/models/enums';
@@ -20,6 +20,7 @@ import { CustomersBlockEditorForm } from '@/components/CustomersBlockEditorForm'
 export function AdminEditor() {
   const t = useTranslations();
   const [config, setConfig] = useState<IConfig>();
+  const [customersBlock, setCustomersBlock] = useState<ICustomersBlock>();
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [counterBlocks, setCounterBlocks] = useState<ICounterBlock[]>([]);
   const [images, setImages] = useState<StorageReference[]>();
@@ -37,10 +38,12 @@ export function AdminEditor() {
     const [
       settingsQuerySnapshot,
       counterBlocksQuerySnapshot,
+      customersBlockQuerySnapshot,
       vacanciesQuerySnapshot,
     ] = await Promise.all([
       getDocs(collection(db, FirestoreCollections.SETTINGS)),
       getDocs(collection(db, FirestoreCollections.COUNTER_BLOCKS)),
+      getDocs(collection(db, FirestoreCollections.CUSTOMERS_BLOCK)),
       getDocs(collection(db, FirestoreCollections.VACANCIES)),
     ]);
 
@@ -54,6 +57,7 @@ export function AdminEditor() {
     console.log(images.items);
     setImages(images.items);
     setConfig(settingsQuerySnapshot.docs[0].data() as IConfig);
+    setCustomersBlock(customersBlockQuerySnapshot.docs[0].data() as ICustomersBlock);
     setCounterBlocks(counterBlocks);
     setVacancies(vacancies);
   };
@@ -102,7 +106,7 @@ export function AdminEditor() {
                 <></>
               )}
               {selectedGroup === EditGroup.CUSTOMERS_BLOCK ? (
-                <CustomersBlockEditorForm images={images} refreshCallback={loadData}/>
+                <CustomersBlockEditorForm customersBlock={customersBlock} images={images} refreshCallback={loadData}/>
               ) : (
                 <></>
               )}

@@ -67,5 +67,13 @@
   "noImages": "No images",
   "images": "Images",
   "customersBlock": "Customers block",
-  "selectedItems": "selected items"
+  "selectedItems": "selected items",
+  "itemsAmountOnPage": "Items amount on page",
+  "enterItemsAmountOnPage": "Items amount on page",
+  "useCtrlForMultiSelect": "Use Ctrl for multi select",
+  "developer": "developer",
+  "support": "support",
+  "technicalArchitect": "technicalArchitect",
+  "productManager": "productManager",
+  "autoplay": "Autoplay"
 }

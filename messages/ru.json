@@ -67,5 +67,13 @@
   "noImages": "Нет картинок",
   "images": "Картинки",
   "customersBlock": "Блок с компаниями",
-  "selectedItems": "выбранных элементов"
+  "selectedItems": "выбранных элементов",
+  "itemsAmountOnPage": "Количество элементов на странице",
+  "enterItemsAmountOnPage": "Введите количество элементов на странице",
+  "useCtrlForMultiSelect": "Используйте Ctrl для выбора нескольких элементов",
+  "developer": "Программист",
+  "support": "Поддержка",
+  "technicalArchitect": "Архитектор",
+  "productManager": "Продукт менеджер",
+  "autoplay": "Автоплей"
 }

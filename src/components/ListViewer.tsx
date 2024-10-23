@@ -7,7 +7,7 @@ import { CTRL_CODE } from '@/constants/common.constant';
 
 interface IVacanciesViewerProps {
   className?: string;
-  selectedItem?: unknown;
+  selectedItems?: unknown[];
   items: unknown[];
   editAvailable?: boolean;
   multiSelect?: boolean;
@@ -46,11 +46,20 @@ export function ListViewer(
     emptyText,
     newItemText,
     propsMapper,
+    selectedItems,
   }: IVacanciesViewerProps,
 ) {
   const [tabPressed, setTabPressed] = useState<boolean>();
   const [chosenItems, setChosenItems] = useState<Record<string, unknown>>({});
   const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    if (selectedItems?.length) {
+      const newItems = {};
+      selectedItems.forEach((item) => newItems[item[propsMapper.idProp]] = item);
+      setChosenItems(newItems);
+    }
+  }, [selectedItems]);
 
   useEffect(() => {
     document.body.addEventListener('keydown', (event) => {
@@ -77,9 +86,9 @@ export function ListViewer(
           newItems[newItem[propsMapper.idProp]] = newItem;
         }
       } else {
-        newItems = {
+        newItems = newItem ? {
           [newItem[propsMapper.idProp]]: newItem,
-        };
+        } : [];
       }
 
       selectItemClick?.(Object.values(newItems), newItem);

@@ -22,6 +22,7 @@ export enum ContactLinkType {
 export enum FirestoreCollections {
     SETTINGS = 'settings',
     COUNTER_BLOCKS = 'counterBlocks',
+    CUSTOMERS_BLOCK = 'customersBlock',
     VACANCIES = 'vacancies',
 }
 
@@ -48,13 +49,12 @@ export enum FirestoreDocuments {
 }
 
 export enum JobType {
-    DEVELOPER = "Developer",
-    SUPPORT = "Support",
-    QUALITY_ASSURANCE = "Quality Assurance",
-    IT_INFRASTRUCTURE = "IT Infrastructure",
-    TECHNICAL_ARCHITECT = "Technical Architect",
-    PRODUCT_MANAGER = "Product Manager",
-    ANALYST = "Analyst",
+    DEVELOPER = "developer",
+    SUPPORT = "support",
+    QA = "qa",
+    TECHNICAL_ARCHITECT = "technicalArchitect",
+    PRODUCT_MANAGER = "productManager",
+    ANALYST = "analyst",
 }
 
 export enum JobSchedule {

@@ -35,11 +35,12 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
   });
 
   const selectCounterBlock = (newItems?: ICounterBlock[]) => {
-    setValue('id', newItems[0]?.id);
-    setValue('order', newItems[0]?.order);
-    setValue('number', newItems[0]?.number);
-    setValue('text', newItems[0]?.text);
-    setValue('numberPostfix', newItems[0]?.numberPostfix);
+    const selectedItem = newItems?.[0];
+    setValue('id', selectedItem?.id);
+    setValue('order', selectedItem?.order);
+    setValue('number', selectedItem?.number);
+    setValue('text', selectedItem?.text);
+    setValue('numberPostfix', selectedItem?.numberPostfix);
   };
 
   const submitForm = async (formData: {
@@ -129,6 +130,7 @@ export function CounterBlocksEditorForm({counterBlocks, refreshCallback}: ICount
       changeItemsPosition={changeCounterBlocksPosition}
     />
     <InputFormField
+      className="mt-4"
       required
       placeholder={t('enterNumber')}
       label={t('number')}
