@@ -42,6 +42,7 @@ export function VacanciesEditorForm({
   });
 
   const submitForm = async (formData: {
+    id?: string;
     title?: string;
     experience?: string;
     description: string;
@@ -50,15 +51,12 @@ export function VacanciesEditorForm({
     hot: boolean;
   }) => {
     setIsLoading(true);
-    const data: WithFieldValue<DocumentData> = {
-      id: uuidv4(),
-      title: formData.title,
-      experience: formData.experience,
-      description: formData.description,
-      type: formData.type,
-      schedule: formData.schedule,
-      hot: formData.hot,
-    };
+    const data = {...formData};
+
+    if (!formData.id) {
+      data.id = uuidv4();
+    }
+
     try {
       await setDoc(doc(db, FirestoreCollections.VACANCIES, data.id), data);
       setSelectedVacancy(null);
@@ -95,6 +93,7 @@ export function VacanciesEditorForm({
 
   const selectVacancy = (newVacancies: IVacancy[]) => {
     if (newVacancies[0]) {
+      setValue('id', newVacancies[0].id);
       setValue('title', newVacancies[0].title);
       setValue('experience', newVacancies[0].experience);
       setValue('hot', newVacancies[0].hot);
@@ -105,6 +104,7 @@ export function VacanciesEditorForm({
     } else {
       reset();
       descriptionChange('');
+      setSelectedVacancy(newVacancies[0]);
     }
   };
 
@@ -117,7 +117,7 @@ export function VacanciesEditorForm({
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
       <ListViewer
         editAvailable
-        selectedItems={[selectedVacancy]}
+        selectedItems={selectedVacancy ? [selectedVacancy] : []}
         items={vacancies}
         deleteItemClick={deleteVacancy}
         selectItemClick={selectVacancy}

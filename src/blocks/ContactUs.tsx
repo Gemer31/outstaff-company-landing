@@ -46,7 +46,7 @@ export function ContactUs() {
               loading={false}
               callback={requestCallClick}
             >
-              {t("requestCall")}
+              {t("contact")}
             </Button>
           </section>
         </TitleContainer>
