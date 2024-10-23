@@ -8,7 +8,7 @@ import { SelectFormField } from '@/UI/form-fields/SelectFormField';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { TextEditor } from '@/UI/TextEditor';
 import { YupUtil } from '@/utils/yup.util';
-import { deleteDoc, doc, DocumentData, setDoc, WithFieldValue } from '@firebase/firestore';
+import { deleteDoc, doc, setDoc } from '@firebase/firestore';
 import { uuidv4 } from '@firebase/util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslations } from 'next-intl';

@@ -69,6 +69,7 @@ export class YupUtil {
 
   static get VacanciesFormSchema() {
     return yup.object().shape({
+      id: yup.string(),
       title: yup.string().required(),
       experience: yup.string(),
       description: yup.string().required(),
