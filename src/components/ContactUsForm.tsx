@@ -107,8 +107,8 @@ export function ContactUsForm({
         {/*/>*/}
         <InputFormField
           required
-          placeholder={t('Email')}
-          label={t('Email')}
+          placeholder="Email"
+          label="Email"
           name="email"
           type="text"
           error={errors?.email?.message ? t(errors.email.message) : ''}

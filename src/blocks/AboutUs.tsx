@@ -6,7 +6,7 @@ import Image from 'next/image';
 export function AboutUs() {
   const t = useTranslations();
 
-  return <article className="w-full flex justify-center bg-custom-black-1">
+  return <article className="w-full flex justify-center bg-custom-black-1 py-10">
     <ContentContainer>
       <TitleContainer title={t('aboutUs')}>
         <div className="w-full flex flex-row-reverse relative">
