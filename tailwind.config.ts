@@ -15,6 +15,7 @@ const config: Config = {
         'custom-red-2': '#f76868',
         'custom-black-1': '#282828',
         'custom-black-2': '#1C1C1C',
+        'custom-black-3': '#353432',
         'custom-gray-1': '#2F2F2F'
       },
       backgroundColor: {

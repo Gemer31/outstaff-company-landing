@@ -1,7 +1,7 @@
 import { ContactUs } from '@/blocks/ContactUs';
 import { Footer } from '@/blocks/Footer';
 import { InfoInCounts } from '@/blocks/InfoInCounts';
-import { MainPreview } from '@/blocks/main-preview/MainPreview';
+import { MainPreview } from '@/blocks/MainPreview';
 import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
@@ -12,6 +12,7 @@ import { docsToData, getPlainStorageReferences } from '@/utils/firebase.util';
 import { collection, getDocs, limit, orderBy, query } from '@firebase/firestore';
 import { Header } from '@/blocks/Header';
 import { listAll, ref } from '@firebase/storage';
+import { AboutUs } from '@/blocks/AboutUs';
 
 export default async function HomePage() {
   const [
@@ -47,13 +48,14 @@ export default async function HomePage() {
       <main className="w-full flex flex-col items-center">
         <MainPreview/>
         <Specializations/>
+        {config.counterBlocksVisible ? <InfoInCounts counterBlocks={counterBlocks}/> : <></>}
         {config.customersBlockVisible
           ? <TrustUs
             customerBlockConfig={customersBlockConfig}
             images={getPlainStorageReferences(images.items)}
           /> : <></>}
-        {config.counterBlocksVisible ? <InfoInCounts counterBlocks={counterBlocks}/> : <></>}
         {vacancies.length ? <Vacancies vacancies={vacancies}/> : <></>}
+        <AboutUs/>
         <ContactUs/>
       </main>
       <Footer config={config}/>

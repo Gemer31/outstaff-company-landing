@@ -9,10 +9,10 @@
   "yourOrCompanyName": "Ваше имя или название компании",
   "youAgreeProcessingPersonalData": "Нажимая на кнопку, вы даете согласие на обработку персональных данных",
   "trustUs": "Нам доверяют",
-  "youCanAlsoContactUsByPhoneAndEmail": "Вы также можете связаться с нами самостоятельно по телефону или написать на почту",
+  "youCanAlsoContactUsByPhoneAndEmail": "Вы также можете связаться с нами самостоятельно через Telegram или написать на почту",
   "contactUs": "Свяжитесь с нами",
   "contact": "Связаться",
-  "specialization": "Специальзация",
+  "specialization": "Специализация",
   "frontend": "Frontend",
   "backend": "Backend",
   "mobile": "Mobile",
@@ -76,5 +76,10 @@
   "support": "Поддержка",
   "technicalArchitect": "Архитектор",
   "productManager": "Продукт менеджер",
-  "autoplay": "Автоплей"
+  "autoplay": "Автоплей",
+  "staffProjectForThreeDays": "Укомплектуем ваш проект за 3 рабочих дня",
+  "aboutUs": "О нас",
+  "aboutUsDescription": "Мы активно растущая команда, которая следит за качеством и своевременностью выполнения заказов. Активно работаем по модели outstaff и outsource. Потребности заказчика мы ставим первоочередной задачей, что позволяет гибко, качественно и в кратчайшие сроки их закрывать. Инкрементируйте ваши бизнес процессы вместе с нами!",
+  "companyInfo": "Информация о компании",
+  "enterCompanyInfo": "Введите информацию о компании"
 }

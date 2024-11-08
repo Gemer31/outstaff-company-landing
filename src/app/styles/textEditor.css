@@ -1,0 +1,23 @@
+.readonly-ql-editor {
+    height: fit-content !important;
+}
+
+.ql-editor.ql-blank::before {
+    color: var(--foreground) !important;
+    font-style: normal !important;
+}
+
+.ql-container {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+
+.ql-toolbar.ql-snow {
+    border-right: none !important;
+    border-top: none !important;
+    border-left: none !important;
+}
+
+.ql-container.ql-snow {
+    border: none !important;
+}

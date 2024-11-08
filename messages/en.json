@@ -9,7 +9,7 @@
   "yourOrCompanyName": "Your or company name",
   "youAgreeProcessingPersonalData": "By clicking the button, you agree to the processing of personal data",
   "trustUs": "Trust us",
-  "youCanAlsoContactUsByPhoneAndEmail": "You can also contact us by phone or email.",
+  "youCanAlsoContactUsByPhoneAndEmail": "You can also contact us by telegram or email",
   "contactUs": "Contact us",
   "contact": "Contact",
   "specialization": "Specialization",
@@ -76,5 +76,10 @@
   "support": "support",
   "technicalArchitect": "technicalArchitect",
   "productManager": "productManager",
-  "autoplay": "Autoplay"
+  "autoplay": "Autoplay",
+  "staffProjectForThreeDays": "We will staff your project within 3 working days",
+  "aboutUs": "About us",
+  "aboutUsDescription": "We are an actively growing team that monitors the quality and timeliness of order fulfillment. We actively work on outstaffing and outsourcing models. According to customer requirements, we install a priority coupling, which ensures flexible, high-quality and shortest possible time to close them. Increment your business processes with us!",
+  "companyInfo": "Company info",
+  "enterCompanyInfo": "Enter company info"
 }

@@ -1,4 +1,9 @@
 @import 'react-quill/dist/quill.snow.css';
+@import "../styles/aboutUs.css";
+@import "../styles/textEditor.css";
+@import "../styles/mainPreview.css";
+@import "../styles/field.css";
+@import "../styles/contactUs.css";
 
 @tailwind base;
 @tailwind components;
@@ -44,43 +49,6 @@ body {
     background: radial-gradient(circle, rgba(40, 40, 40, 0) 0%, rgba(40, 40, 40, 1) 100%);
 }
 
-.background-image {
-    background-image: url(/images/background.png);
-}
-
-.field-label::after {
-    content: '*';
-    margin-left: 2px;
-    font-size: 1rem;
-    font-weight: normal;
-    color: rgba(239, 68, 68, 1);
-}
-
-/*text editor*/
-.readonly-ql-editor {
-    height: fit-content !important;
-}
-
-.ql-editor.ql-blank::before {
-    color: var(--foreground) !important;
-    font-style: normal !important;
-}
-
-.ql-container {
-    font-family: inherit !important;
-    font-size: inherit !important;
-}
-
-.ql-toolbar.ql-snow {
-    border-right: none !important;
-    border-top: none !important;
-    border-left: none !important;
-}
-
-.ql-container.ql-snow {
-    border: none !important;
-}
-
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -89,53 +57,4 @@ body {
         transform: rotate(360deg);
     }
 }
-
-.text-focus-in {
-    animation: text-focus-in 1s cubic-bezier(.55, .085, .68, .53) both;
-    animation-delay: .5s;
-}
-
-@keyframes text-focus-in {
-    0% {
-        filter: blur(12px);
-        opacity: 0
-    }
-    100% {
-        filter: blur(0);
-        opacity: 1
-    }
-}
-
-
-.roll-in-right {
-    -webkit-animation: roll-in-right 1s ease-out both;
-    animation: roll-in-right 1s ease-out both;
-}
-
-@-webkit-keyframes roll-in-right {
-    0% {
-        -webkit-transform: translateX(800px) rotate(540deg);
-        transform: translateX(800px) rotate(540deg);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0) rotate(0deg);
-        transform: translateX(0) rotate(0deg);
-        opacity: 1;
-    }
-}
-
-@keyframes roll-in-right {
-    0% {
-        -webkit-transform: translateX(800px) rotate(540deg);
-        transform: translateX(800px) rotate(540deg);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0) rotate(0deg);
-        transform: translateX(0) rotate(0deg);
-        opacity: 1;
-    }
-}
-
 

@@ -2,6 +2,8 @@ import { JobSchedule, JobType } from '@/models/enums';
 
 export interface IConfig {
     email: string;
+    telegramLink: string;
+    companyInfo: string;
     counterBlocksVisible?: boolean;
     customersBlockVisible?: boolean;
 }

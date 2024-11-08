@@ -1,5 +1,4 @@
 import { ContentContainer } from "@/UI/ContentContainer";
-import './main-preview.css'
 
 export function MainPreview() {
   return (
@@ -8,7 +7,7 @@ export function MainPreview() {
         <div className="z-10 w-full h-full main-preview-shadow-vertical absolute top-0 left-0"></div>
         <div className="z-10 w-full h-full main-preview-shadow-gorizontal absolute top-0 left-0"></div>
 
-        <div className="max-w-2xl text-center text-focus-in z-10 absolute text-3xl">
+        <div className="max-w-2xl text-center main-preview-text-focus-in z-10 absolute text-3xl">
           <span className="font-bold text-custom-red-1">Increment</span> - Интегратор
           digital-решений для бизнеса и государства
         </div>

@@ -10,6 +10,8 @@ import { db } from '@/lib/firebase-config';
 import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
+import { FormFieldWrapper } from '@/UI/form-fields/FormFieldWrapper';
+import { TextEditor } from '@/UI/TextEditor';
 
 interface GeneralEditorFormProps {
   config: IConfig;
@@ -37,11 +39,14 @@ export function GeneralEditorForm({
       setValue('email', config.email);
       setValue('counterBlocksVisible', config.counterBlocksVisible);
       setValue('customersBlockVisible', config.customersBlockVisible);
+      setValue('telegramLink', config.telegramLink);
+      companyInfoChange(config.companyInfo);
     }
   }, [config]);
 
   const submitForm = async (formData: {
     email?: string;
+    companyInfo?: string;
     counterBlocksVisible?: boolean;
     customersBlockVisible?: boolean;
   }) => {
@@ -60,6 +65,10 @@ export function GeneralEditorForm({
     }
   };
 
+  const companyInfoChange = (v: string) => {
+    setValue('companyInfo', v);
+  };
+
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
       <InputFormField
@@ -71,17 +80,30 @@ export function GeneralEditorForm({
         error={errors?.email?.message ? t(errors.email.message) : ''}
         register={register}
       />
-      {/*<PhoneFormField*/}
-      {/*  label={t('phone')}*/}
-      {/*  name="phone"*/}
-      {/*  type="text"*/}
-      {/*  error={errors?.phone?.message ? t(errors.phone.message) : ''}*/}
-      {/*  register={register}*/}
-      {/*/>*/}
+      <InputFormField
+        required
+        placeholder="Telegram"
+        label="Telegram"
+        name="telegramLink"
+        type="text"
+        error={errors?.telegramLink?.message ? t(errors.telegramLink.message) : ''}
+        register={register}
+      />
+      <FormFieldWrapper
+        required
+        label={t('companyInfo')}
+        error={errors?.companyInfo?.message ? t(errors.companyInfo.message) : ''}
+      >
+        <TextEditor
+          placeholder={t('enterCompanyInfo')}
+          value={config.companyInfo}
+          onChange={companyInfoChange}
+        />
+      </FormFieldWrapper>
       <div className="flex justify-around">
         <InputFormField
           inLine
-          label={t("counterBlocksVisible")}
+          label={t('counterBlocksVisible')}
           name="counterBlocksVisible"
           type="checkbox"
           error={t(errors.counterBlocksVisible?.message)}
@@ -89,7 +111,7 @@ export function GeneralEditorForm({
         />
         <InputFormField
           inLine
-          label={t("customersBlockVisible")}
+          label={t('customersBlockVisible')}
           name="customersBlockVisible"
           type="checkbox"
           error={t(errors.customersBlockVisible?.message)}

@@ -42,7 +42,7 @@ export function Header({ config }: IHeaderProps) {
 
   const requestCallClick = () => {
     openPopup({
-      popupId: DomIds.REQUEST_CALL_POPUP_ID,
+      popupId: DomIds.CONTACT_US_POPUP_ID,
     });
   };
 
@@ -80,16 +80,16 @@ export function Header({ config }: IHeaderProps) {
           <div className="flex items-center">
             <ContactLink
               className="mr-2"
-              type={ContactLinkType.PHONE}
+              type={ContactLinkType.MAIL}
               value={config.email}
-              icon={true}
+              iconVisible={true}
             />
             <Button
               className="px-6 py-1"
               loading={false}
               callback={requestCallClick}
             >
-              {t("requestCall")}
+              {t("contact")}
             </Button>
             <SessionProvider>
               <HeaderAuthActions />

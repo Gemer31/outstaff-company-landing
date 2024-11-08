@@ -5,7 +5,6 @@ import { ButtonTypes, ContactLinkType } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { ContactLink } from '@/UI/ContactLink';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
-import { PhoneFormField } from '@/UI/form-fields/PhoneFormField';
 import { TextareaFormField } from '@/UI/form-fields/TextareaFormField';
 import { YupUtil } from '@/utils/yup.util';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -45,7 +44,10 @@ export function ContactUsForm({
     message?: string;
     email?: string;
   }) => {
-    let message: string = `Запрос\n\nИмя: ${formData.yourOrCompanyName};\nТелефон: ${formData.phone}`;
+    let message: string = `Запрос\n\nИмя: ${formData.yourOrCompanyName}`;
+    if (formData.phone?.length) {
+      message += `;\nТелефон: ${formData.phone}`;
+    }
     if (formData.email?.length) {
       message += `;\nEmail: ${formData.email}`;
     }
@@ -65,19 +67,19 @@ export function ContactUsForm({
     <>
       {detailedView ? (
         <>
-          <div className="flex gap-x-6">
+          <div className="flex gap-x-2">
+            <ContactLink
+              valueVisible={false}
+              type={ContactLinkType.TELEGRAM}
+              value={config.telegramLink}
+            />
+            |
             <ContactLink
               className="ml-2"
               type={ContactLinkType.MAIL}
               value={config.email}
-              icon={true}
+              iconVisible={true}
             />
-            {/*<ContactLink*/}
-            {/*  className="ml-2"*/}
-            {/*  type={ContactLinkType.PHONE}*/}
-            {/*  value={config.phone}*/}
-            {/*  icon={true}*/}
-            {/*/>*/}
           </div>
 
           <div className="separator my-4"></div>
@@ -87,7 +89,7 @@ export function ContactUsForm({
       )}
       <form onSubmit={handleSubmit(submitForm)}>
         <InputFormField
-          required={true}
+          required
           placeholder={t('yourOrCompanyName')}
           label={t('yourOrCompanyName')}
           type="text"
@@ -95,26 +97,26 @@ export function ContactUsForm({
           error={errors?.yourOrCompanyName?.message ? t(errors.yourOrCompanyName.message) : ''}
           register={register}
         />
-        <PhoneFormField
-          required={true}
-          label={t('phone')}
+        {/*<PhoneFormField*/}
+        {/*  required={true}*/}
+        {/*  label={t('phone')}*/}
+        {/*  type="text"*/}
+        {/*  name="phone"*/}
+        {/*  error={errors?.phone?.message ? t(errors.phone.message) : ''}*/}
+        {/*  register={register}*/}
+        {/*/>*/}
+        <InputFormField
+          required
+          placeholder={t('Email')}
+          label={t('Email')}
+          name="email"
           type="text"
-          name="phone"
-          error={errors?.phone?.message ? t(errors.phone.message) : ''}
+          error={errors?.email?.message ? t(errors.email.message) : ''}
           register={register}
         />
-
         {detailedView ? (
           <>
-            <InputFormField
-              placeholder={t('Email')}
-              label={t('Email')}
-              name="email"
-              type="text"
-              // @ts-expect-error need
-              error={errors?.email?.message ? t(errors.email.message) : ''}
-              register={register}
-            />
+
             <TextareaFormField
               placeholder={t('enterMessage')}
               label={t('message')}
@@ -142,19 +144,19 @@ export function ContactUsForm({
 
             <span>{t('youCanAlsoContactUsByPhoneAndEmail')}</span>
 
-            <div className="flex gap-x-6">
+            <div className="flex gap-x-2 mt-1">
+              <ContactLink
+                valueVisible={false}
+                type={ContactLinkType.TELEGRAM}
+                value={config.telegramLink}
+              />
+              |
               <ContactLink
                 className="ml-2"
                 type={ContactLinkType.MAIL}
                 value={config.email}
-                icon={true}
+                iconVisible={true}
               />
-              {/*<ContactLink*/}
-              {/*  className="ml-2"*/}
-              {/*  type={ContactLinkType.PHONE}*/}
-              {/*  value={config.phone}*/}
-              {/*  icon={true}*/}
-              {/*/>*/}
             </div>
           </>
         ) : (

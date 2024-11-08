@@ -36,7 +36,7 @@ export function Vacancies({ vacancies, detailedView }: IVacanciesProps) {
   };
 
   return (
-    <article className="w-full bg-custom-black-1 flex justify-center py-10">
+    <article className="w-full bg-custom-black-3 flex justify-center py-10">
       <ContentContainer>
         <TitleContainer
           title={t("vacancies")}

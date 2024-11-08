@@ -8,15 +8,16 @@ export enum RouterLinks {
 
 export enum DomIds {
     NOTIFICATION = 'notification',
-    REQUEST_CALL_POPUP_ID = 'requestCallPopupId',
+    CONTACT_US_POPUP_ID = 'contactUsPopupId',
     POPUP_ID = 'popupId',
     POPUP_TITLE = "popupTitle",
     POPUP_CONTENT = "popupContent",
 }
 
 export enum ContactLinkType {
-    PHONE = "tel:",
-    MAIL = "mailto:"
+    PHONE = "phone",
+    MAIL = "mail",
+    TELEGRAM = "telegram"
 }
 
 export enum FirestoreCollections {

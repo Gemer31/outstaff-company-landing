@@ -21,15 +21,16 @@ export class YupUtil {
   static get ContactUsFormSchema() {
     return yup.object().shape({
       yourOrCompanyName: YupUtil.userName,
-      phone: yup.string().required('fieldRequired'),
+      email: YupUtil.email.required('fieldRequired'),
+      // phone: yup.string().required('fieldRequired'),
     });
   }
 
   static get ContactUsFormDetailedSchema() {
     return yup.object().shape({
       yourOrCompanyName: YupUtil.userName,
-      phone: yup.string().required('fieldRequired'),
-      email: YupUtil.email,
+      // phone: yup.string().required('fieldRequired'),
+      email: YupUtil.email.required('fieldRequired'),
       message: yup.string(),
     });
   }
@@ -44,6 +45,8 @@ export class YupUtil {
   static get GeneralEditorFormSchema() {
     return yup.object().shape({
       email: YupUtil.email,
+      telegramLink: yup.string().required('fieldRequired'),
+      companyInfo: yup.string().required('fieldRequired'),
       counterBlocksVisible: yup.boolean(),
       customersBlockVisible: yup.boolean(),
     });

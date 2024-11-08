@@ -14,11 +14,11 @@ interface IContactUsFormProps {
 export function ContactUsFormPopup({ config }: IContactUsFormProps) {
   const t = useTranslations();
   const submitForm = () => {
-    closePopup({ popupId: DomIds.REQUEST_CALL_POPUP_ID });
+    closePopup({ popupId: DomIds.CONTACT_US_POPUP_ID });
   };
 
   return (
-    <Popup id={DomIds.REQUEST_CALL_POPUP_ID} title={t("requestCall")}>
+    <Popup id={DomIds.CONTACT_US_POPUP_ID} title={t("contact")}>
       <ContactUsForm config={config} submitCallback={submitForm} />
     </Popup>
   );

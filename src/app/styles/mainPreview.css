@@ -5,3 +5,21 @@
 .main-preview-shadow-vertical {
     background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(0,0,0,0) 50%, rgba(40,40,40,1) 100%);
 }
+
+
+.main-preview-text-focus-in {
+    animation: text-focus-in 1s cubic-bezier(.55, .085, .68, .53) both;
+    animation-delay: .5s;
+}
+
+@keyframes text-focus-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1
+    }
+}
+
