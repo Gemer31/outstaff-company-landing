@@ -5,7 +5,7 @@ import { MainPreview } from '@/blocks/MainPreview';
 import { Specializations } from '@/blocks/Specializations';
 import { TrustUs } from '@/blocks/TrustUs';
 import { Vacancies } from '@/blocks/Vacancies';
-import { db, storage } from '@/lib/firebase-config';
+import { db, storage } from '@/lib/firebaseClient';
 import { IConfig, ICounterBlock, ICustomersBlock, IVacancy } from '@/models/common.model';
 import { FirestoreCollections } from '@/models/enums';
 import { docsToData, getPlainStorageReferences } from '@/utils/firebase.util';

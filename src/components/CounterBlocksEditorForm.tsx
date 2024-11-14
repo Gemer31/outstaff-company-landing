@@ -11,7 +11,7 @@ import { Button } from '@/UI/banner/Button';
 import { ButtonTypes, FirestoreCollections } from '@/models/enums';
 import { ListViewer } from '@/components/ListViewer';
 import { deleteDoc, doc, setDoc, updateDoc } from '@firebase/firestore';
-import { db } from '@/lib/firebase-config';
+import { db } from '@/lib/firebaseClient';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { uuidv4 } from '@firebase/util';
 

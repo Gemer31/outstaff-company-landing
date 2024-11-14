@@ -1,7 +1,7 @@
 import { Footer } from "@/blocks/Footer";
 import { Header } from "@/blocks/Header";
 import { ContactUsForm } from "@/components/ContactUsForm";
-import { db } from "@/lib/firebase-config";
+import { db } from "@/lib/firebaseClient";
 import { IConfig } from "@/models/common.model";
 import { FirestoreCollections } from "@/models/enums";
 import { ContentContainer } from "@/UI/ContentContainer";

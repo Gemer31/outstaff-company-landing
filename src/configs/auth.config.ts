@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { RouterLinks } from '@/models/enums';
-import { auth } from '@/lib/firebase-config';
+import { auth } from '@/lib/firebaseClient';
 import Credentials from 'next-auth/providers/credentials';
 
 export const authConfig = {

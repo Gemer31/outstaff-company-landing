@@ -1,6 +1,6 @@
 import { Footer } from "@/blocks/Footer";
 import { Header } from "@/blocks/Header";
-import { db } from "@/lib/firebase-config";
+import { db } from "@/lib/firebaseClient";
 import { IConfig, IVacancy } from "@/models/common.model";
 import { FirestoreCollections } from "@/models/enums";
 import { ContentContainer } from "@/UI/ContentContainer";

@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebase-config';
+import { db } from '@/lib/firebaseClient';
 import { IConfig, IVacancy } from '@/models/common.model';
 import { ButtonTypes, FirestoreCollections, JobSchedule, JobType } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';

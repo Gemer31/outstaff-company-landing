@@ -4,6 +4,7 @@ export enum RouterLinks {
     VACANCIES = "/vacancies",
     EDITOR = "/editor",
     SIGN_IN = "/signIn",
+    NOT_FOUND = "/not-found"
 }
 
 export enum DomIds {

@@ -6,7 +6,7 @@ import { YupUtil } from '@/utils/yup.util';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { useTranslations } from 'next-intl';
 import { IConfig } from '@/models/common.model';
-import { db } from '@/lib/firebase-config';
+import { db } from '@/lib/firebaseClient';
 import { ButtonTypes, FirestoreCollections, FirestoreDocuments } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
 import { InputFormField } from '@/UI/form-fields/InputFormField';

@@ -11,7 +11,7 @@ import { showNotification } from '@/UI/notification/notification.controller';
 import { ImagesViewer } from '@/components/ImagesViewer';
 import { StorageReference } from '@firebase/storage';
 import { doc, setDoc } from '@firebase/firestore';
-import { db } from '@/lib/firebase-config';
+import { db } from '@/lib/firebaseClient';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
 import { ICustomersBlock } from '@/models/common.model';
 

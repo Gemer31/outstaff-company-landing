@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { IConfig, ICounterBlock, ICustomersBlock, IVacancy } from '@/models/common.model';
 import { collection, getDocs } from '@firebase/firestore';
-import { db, storage } from '@/lib/firebase-config';
+import { db, storage } from '@/lib/firebaseClient';
 import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections } from '@/models/enums';
 import { Loader } from '@/UI/loader/Loader';
 import { ContentContainer } from '@/UI/ContentContainer';

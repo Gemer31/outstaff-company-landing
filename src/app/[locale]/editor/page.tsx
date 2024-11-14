@@ -3,7 +3,7 @@ import { Footer } from '@/blocks/Footer';
 import React from 'react';
 import { AdminEditor } from '@/blocks/AdminEditor';
 import { collection, getDocs } from '@firebase/firestore';
-import { db } from '@/lib/firebase-config';
+import { db } from '@/lib/firebaseClient';
 import { FirestoreCollections } from '@/models/enums';
 import { IConfig } from '@/models/common.model';
 

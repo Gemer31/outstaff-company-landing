@@ -1,20 +1,23 @@
-import "animate.css";
-import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { Raleway } from "next/font/google";
-import "./globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'animate.css';
+import type { Metadata } from 'next';
+import { Raleway } from 'next/font/google';
+import './globals.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { redirect } from 'next/navigation';
+import { RouterLinks } from '@/models/enums';
+import { routing } from '@/i18n/routing';
 
 const raleway = Raleway({
-  subsets: ["latin"],
-  display: "swap",
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Increment - Интегратор digital-решений для бизнеса и государства",
-  description: "Разработчик портальных решений",
+  title: 'Increment - Интегратор digital-решений для бизнеса и государства',
+  description: 'Разработчик портальных решений',
   openGraph: {
     title: 'Increment - Интегратор digital-решений для бизнеса и государства',
     description: 'Разработчик портальных решений',
@@ -32,29 +35,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: Readonly<{
+export default async function LocaleRootLayout({
+                                                 children,
+                                                 params: {locale},
+                                               }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const messages = await getMessages();
+  let messages;
+
+  try {
+    messages = await getMessages();
+  } catch {
+    redirect(routing.defaultLocale + RouterLinks.HOME);
+    return <></>;
+  }
 
   return (
     <html
       lang={locale}
       className="scroll-smooth"
-      style={{ fontSize: '18px' }}
+      style={{fontSize: '18px'}}
     >
-      <body
-        id="page"
-        className={`${raleway.className} antialiased flex flex-col justify-center overflow-x-hidden`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
+    <body
+      id="page"
+      className={`${raleway.className} antialiased flex flex-col justify-center overflow-x-hidden`}
+    >
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+    </body>
     </html>
   );
 }

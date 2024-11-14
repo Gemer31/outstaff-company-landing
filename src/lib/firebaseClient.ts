@@ -1,9 +1,9 @@
 import { getFirestore } from '@firebase/firestore';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from '@firebase/auth';
+import { browserSessionPersistence, getAuth, setPersistence } from '@firebase/auth';
 import { getStorage } from '@firebase/storage';
 
-const firebaseConfig = {
+const firebaseClient = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -13,7 +13,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseClient);
 export const auth = getAuth(app);
-export const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
+export const storage = getStorage(app, `gs://${firebaseClient.storageBucket}`);
 export const db = getFirestore(app);
+
+setPersistence(auth, browserSessionPersistence);

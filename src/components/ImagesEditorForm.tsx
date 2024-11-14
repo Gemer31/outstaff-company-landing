@@ -1,6 +1,6 @@
 import { deleteObject, ref, StorageReference, uploadBytes } from '@firebase/storage';
 import { useState } from 'react';
-import { storage } from '@/lib/firebase-config';
+import { storage } from '@/lib/firebaseClient';
 import { ImagesViewer } from '@/components/ImagesViewer';
 import { ButtonTypes } from '@/models/enums';
 import { Button } from '@/UI/banner/Button';
