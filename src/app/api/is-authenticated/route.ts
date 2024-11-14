@@ -7,7 +7,7 @@ export async function GET() {
     const token = await getIdToken(auth.currentUser);
     await firebaseAdmin.auth().verifyIdToken(token);
 
-    return Response.json(true, {status: 401})
+    return Response.json(true, {status: 200})
   } catch {
     return Response.json(false, {status: 401})
   }
