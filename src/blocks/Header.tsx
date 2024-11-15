@@ -17,10 +17,22 @@ import { Popup } from '@/UI/popup/Popup';
 import { ContactUsFormPopup } from '@/components/ContactUsFormPopup';
 import { LINK_CLASS } from '@/constants/common.constant';
 import { ContactLink } from '@/UI/ContactLink';
+import { convertToClass } from '@/utils/convert-to-class.util';
 
 interface IHeaderProps {
   config: IConfig;
 }
+
+const headerClass = convertToClass([
+  'py-1',
+  'z-30',
+  'bg-custom-black-2',
+  'flex',
+  'justify-center',
+  'sm:text-base md:text-md lg:text-lg',
+  'sticky',
+  'top-0',
+]);
 
 export function Header({ config }: IHeaderProps) {
   const t = useTranslations();
@@ -53,25 +65,18 @@ export function Header({ config }: IHeaderProps) {
       <ContactUsFormPopup config={config} />
       <ScrollUpButton isScrollTop={isScrollTop} />
 
-      <header
-        className={
-          "z-30 bg-custom-black-2 flex justify-center text-lg sticky top-0 " +
-          (isScrollTop ? "" : "shadow-lg")
-        }
-      >
+      <header className={`${headerClass} ${(isScrollTop ? "" : "shadow-lg")}`}>
         <ContentContainer className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href={RouterLinks.HOME}>
-              <Image
-                className="py-1"
-                src="/images/logo.png"
-                width={75}
-                height={75}
-                alt="logo"
-              />
-              {/*<div className="w-[100px] h-[50px] rounded-sm flex items-center overflow-hidden">*/}
-
-              {/*</div>*/}
+              <div className="block">
+                <Image
+                  src="/images/logo.png"
+                  width={75}
+                  height={75}
+                  alt="logo"
+                />
+              </div>
             </Link>
             <nav className="ml-4 flex gap-4">
               <Link className={LINK_CLASS} href={RouterLinks.VACANCIES}>{t("vacancies")}</Link>

@@ -9,6 +9,6 @@ export function HeaderAuthActions() {
 
   return session?.data?.user ?
     <Link className="ml-2" href={RouterLinks.EDITOR}>
-      <Image src="/icons/edit.svg" width={35} height={35} alt="Edit"/>
+      <Image src="/icons/edit.svg" width={45} height={45} alt="Edit"/>
     </Link> : <></>;
 }

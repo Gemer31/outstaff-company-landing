@@ -1,5 +1,4 @@
 import 'animate.css';
-import type { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
 import './globals.css';
 import 'slick-carousel/slick/slick.css';
@@ -14,26 +13,6 @@ const raleway = Raleway({
   subsets: ['latin'],
   display: 'swap',
 });
-
-export const metadata: Metadata = {
-  title: 'Increment - Интегратор digital-решений для бизнеса и государства',
-  description: 'Разработчик портальных решений',
-  openGraph: {
-    title: 'Increment - Интегратор digital-решений для бизнеса и государства',
-    description: 'Разработчик портальных решений',
-    url: 'https://outstaff-company-landing.vercel.app',
-    siteName: 'Next.js',
-    images: [
-      {
-        url: 'https://outstaff-company-landing.vercel.app/icons/logo.svg',
-        width: 800,
-        height: 600,
-      },
-    ],
-    locale: 'ru_RU',
-    type: 'website',
-  },
-};
 
 export default async function LocaleRootLayout({
                                                  children,

@@ -2,11 +2,12 @@ import { ContentContainer } from '@/UI/ContentContainer';
 import { TitleContainer } from '@/UI/TitleContainer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { BlockContainer } from '@/components/BlockContainer';
 
 export function AboutUs() {
   const t = useTranslations();
 
-  return <article className="w-full flex justify-center bg-custom-black-1 py-10">
+  return <BlockContainer classname="bg-custom-black-1">
     <ContentContainer>
       <TitleContainer title={t('aboutUs')}>
         <div className="w-full flex flex-row-reverse relative">
@@ -20,5 +21,5 @@ export function AboutUs() {
         </div>
       </TitleContainer>
     </ContentContainer>
-  </article>;
+  </BlockContainer>
 }
