@@ -11,15 +11,13 @@ interface IFooterProps {
 
 export function Footer({config}: IFooterProps) {
   return <footer className="pt-6 pb-2 flex flex-col items-center bg-custom-black-2">
-    <ContentContainer className="grid grid-cols-3 items-center justify-items-center">
+    <ContentContainer className="grid grid-cols-3 items-center justify-items-center pb-4">
       <section
         className="flex-1 text-xs"
         dangerouslySetInnerHTML={{ __html: config.companyInfo || "" }}
       ></section>
 
-      <section className="flex-1 w-[200px] h-[100px] rounded-sm flex items-center overflow-hidden">
-        <Image src="/icons/logo-transparent.svg" width={200} height={200} alt="logo"/>
-      </section>
+      <Image src="/images/logo-red.png" width={100} height={100} alt="logo"/>
 
       <section className="flex justify-self-end gap-x-6">
         <OffsetBlock>
