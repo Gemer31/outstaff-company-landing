@@ -24,7 +24,7 @@ export function TitleContainer({
                                  className,
                                }: ITitleContainerProps) {
   return (
-    <div className={'w-full py-4 ' + (className || '')}>
+    <div className={'w-full ' + (className || '')}>
       <div
         className={
           'mb-4 flex items-center ' +

@@ -9,6 +9,7 @@ import { TitleContainer } from "@/UI/TitleContainer";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { BlockContainer } from '@/components/BlockContainer';
 
 interface IVacanciesProps {
   vacancies: IVacancy[];
@@ -35,42 +36,40 @@ export function Vacancies({ vacancies, detailedView }: IVacanciesProps) {
     setData(res);
   };
 
-  return (
-    <article className="w-full bg-custom-black-3 flex justify-center py-10">
-      <ContentContainer>
-        <TitleContainer
-          title={t("vacancies")}
-          navLink={
-            detailedView
-              ? null
-              : { title: t("allVacancies"), url: RouterLinks.VACANCIES }
-          }
-        >
-          {detailedView ? (
-            <SearchInput delay={0} onChange={searchChange}></SearchInput>
-          ) : (
-            <></>
-          )}
+  return <BlockContainer className="bg-custom-black-3">
+    <ContentContainer>
+      <TitleContainer
+        title={t("vacancies")}
+        navLink={
+          detailedView
+            ? null
+            : { title: t("allVacancies"), url: RouterLinks.VACANCIES }
+        }
+      >
+        {detailedView ? (
+          <SearchInput delay={0} onChange={searchChange}></SearchInput>
+        ) : (
+          <></>
+        )}
 
-          {data.length ? (
-            <div className="grid grid-cols-4 gap-2 mt-2">
-              {data.map((item, index) => (
-                <VacancyCard key={index} data={item} />
-              ))}
-            </div>
-          ) : (
-            <div className="flex items-center flex-col py-8">
-              <Image
-                src="/icons/nothing-found.svg"
-                width={80}
-                height={80}
-                alt="Nothing found"
-              />
-              {t("nothingFound")}
-            </div>
-          )}
-        </TitleContainer>
-      </ContentContainer>
-    </article>
-  );
+        {data.length ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-2">
+            {data.map((item, index) => (
+              <VacancyCard key={index} data={item} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex items-center flex-col py-8">
+            <Image
+              src="/icons/nothing-found.svg"
+              width={80}
+              height={80}
+              alt="Nothing found"
+            />
+            {t("nothingFound")}
+          </div>
+        )}
+      </TitleContainer>
+    </ContentContainer>
+  </BlockContainer>
 }

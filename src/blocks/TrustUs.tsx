@@ -6,6 +6,7 @@ import { TitleContainer } from '@/UI/TitleContainer';
 import { useTranslations } from 'next-intl';
 import { InfinitySlider } from '@/UI/Caurusel';
 import { getStorageImageSrc } from '@/utils/firebase.util';
+import { BlockContainer } from '@/components/BlockContainer';
 
 interface ITrustUsProps {
   config?: IConfig;
@@ -19,14 +20,12 @@ export function TrustUs({customerBlockConfig, images}: ITrustUsProps) {
     return getStorageImageSrc(images.find((img) => img.fullPath === item));
   };
 
-  return <article className="w-full flex justify-center bg-custom-black-1 py-10">
+  return <BlockContainer className="bg-custom-black-1">
     <ContentContainer className="relative">
-      <div className="z-10 inner-shadow absolute w-full h-full"></div>
+      <div className="top-0 z-10 inner-shadow absolute w-full h-full"></div>
       <TitleContainer title={t('trustUs')}>
         <section className="pb-8 pt-2 w-full flex justify-center">
-          <div className="w-3/6 text-center">Наши решения работают в крупнейших компаниях России и мира: Роснефть,
-            Россети, Yokohama, Scania, Hoff, Xerox и других.
-          </div>
+          <div className="w-3/6 text-center">{t('companiesTrustUs')}</div>
         </section>
         <InfinitySlider
           images={customerBlockConfig.images.map(getImageUrl)}
@@ -35,5 +34,5 @@ export function TrustUs({customerBlockConfig, images}: ITrustUsProps) {
         />
       </TitleContainer>
     </ContentContainer>
-  </article>;
+  </BlockContainer>;
 }

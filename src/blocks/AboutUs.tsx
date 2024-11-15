@@ -7,7 +7,7 @@ import { BlockContainer } from '@/components/BlockContainer';
 export function AboutUs() {
   const t = useTranslations();
 
-  return <BlockContainer classname="bg-custom-black-1">
+  return <BlockContainer className="bg-custom-black-1">
     <ContentContainer>
       <TitleContainer title={t('aboutUs')}>
         <div className="w-full flex flex-row-reverse relative">

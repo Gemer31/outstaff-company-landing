@@ -21,17 +21,17 @@ export function ContactUs() {
     });
   };
 
-  return <BlockContainer classname="bg-custom-black-3">
-    <ContentContainer type="article" className="relative">
+  return <BlockContainer className="bg-custom-black-3">
+    <ContentContainer className="relative">
       <Image
-        className="rotate-12 absolute bottom-2 right-5 sm:right-10 md:right-18 lg:right-28 scale-75 md:scale-100"
+        className="rotate-12 absolute bottom-6 right-5 sm:right-10 md:right-18 lg:right-28 scale-75 md:scale-100"
         src="/icons/rhomb2.svg"
         width={60}
         height={60}
         alt="Preview"
       />
       <Image
-        className=" absolute top-2 left-5 sm:left-10 md:left-18 lg:left-28 scale-75 md:scale-100"
+        className=" absolute top-6 left-5 sm:left-10 md:left-18 lg:left-28 scale-75 md:scale-100"
         src="/icons/rhomb.svg"
         width={60}
         height={60}
@@ -40,7 +40,7 @@ export function ContactUs() {
 
       <TitleContainer title={t('contactUs')}>
         <section className="w-full flex flex-col items-center">
-          <div className="mb-4 text-center text-base md:text-lg">
+          <div className="mb-4 text-center px-2 text-base md:text-lg">
             {t('staffProjectForThreeDays')}
           </div>
           <div ref={ref} className={(inView ? 'wobble-hor-bottom' : '')}>

@@ -60,7 +60,7 @@ export function SignInForm() {
         label="E-mail"
         name="email"
         type="text"
-        error={t(errors.email?.message)}
+        error={errors.email?.message ? t(errors.email.message) : ''}
         register={register}
       />
       <InputFormField
@@ -70,7 +70,7 @@ export function SignInForm() {
         label={t('password')}
         name="password"
         type="text"
-        error={t(errors.password?.message)}
+        error={errors.password?.message ? t(errors.password.message) : ''}
         register={register}
       />
       <Button

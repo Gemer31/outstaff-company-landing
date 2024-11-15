@@ -1,25 +1,28 @@
 import { ContentContainer } from '@/UI/ContentContainer';
 import { CounterIncreaser } from '@/UI/CounterIncreaser';
 import { ICounterBlock } from '@/models/common.model';
+import { BlockContainer } from '@/components/BlockContainer';
 
 interface IInfoInCountsProps {
   counterBlocks: ICounterBlock[];
 }
 
 export function InfoInCounts({counterBlocks}: IInfoInCountsProps) {
-  return <article className="py-10 w-full bg-custom-black-3 flex justify-center">
-    <ContentContainer className="flex justify-around relative">
+  return <BlockContainer className="bg-custom-black-3">
+    <ContentContainer className="flex flex-wrap gap-x-6 gap-y-4 justify-around relative">
       {
         counterBlocks?.map((item, index) => {
-            return <section key={index}>
-              <div className="flex items-center">
-                <CounterIncreaser className="text-6xl" value={item.number}/>
-                <div className="text-6xl">{item.numberPostfix}</div>
+          return <article className="text-center" key={index}>
+            <div className="w-full flex justify-center 2xs:justify-start">
+              <div className="flex items-center text-4xl md:text-6xl">
+                <CounterIncreaser value={item.number}/>
+                <div>{item.numberPostfix}</div>
               </div>
-              <div className="text-sm">{item.text}</div>
-            </section>;
-          })
+            </div>
+            <div className="text-xs md:text-sm">{item.text}</div>
+          </article>;
+        })
       }
     </ContentContainer>
-  </article>;
+  </BlockContainer>;
 }
