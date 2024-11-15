@@ -1,11 +1,11 @@
 import { firebaseAdmin } from '@/lib/firebaseAdmin';
-import { getIdToken } from '@firebase/auth';
-import { auth } from '@/lib/firebaseClient';
+import { cookies } from 'next/headers';
 
 export async function GET() {
   try {
-    const token = await getIdToken(auth.currentUser);
-    await firebaseAdmin.auth().verifyIdToken(token);
+    const cookiesFactory = await cookies();
+    const token = cookiesFactory.get('token');
+    await firebaseAdmin.auth().verifyIdToken(token.value);
 
     return Response.json(true, {status: 200})
   } catch {

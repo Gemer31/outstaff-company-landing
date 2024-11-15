@@ -10,7 +10,7 @@ import './banner.css';
 export const COLOR_OPTION_VALUES = new Map<ButtonColorOptions, string>([
   [
     ButtonColorOptions.RED,
-    'bg-custom-red-1 hover:bg-custom-red-2 active:bg-pink-600 text-white',
+    'bg-custom-red-1 hover:bg-custom-red-2 active:bg-custom-red-3 text-white',
   ],
   [
     ButtonColorOptions.GRAY,
@@ -87,7 +87,7 @@ export function Button({
       >
         <Loader
           className={
-            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-pink-500' : '')
+            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-custom-red-3' : '')
           }
         />
       </div>
@@ -112,7 +112,7 @@ export function Button({
       >
         <Loader
           className={
-            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-pink-500' : '')
+            'h-full ' + (color === ButtonColorOptions.GRAY ? 'border-custom-red-3' : '')
           }
         />
       </div>

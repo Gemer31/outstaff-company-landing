@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         'custom-red-1': '#F14F4D',
         'custom-red-2': '#f76868',
+        'custom-red-3': '#e53d3b',
         'custom-black-1': '#282828',
         'custom-black-2': '#1C1C1C',
         'custom-black-3': '#353432',

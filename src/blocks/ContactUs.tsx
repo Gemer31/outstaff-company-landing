@@ -7,10 +7,13 @@ import { openPopup } from '@/UI/popup/popup.controller';
 import { TitleContainer } from '@/UI/TitleContainer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 
 export function ContactUs() {
   const t = useTranslations();
-
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   const requestCallClick = () => {
     openPopup({
       popupId: DomIds.CONTACT_US_POPUP_ID,
@@ -40,13 +43,15 @@ export function ContactUs() {
             <div className="mb-4 text-lg">
               {t('staffProjectForThreeDays')}
             </div>
-            <Button
-              className="px-4 py-2"
-              loading={false}
-              callback={requestCallClick}
-            >
-              {t("contact")}
-            </Button>
+            <div ref={ref} className={(inView ? 'wobble-hor-bottom' : '')}>
+              <Button
+                className={'px-4 py-2'}
+                loading={false}
+                callback={requestCallClick}
+              >
+                {t("contact")}
+              </Button>
+            </div>
           </section>
         </TitleContainer>
       </ContentContainer>

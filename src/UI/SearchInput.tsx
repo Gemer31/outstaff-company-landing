@@ -122,7 +122,7 @@ export function SearchInput({
       {searchButtonVisible ? (
         <button
           type="submit"
-          className="bg-pink-500 rounded-r-md p-2"
+          className="bg-custom-red-3 rounded-r-md p-2"
           onClick={() => valueChanged(null, true)}
         >
           <Image
