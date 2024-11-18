@@ -78,7 +78,11 @@ export function Specializations() {
               return <div key={blockIndex} className="flex gap-4">
                 {
                   blocks.map((item, index) => {
-                    return <SpecializationCard key={index} data={item} size={blockIndex ? SpecializationCardSize.NORMAL : SpecializationCardSize.LARGE}/>;
+                    return <SpecializationCard
+                      key={index}
+                      data={item}
+                      size={blockIndex ? SpecializationCardSize.NORMAL : SpecializationCardSize.LARGE}
+                    />;
                   })
                 }
               </div>

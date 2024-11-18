@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { openPopup, PopupController } from '@/UI/popup/popup.controller';
 import { IConfig } from '@/models/common.model';
@@ -36,6 +36,7 @@ const headerClass = convertToClass([
 
 export function Header({ config }: IHeaderProps) {
   const t = useTranslations();
+  const burgerRef = useRef<HTMLInputElement>(null);
   const [isScrollTop, setIsScrollTop] = useState(true);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ export function Header({ config }: IHeaderProps) {
                 />
               </div>
             </Link>
-            <nav className="ml-4 flex gap-4">
+            <nav className="ml-4 gap-4 hidden 2sm:flex">
               <Link className={LINK_CLASS} href={RouterLinks.VACANCIES}>{t("vacancies")}</Link>
               <Link className={LINK_CLASS} href={RouterLinks.CONTACTS}>{t("contacts")}</Link>
             </nav>
@@ -86,7 +87,7 @@ export function Header({ config }: IHeaderProps) {
 
           <div className="flex items-center">
             <ContactLink
-              className="mr-2"
+              className="mr-2 hidden sm:flex"
               type={ContactLinkType.MAIL}
               value={config.email}
               iconVisible={true}
@@ -98,8 +99,26 @@ export function Header({ config }: IHeaderProps) {
             >
               {t("contact")}
             </Button>
+            <div className="flex 2sm:hidden burger-container">
+              <input
+                ref={burgerRef}
+                className="burger-checkbox"
+                type="checkbox"
+              />
+              <div className="burger-lines">
+                <div className="line1"/>
+                <div className="line2"/>
+                <div className="line3"/>
+              </div>
+              <aside className="aside-menu-items">
+                <nav className="w-full flex flex-col justify-center gap-2 items-center text-xl">
+                  <Link className={LINK_CLASS} href={RouterLinks.VACANCIES}>{t("vacancies")}</Link>
+                  <Link className={LINK_CLASS} href={RouterLinks.CONTACTS}>{t("contacts")}</Link>
+                </nav>
+              </aside>
+            </div>
             <SessionProvider>
-              <HeaderAuthActions />
+              <HeaderAuthActions/>
             </SessionProvider>
           </div>
         </ContentContainer>

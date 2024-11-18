@@ -8,10 +8,6 @@ import { ContentContainer } from "@/UI/ContentContainer";
 import { collection, getDocs } from "@firebase/firestore";
 import { getTranslations } from "next-intl/server";
 
-export interface IVacancyPageProps {
-  params: { vacancyId: string };
-}
-
 export default async function ContactsPage() {
   const [settingsQuerySnapshot] = await Promise.all([
     getDocs(collection(db, FirestoreCollections.SETTINGS)),
@@ -24,12 +20,12 @@ export default async function ContactsPage() {
     <>
       <Header config={config} />
       <main className="w-full flex flex-col items-center bg-custom-black-1">
-        <ContentContainer className="w-full py-5 flex justify-between gap-6">
-          <section className="w-2/6 flex flex-col justify-center gap-4 text-center">
-            <h1 className="text-5xl">{t("connectWith")} <span className="font-bold text-custom-red-1">Increment</span></h1>
-            <span className="text-xl">{t("connectUsMessage")}</span>
+        <ContentContainer className="w-full py-5 flex flex-col 2sm:flex-row justify-between gap-6">
+          <section className="w-full 2sm:w-2/6 flex flex-col justify-center gap-4 text-center">
+            <h1 className="text-3xl 2sm:text-5xl">{t("connectWith")} <span className="font-bold text-custom-red-1">Increment</span></h1>
+            <span className="text-lg 2sm:text-xl">{t("connectUsMessage")}</span>
           </section>
-          <section className="w-4/6">
+          <section className="w-full 2sm:w-4/6">
             <ContactUsForm config={config} detailedView={true}/>
           </section>
         </ContentContainer>

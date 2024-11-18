@@ -4,6 +4,7 @@
 @import "../styles/mainPreview.css";
 @import "../styles/field.css";
 @import "../styles/contactUs.css";
+@import "../styles/aside-header-panel.css";
 
 @tailwind base;
 @tailwind components;

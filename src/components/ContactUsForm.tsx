@@ -67,7 +67,7 @@ export function ContactUsForm({
     <>
       {detailedView ? (
         <>
-          <div className="flex gap-x-2">
+          <div className="w-full flex justify-center 2sm:justify-start gap-x-2">
             <ContactLink
               valueVisible={false}
               type={ContactLinkType.TELEGRAM}
@@ -130,11 +130,11 @@ export function ContactUsForm({
           <></>
         )}
 
-        <h6 className="text-sm pt-2 pb-3">
+        <h6 className="text-sm pt-2 pb-3 text-center 2sm:text-left">
           {t('youAgreeProcessingPersonalData')}
         </h6>
 
-        <Button type={ButtonTypes.SUBMIT} className="px-10 py-1">
+        <Button type={ButtonTypes.SUBMIT} className="px-10 py-1 w-full 2sm:w-fit">
           {t('send')}
         </Button>
 

@@ -36,7 +36,7 @@ export function Popup({id, title, children}: IPopupProps) {
       className={hostClass + ' invisible opacity-0'}
     >
       <div
-        className="shadow-custom-red flex flex-col justify-center bg-custom-black-1 rounded-md"
+        className="shadow-custom-red flex flex-col justify-center bg-custom-black-1 rounded-md mx-3"
       >
         <div className="flex justify-between items-center p-4">
           <span
