@@ -67,7 +67,7 @@ export function Header({ config }: IHeaderProps) {
       <ScrollUpButton isScrollTop={isScrollTop} />
 
       <header className={`${headerClass} ${(isScrollTop ? "" : "shadow-lg")}`}>
-        <ContentContainer disablePaddings className="flex justify-between items-center">
+        <ContentContainer disableVerticalPaddings className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href={RouterLinks.HOME}>
               <div className="block">

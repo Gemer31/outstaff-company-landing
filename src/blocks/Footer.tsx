@@ -22,7 +22,7 @@ const footContainerClass = convertToClass([
 
 export function Footer({config}: IFooterProps) {
   return <footer className="pt-6 pb-2 flex flex-col items-center bg-custom-black-2">
-    <ContentContainer disablePaddings className={footContainerClass}>
+    <ContentContainer disableVerticalPaddings className={footContainerClass}>
       <section
         className="flex-1 text-center md:text-left text-xs"
         dangerouslySetInnerHTML={{ __html: config.companyInfo || "" }}
@@ -44,7 +44,7 @@ export function Footer({config}: IFooterProps) {
       </section>
     </ContentContainer>
 
-    <ContentContainer disablePaddings className="flex justify-center bg-gray text-xs py-2">
+    <ContentContainer disableVerticalPaddings className="flex justify-center bg-gray text-xs py-2">
       © Increment, 2003–2024
     </ContentContainer>
   </footer>;

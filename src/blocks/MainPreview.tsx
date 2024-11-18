@@ -23,11 +23,10 @@ export function MainPreview({error}: IMainPreviewProps) {
   const t = useTranslations();
 
   return <BlockContainer className="bg-custom-black-1">
-    <ContentContainer disablePaddings className="flex justify-center items-center relative  overflow-hidden">
+    <ContentContainer disableVerticalPaddings className="flex justify-center items-center relative  overflow-hidden">
       <div className="z-10 w-full h-full main-preview-shadow-vertical absolute top-0 left-0"></div>
       <div className="z-10 w-full h-full main-preview-shadow-gorizontal absolute top-0 left-0"></div>
 
-      <Image className="invisible" src="/images/background.png" width={1000} height={1000} alt="Background"/>
 
       {
         error
@@ -39,6 +38,7 @@ export function MainPreview({error}: IMainPreviewProps) {
             <Image className="w-full" src="/images/background.png" width={1000} height={1000} alt="Background"/>
           </>
           : <>
+            <Image className="invisible" src="/images/background.png" width={1000} height={1000} alt="Background"/>
             <div className={`${textClass} main-preview-text-focus-in`}>
               <span className="font-bold text-custom-red-1">Increment</span> - Интегратор
               digital-решений для бизнеса и государства
