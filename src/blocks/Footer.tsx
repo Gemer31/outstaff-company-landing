@@ -21,7 +21,7 @@ const footContainerClass = convertToClass([
 ]);
 
 export function Footer({config}: IFooterProps) {
-  return <footer className="pt-6 pb-2 flex flex-col items-center bg-custom-black-2">
+  return <footer className="pt-10 pb-4 flex flex-col items-center bg-custom-black-2">
     <ContentContainer disableVerticalPaddings className={footContainerClass}>
       <section
         className="flex-1 text-center md:text-left text-xs"

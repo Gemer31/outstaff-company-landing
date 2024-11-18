@@ -13,14 +13,14 @@ export function ContentContainer({
   return type === 'article' ? (
     <article
       id={id || ''}
-      className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-6 md:py-12'} ${className || ''}`}
+      className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-10 md:py-14'} ${className || ''}`}
     >
       {children}
     </article>
   ) : (
     <div
       id={id || ''}
-      className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-6 md:py-12'} ${className || ''}`}
+      className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-10 md:py-14'} ${className || ''}`}
     >
       {children}
     </div>
