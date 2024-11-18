@@ -40,6 +40,7 @@ export function SearchInput({
         'w-full',
         'px-2.5',
         'py-1',
+        'text-black',
       ]),
     []
   );

@@ -10,6 +10,8 @@ interface IVacancyCardProps {
 }
 
 const hostClass = convertToClass([
+  'relative',
+  'flex flex-col items-center justify-center',
   'cursor-pointer',
   'p-4',
   'rounded-md',
@@ -21,16 +23,15 @@ const hostClass = convertToClass([
 
 export function VacancyCard({data}: IVacancyCardProps) {
   return <Link className={hostClass} href={`${RouterLinks.VACANCIES}/${data.id}`}>
-    <div className="flex justify-between">
-      <h4 className="text-lg font-bold">{data.title}</h4>
-      {
-        data.hot
-          ? <Image src="/icons/fire.svg" width={20} height={20} alt={data.title}/>
-          : <></>
-      }
-    </div>
+    {
+      data.hot
+        ? <Image className="absolute right-1.5 top-1.5" src="/icons/fire.svg" width={20} height={20} alt={data.title}/>
+        : <></>
+    }
 
-    <div className="flex items-center gap-x-2 mt-1">
+    <h4 className="text-lg font-bold text-center">{data.title}</h4>
+
+    <div className="flex flex-wrap items-center justify-center gap-2 mt-1">
       {
         data.schedule ? <Chip value={data.schedule}/> : <></>
       }

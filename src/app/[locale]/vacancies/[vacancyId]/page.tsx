@@ -7,10 +7,29 @@ import { ContentContainer } from "@/UI/ContentContainer";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { convertToClass } from '@/utils/convert-to-class.util';
 
 export interface IVacancyPageProps {
   params: { vacancyId: string };
 }
+
+const vacancyMainInfoClass = convertToClass([
+  'w-full',
+  'sm:w-2/6',
+  'flex',
+  'flex-row md:flex-col',
+  'justify-around items-center',
+  'rounded-md',
+  'h-fit',
+  'shadow-custom-red',
+  'bg-custom-black-1',
+  'sticky',
+  'top-16',
+  'text-xl',
+  'font-bold',
+  'p-2',
+  'overflow-hidden',
+]);
 
 export default async function VacancyPage({
   params: { vacancyId },
@@ -45,8 +64,8 @@ export default async function VacancyPage({
             )}
           </section>
 
-          <article className="px-6 py-4 flex gap-4">
-            <section className="w-2/6 rounded-md h-fit shadow-custom-red bg-custom-black-1 sticky top-14 text-xl font-bold p-2 overflow-hidden">
+          <article className="px-6 py-4 flex flex-col sm:flex-row gap-4">
+            <section className={vacancyMainInfoClass}>
               <div>{t(vacancy.type)}</div>
               <div>{t(vacancy.schedule)}</div>
               <div>{vacancy.experience}</div>
@@ -54,14 +73,14 @@ export default async function VacancyPage({
               <Image
                 className="absolute bottom-0 right-0"
                 src="/icons/triangle.svg"
-                width={40}
-                height={40}
+                width={35}
+                height={35}
                 alt="Preview"
               />
             </section>
 
             <section
-              className="w-4/6 rounded-md p-4 shadow-custom-red"
+              className="w-full sm:w-4/6 rounded-md p-4 shadow-custom-red"
               dangerouslySetInnerHTML={{ __html: vacancy?.description || "" }}
             ></section>
           </article>
