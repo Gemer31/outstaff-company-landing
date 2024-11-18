@@ -4,7 +4,7 @@ import { IConfig, ICustomersBlock, PlainStorageReference } from '@/models/common
 import { ContentContainer } from '@/UI/ContentContainer';
 import { TitleContainer } from '@/UI/TitleContainer';
 import { useTranslations } from 'next-intl';
-import { InfinitySlider } from '@/UI/Caurusel';
+import { InfinitySlider } from '@/UI/InfinitySlider';
 import { getStorageImageSrc } from '@/utils/firebase.util';
 import { BlockContainer } from '@/components/BlockContainer';
 
