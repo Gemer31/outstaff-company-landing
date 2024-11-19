@@ -8,6 +8,7 @@ const nextConfig = {
         formats: ['image/avif', 'image/webp'],
         domains: ['firebasestorage.googleapis.com'],
     },
+    output: 'standalone'
 };
 
 export default withNextIntl(nextConfig);
