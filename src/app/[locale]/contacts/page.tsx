@@ -7,6 +7,29 @@ import { FirestoreCollections } from "@/models/enums";
 import { ContentContainer } from "@/UI/ContentContainer";
 import { collection, getDocs } from "@firebase/firestore";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Increment - Контакты',
+  description: 'Разработчик digital-решений',
+  keywords: ['Increment', 'профессиональные', 'digital-решения', 'Outstaff', 'Контакты'],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT) ,
+  openGraph: {
+    title: 'Increment - Контакты',
+    description: 'Разработчик digital-решений',
+    url: process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT,
+    siteName: 'Increment',
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/images/logo-red.png`,
+        width: 600,
+        height: 400,
+      },
+    ],
+    locale: 'ru_RU',
+    type: 'website',
+  },
+};
 
 export default async function ContactsPage() {
   const [settingsQuerySnapshot] = await Promise.all([

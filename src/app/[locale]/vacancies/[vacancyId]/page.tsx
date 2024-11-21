@@ -8,6 +8,43 @@ import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { convertToClass } from '@/utils/convert-to-class.util';
+import { Metadata } from 'next';
+import { Props } from 'next/script';
+
+export async function generateMetadata(
+  // @ts-expect-error need
+  { params }: Props,
+): Promise<Metadata> {
+  // read route params
+  const id = (await params).vacancyId;
+  const vacancyDocumentSnapshot = await getDoc(doc(db, FirestoreCollections.VACANCIES, id));
+  const vacancy: IVacancy = vacancyDocumentSnapshot.data() as IVacancy;
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `Increment - ${vacancy.title}`,
+    description: vacancy.description,
+    keywords: ['Increment', 'digital-решения', 'Outstaff', 'Вакансия', vacancy.title],
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT) ,
+    openGraph: {
+      title: 'Increment - Интегратор digital-решений для бизнеса и государства',
+      description: 'Разработчик портальных решений',
+      url: process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT,
+      siteName: 'Increment',
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/images/logo-red.png`,
+          width: 600,
+          height: 400,
+        },
+      ],
+      locale: 'ru_RU',
+      type: 'website',
+    },
+  }
+}
 
 export interface IVacancyPageProps {
   params: { vacancyId: string };
