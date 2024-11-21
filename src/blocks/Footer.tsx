@@ -45,7 +45,7 @@ export function Footer({config}: IFooterProps) {
     </ContentContainer>
 
     <ContentContainer disableVerticalPaddings className="flex justify-center bg-gray text-xs py-2">
-      © Increment, 2003–2024
+      © Increment, 2024
     </ContentContainer>
   </footer>;
 }

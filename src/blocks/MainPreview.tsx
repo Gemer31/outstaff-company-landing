@@ -40,8 +40,7 @@ export function MainPreview({error}: IMainPreviewProps) {
           : <>
             <Image className="invisible" src="/images/background.png" width={1000} height={1000} alt="Background"/>
             <div className={`${textClass} main-preview-text-focus-in`}>
-              <span className="font-bold text-custom-red-1">Increment</span> - Интегратор
-              digital-решений для бизнеса и государства
+              <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
             </div>
             <video
               className="absolute bottom-0"

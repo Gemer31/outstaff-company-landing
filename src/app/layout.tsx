@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Increment - Интегратор digital-решений для бизнеса и государства',
+  title: 'Increment - профессиональные digital-решения',
   description: 'Разработчик портальных решений',
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT) ,
   openGraph: {

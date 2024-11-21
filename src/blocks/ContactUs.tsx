@@ -13,7 +13,7 @@ import { BlockContainer } from '@/components/BlockContainer';
 export function ContactUs() {
   const t = useTranslations();
   const {ref, inView} = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
   });
   const requestCallClick = () => {
     openPopup({

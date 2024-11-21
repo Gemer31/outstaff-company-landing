@@ -9,7 +9,7 @@ interface IOffsetBlockProps {
 
 export function OffsetBlock({ children }: IOffsetBlockProps) {
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
   });
 
   return <div className="relative bg-custom-red-1 rounded-xl">
