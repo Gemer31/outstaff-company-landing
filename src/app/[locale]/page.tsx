@@ -37,7 +37,7 @@ export default async function HomePage() {
     ),
   ]);
   const images = await listAll(ref(storage));
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
   const customersBlockConfig: ICustomersBlock = customersBlockQuerySnapshot.docs[0].data() as ICustomersBlock;
   const vacancies: IVacancy[] = docsToData<IVacancy>(vacanciesQuerySnapshot.docs);
   const counterBlocks: ICounterBlock[] = docsToData<ICounterBlock>(counterBlockQuerySnapshot.docs);

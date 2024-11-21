@@ -8,7 +8,7 @@ import { Footer } from '@/blocks/Footer';
 
 export default async function NotFound() {
   const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
 
   return <>
     <Header config={config}/>

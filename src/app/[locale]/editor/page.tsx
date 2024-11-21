@@ -12,7 +12,7 @@ import { firebaseAdmin } from '@/lib/firebaseAdmin';
 
 export default async function EditorPage() {
   const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
 
   try {
     const cookiesFactory = await cookies();

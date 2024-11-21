@@ -40,7 +40,7 @@ export default async function VacancyPage({
   ]);
 
   const vacancy: IVacancy = vacancyDocumentSnapshot.data() as IVacancy;
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
 
   const t = await getTranslations();
 

@@ -27,7 +27,6 @@ export function MainPreview({error}: IMainPreviewProps) {
       <div className="z-10 w-full h-full main-preview-shadow-vertical absolute top-0 left-0"></div>
       <div className="z-10 w-full h-full main-preview-shadow-gorizontal absolute top-0 left-0"></div>
 
-
       {
         error
           ? <>
@@ -38,7 +37,13 @@ export function MainPreview({error}: IMainPreviewProps) {
             <Image className="w-full" src="/images/background.png" width={1000} height={1000} alt="Background"/>
           </>
           : <>
-            <Image className="invisible" src="/images/background.png" width={1000} height={1000} alt="Background"/>
+            <Image
+              style={{ visibility: "hidden" }}
+              src="/images/background.png"
+              width={1000}
+              height={1000}
+              alt="Background"
+            />
             <div className={`${textClass} main-preview-text-focus-in`}>
               <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
             </div>

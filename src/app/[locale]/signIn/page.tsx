@@ -9,7 +9,7 @@ import { IConfig } from '@/models/common.model';
 
 export default async function LoginPage() {
   const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
 
   return (
     <>

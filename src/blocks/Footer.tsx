@@ -25,7 +25,7 @@ export function Footer({config}: IFooterProps) {
     <ContentContainer disableVerticalPaddings className={footContainerClass}>
       <section
         className="flex-1 text-center md:text-left text-xs"
-        dangerouslySetInnerHTML={{ __html: config.companyInfo || "" }}
+        dangerouslySetInnerHTML={{ __html: config?.companyInfo || "" }}
       ></section>
 
       <Image className="hidden md:block" src="/images/logo-red.png" width={100} height={100} alt="logo"/>
@@ -35,11 +35,11 @@ export function Footer({config}: IFooterProps) {
           <ContactLink
             valueVisible={false}
             type={ContactLinkType.TELEGRAM}
-            value={config.telegramLink}
+            value={config?.telegramLink}
           />
         </OffsetBlock>
         <OffsetBlock>
-          <ContactLink type={ContactLinkType.MAIL} value={config.email}/>
+          <ContactLink type={ContactLinkType.MAIL} value={config?.email}/>
         </OffsetBlock>
       </section>
     </ContentContainer>

@@ -13,7 +13,7 @@ export default async function ContactsPage() {
     getDocs(collection(db, FirestoreCollections.SETTINGS)),
   ]);
 
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
   const t = await getTranslations();
 
   return (

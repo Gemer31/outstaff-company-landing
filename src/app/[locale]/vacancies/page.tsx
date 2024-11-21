@@ -13,7 +13,7 @@ export default async function VacanciesPage() {
     getDocs(collection(db, FirestoreCollections.VACANCIES)),
   ]);
 
-  const config: IConfig = settingsQuerySnapshot.docs[0].data() as IConfig;
+  const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
   const vacancies: IVacancy[] = docsToData<IVacancy>(
     vacanciesQuerySnapshot.docs
   );
