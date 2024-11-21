@@ -11,6 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { showNotification } from '@/UI/notification/notification.controller';
+import { useState } from 'react';
 
 interface IContactUsFormProps {
   config: IConfig;
@@ -24,6 +25,8 @@ export function ContactUsForm({
                                 submitCallback,
                               }: IContactUsFormProps) {
   const t = useTranslations();
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -44,6 +47,8 @@ export function ContactUsForm({
     message?: string;
     email?: string;
   }) => {
+    setLoading(true);
+
     let message: string = `Запрос\n\nИмя: ${formData.yourOrCompanyName}`;
     if (formData.phone?.length) {
       message += `;\nТелефон: ${formData.phone}`;
@@ -54,13 +59,20 @@ export function ContactUsForm({
     if (formData.message?.length) {
       message += `;\nКомментарий: ${formData.message}`;
     }
-    await fetch(`${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/api/bot`, {
-      method: 'POST',
-      body: JSON.stringify({message: encodeURI(message)}),
-    });
-    reset();
-    showNotification(t("ourManagersCallYou"));
-    submitCallback?.();
+
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/api/bot`, {
+        method: 'POST',
+        body: JSON.stringify({message: encodeURI(message)}),
+      });
+      reset();
+      showNotification(t("ourManagersCallYou"));
+      submitCallback?.();
+    } catch {
+      showNotification(t('somethingWentWrong'));
+    } finally {
+      setLoading(false)
+    }
   };
 
   return (
@@ -134,9 +146,11 @@ export function ContactUsForm({
           {t('youAgreeProcessingPersonalData')}
         </h6>
 
-        <Button type={ButtonTypes.SUBMIT} className="px-10 py-1 w-full 2sm:w-fit">
-          {t('send')}
-        </Button>
+        <Button
+          className="px-10 py-1 w-full 2sm:w-fit"
+          type={ButtonTypes.SUBMIT}
+          loading={loading}
+        >{t('send')}</Button>
 
         {!detailedView ? (
           <>
