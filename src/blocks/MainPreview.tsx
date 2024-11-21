@@ -23,7 +23,10 @@ export function MainPreview({error}: IMainPreviewProps) {
   const t = useTranslations();
 
   return <BlockContainer className="bg-custom-black-1">
-    <ContentContainer disableVerticalPaddings className="flex justify-center items-center relative  overflow-hidden">
+    <ContentContainer
+      disableVerticalPaddings
+      className="flex justify-center items-center overflow-hidden"
+    >
       <div className="z-10 w-full h-full main-preview-shadow-vertical absolute top-0 left-0"></div>
       <div className="z-10 w-full h-full main-preview-shadow-gorizontal absolute top-0 left-0"></div>
 
@@ -48,7 +51,7 @@ export function MainPreview({error}: IMainPreviewProps) {
               <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
             </div>
             <video
-              className="absolute bottom-0"
+              style={{ position: 'absolute', bottom: 0 }}
               role="application"
               src="/videos/main-preview.mp4"
               muted
