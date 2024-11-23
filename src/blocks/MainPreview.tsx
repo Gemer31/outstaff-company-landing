@@ -46,8 +46,6 @@ export function MainPreview({error}: IMainPreviewProps) {
             </div>
             <video
               playsInline
-              // @ts-expect-error need
-              webkit-playsinline={true}
               rel="auto"
               style={{ position: 'absolute', bottom: 0 }}
               role="application"
