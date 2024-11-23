@@ -45,11 +45,12 @@ export function MainPreview({error}: IMainPreviewProps) {
               <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
             </div>
             <video
+              // @ts-expect-error need
+              playsinline
               rel="auto"
               style={{ position: 'absolute', bottom: 0 }}
               role="application"
               controls={false}
-              playsinline={true}
               controlsList="nofullscreen"
               src="/videos/main-preview.mp4"
               muted
