@@ -49,6 +49,7 @@ export function MainPreview({error}: IMainPreviewProps) {
               style={{ position: 'absolute', bottom: 0 }}
               role="application"
               controls={false}
+              playsinline={true}
               controlsList="nofullscreen"
               src="/videos/main-preview.mp4"
               muted
