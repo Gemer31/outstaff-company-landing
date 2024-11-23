@@ -40,19 +40,16 @@ export function MainPreview({error}: IMainPreviewProps) {
             <Image className="w-full" src="/images/background.png" width={1000} height={1000} alt="Background"/>
           </>
           : <>
-            <Image
-              style={{ visibility: "hidden" }}
-              src="/images/background.png"
-              width={1000}
-              height={1000}
-              alt="Background"
-            />
+          <div style={{ height: '36vw', maxHeight: '600px' }}></div>
             <div className={`${textClass} main-preview-text-focus-in`}>
               <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
             </div>
             <video
+              rel="auto"
               style={{ position: 'absolute', bottom: 0 }}
               role="application"
+              controls={false}
+              controlsList="nofullscreen"
               src="/videos/main-preview.mp4"
               muted
               autoPlay
