@@ -12,11 +12,11 @@ interface IMainPreviewProps {
 
 const textClass = convertToClass([
   'px-3',
-  'max-w-2xl',
+  'max-w-4xl',
   'text-center',
   'z-10',
   'absolute',
-  'text-xl md:text-2xl lg:text-3xl'
+  'text-xl md:text-3xl lg:text-4xl'
 ])
 
 export function MainPreview({error}: IMainPreviewProps) {
