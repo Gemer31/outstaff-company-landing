@@ -160,7 +160,8 @@ export function VacanciesEditorForm(
         selectItemClick={selectVacancy}
         propsMapper={{
           idProp: 'id',
-          itemTitle: {prop: 'title'},
+          // @ts-expect-error need
+          itemTitle: {transformFunction: (item) => (item?.localization?.ru?.title)},
         }}
         newItemText={t('newVacancy')}
         emptyText={t('noVacancies')}

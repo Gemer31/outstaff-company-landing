@@ -9,7 +9,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
   [
     {
       title: 'backend',
-      description: 'High Load, микросервисная архитектура, монолитные приложения',
+      description: 'backendSpecializationDescription',
       icons: [
         'ruby',
         'java',
@@ -21,7 +21,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
     },
     {
       title: 'frontend',
-      description: 'Порталы, панели управления, spa/ssr/pwa приложения',
+      description: 'frontendSpecializationDescription',
       icons: [
         'javascript',
         'jquery',
@@ -35,7 +35,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
   [
     {
       title: 'mobile',
-      description: 'Нативные и кроссплатформенные приложения',
+      description: 'mobileSpecializationDescription',
       icons: [
         'swift',
         'kotlin',
@@ -45,7 +45,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
     },
     {
       title: 'qa',
-      description: 'Нативные и кроссплатформенные приложения',
+      description: 'qaSpecializationDescription',
       icons: [
         'apache-jmeter',
         'cucumber',
@@ -55,7 +55,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
     },
     {
       title: 'analytics',
-      description: 'Нативные и кроссплатформенные приложения',
+      description: 'analyticsSpecializationDescription',
       icons: [
         'apache-spark',
         'qlik',

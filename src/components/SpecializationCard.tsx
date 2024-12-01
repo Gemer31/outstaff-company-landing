@@ -46,7 +46,7 @@ export function SpecializationCard({data, size}: ISpecializationCardProps) {
                 })
             }
         </div>
-        <span className="hidden sm:inline text-xs sm:text-sm break-words">{data.description}</span>
+        <span className="hidden sm:inline text-xs sm:text-sm break-words">{t(data.description)}</span>
         <Image className="absolute bottom-0 right-0" src="/icons/triangle.svg" width={30} height={30} alt="Preview" />
     </section>
 }
