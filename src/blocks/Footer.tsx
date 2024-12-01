@@ -5,6 +5,7 @@ import { ContentContainer } from '@/UI/ContentContainer';
 import Image from 'next/image';
 import { OffsetBlock } from '@/UI/offset-block/OffsetBlock';
 import { convertToClass } from '@/utils/convert-to-class.util';
+import * as sanitizeHtml from 'sanitize-html';
 
 interface IFooterProps {
   config: IConfig;
@@ -21,11 +22,14 @@ const footContainerClass = convertToClass([
 ]);
 
 export function Footer({config}: IFooterProps) {
+  // @ts-expect-error need
+  const companyInfo: string = config?.companyInfo?.length ? sanitizeHtml(config.companyInfo) : '';
+
   return <footer className="pt-10 pb-4 flex flex-col items-center bg-custom-black-2">
     <ContentContainer disableVerticalPaddings className={footContainerClass}>
       <section
         className="flex-1 text-center md:text-left text-xs"
-        dangerouslySetInnerHTML={{ __html: config?.companyInfo || "" }}
+        dangerouslySetInnerHTML={{ __html: companyInfo }}
       ></section>
 
       <Image className="hidden md:block" src="/images/logo-red.png" width={100} height={100} alt="logo"/>

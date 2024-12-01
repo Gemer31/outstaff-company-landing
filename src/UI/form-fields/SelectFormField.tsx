@@ -5,7 +5,7 @@ import { UseFormRegister } from "react-hook-form";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
 interface ISelectFormFieldProps {
-  options: string[],
+  options: {id: string; localizedName}[],
   required?: boolean;
   label: string;
   name: string;
@@ -45,7 +45,7 @@ export function SelectFormField({
       >
         {
           options.map((item, index) => {
-            return <option key={index} value={item}>{item}</option>
+            return <option key={index} value={item.id}>{item.localizedName}</option>
           })
         }
       </select>

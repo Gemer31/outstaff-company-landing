@@ -21,3 +21,11 @@
 .ql-container.ql-snow {
     border: none !important;
 }
+
+.ql-snow .ql-stroke {
+    stroke: #dad5d5;
+}
+
+.ql-snow .ql-picker {
+    color: #dad5d5;
+}

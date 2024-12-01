@@ -54,7 +54,6 @@ export function AdminEditor() {
     const vacancies: IVacancy[] = docsToData<IVacancy>(vacanciesQuerySnapshot.docs)
       ?.sort((a, b) => (a.order - b.order));
 
-    console.log(images.items);
     setImages(images.items);
     setConfig(settingsQuerySnapshot.docs[0].data() as IConfig);
     setCustomersBlock(customersBlockQuerySnapshot.docs[0].data() as ICustomersBlock);

@@ -15,8 +15,8 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
         'java',
         'php',
         'laravel',
-        'mysql',
-        'postgresql',
+        'python',
+        'dot-net',
       ],
     },
     {
@@ -24,7 +24,7 @@ const SPECIALIZATIONS: ISpecializationCard[][] = [
       description: 'Порталы, панели управления, spa/ssr/pwa приложения',
       icons: [
         'javascript',
-        'python',
+        'jquery',
         'angular',
         'react',
         'vue',

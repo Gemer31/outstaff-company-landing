@@ -28,12 +28,19 @@ export interface ISpecializationCard {
 
 export interface IVacancy extends IOrder {
     id: string;
-    title: string;
+    hot: boolean;
     type: JobType;
-    schedule: JobSchedule,
+    schedule: JobSchedule;
+    localization: {
+        en: IVacancyInfo;
+        ru: IVacancyInfo;
+    };
+}
+
+export interface IVacancyInfo {
+    title: string;
     experience: string;
     description: string;
-    hot: boolean;
 }
 
 export interface ICounterBlock extends IOrder {

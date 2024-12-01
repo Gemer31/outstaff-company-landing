@@ -52,11 +52,11 @@ export enum FirestoreDocuments {
 
 export enum JobType {
     DEVELOPER = "developer",
-    SUPPORT = "support",
     QA = "qa",
-    TECHNICAL_ARCHITECT = "technicalArchitect",
-    PRODUCT_MANAGER = "productManager",
+    TECHNICAL_ARCHITECT = "architect",
+    PRODUCT_MANAGER = "manager",
     ANALYST = "analyst",
+    DESIGNER = "designer",
 }
 
 export enum JobSchedule {

@@ -22,13 +22,15 @@ interface IVacanciesEditorFormProps {
   refreshCallback?: () => void;
 }
 
-export function VacanciesEditorForm({
-                                      vacancies,
-                                      refreshCallback,
-                                    }: IVacanciesEditorFormProps) {
+export function VacanciesEditorForm(
+  {
+    vacancies,
+    refreshCallback,
+  }: IVacanciesEditorFormProps) {
   const t = useTranslations();
   const [selectedVacancy, setSelectedVacancy] = useState<IVacancy>(null);
-  const [description, setDescription] = useState<string>('');
+  const [descriptionRu, setDescriptionRu] = useState<string>('');
+  const [descriptionEn, setDescriptionEn] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -43,18 +45,42 @@ export function VacanciesEditorForm({
 
   const submitForm = async (formData: {
     id?: string;
-    title?: string;
-    experience?: string;
-    description: string;
+    titleRu?: string;
+    titleEn?: string;
+    experienceRu?: string;
+    experienceEn?: string;
+    descriptionRu: string;
+    descriptionEn: string;
     type: string;
     schedule: string;
     hot: boolean;
   }) => {
     setIsLoading(true);
-    const data = {...formData};
+    const data: IVacancy = {
+      id: formData.id,
+      type: formData.type as JobType,
+      schedule: formData.schedule as JobSchedule,
+      hot: formData.hot,
+      order: null,
+      localization: {
+        ru: {
+          title: formData.titleRu,
+          experience: formData.experienceRu,
+          description: formData.descriptionRu,
+        },
+        en: {
+          title: formData.titleEn,
+          experience: formData.experienceEn,
+          description: formData.descriptionEn || null,
+        },
+      },
+    };
 
-    if (!formData.id) {
+    if (formData.id) {
+      data.order = selectedVacancy.order;
+    } else {
       data.id = uuidv4();
+      data.order = vacancies.length + 1;
     }
 
     try {
@@ -63,7 +89,8 @@ export function VacanciesEditorForm({
       reset();
       showNotification(t('infoSaved'));
       refreshCallback?.();
-    } catch {
+    } catch (e) {
+      console.error('Save vacancy error: ', e);
       showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
@@ -82,7 +109,7 @@ export function VacanciesEditorForm({
       reset();
       refreshCallback?.();
     } catch (e) {
-      console.error('Delete product error: ', e);
+      console.error('Delete vacancy error: ', e);
       showNotification(t('somethingWentWrong'));
     } finally {
       setIsLoading(false);
@@ -94,23 +121,33 @@ export function VacanciesEditorForm({
   const selectVacancy = (newVacancies: IVacancy[]) => {
     if (newVacancies[0]) {
       setValue('id', newVacancies[0].id);
-      setValue('title', newVacancies[0].title);
-      setValue('experience', newVacancies[0].experience);
       setValue('hot', newVacancies[0].hot);
       setValue('schedule', newVacancies[0].schedule);
       setValue('type', newVacancies[0].type);
-      descriptionChange(newVacancies[0].description);
+      setValue('titleRu', newVacancies[0].localization?.ru?.title);
+      setValue('titleEn', newVacancies[0].localization?.en?.title);
+      setValue('experienceRu', newVacancies[0].localization?.ru?.experience);
+      setValue('experienceEn', newVacancies[0].localization?.en?.experience);
+      descriptionRuChange(newVacancies[0].localization?.ru?.description);
+      descriptionEnChange(newVacancies[0].localization?.en?.description);
       setSelectedVacancy(newVacancies[0]);
     } else {
       reset();
-      descriptionChange('');
+      descriptionRuChange('');
+      descriptionEnChange('');
       setSelectedVacancy(newVacancies[0]);
     }
   };
 
-  const descriptionChange = (newValue: string) => {
-    setValue('description', newValue);
-    setDescription(newValue);
+  const descriptionRuChange = (newValue: string) => {
+    const v = newValue || '';
+    setValue('descriptionRu', v);
+    setDescriptionRu(v);
+  };
+  const descriptionEnChange = (newValue: string) => {
+    const v = newValue || '';
+    setValue('descriptionEn', v);
+    setDescriptionEn(v);
   };
 
   return (
@@ -128,28 +165,52 @@ export function VacanciesEditorForm({
         newItemText={t('newVacancy')}
         emptyText={t('noVacancies')}
       />
-      <InputFormField
-        className="mt-4"
-        required={true}
-        placeholder={t('enterTitle')}
-        label={t('title')}
-        name="title"
-        type="text"
-        error={errors?.title?.message ? t(errors.title.message) : ''}
-        register={register as unknown}
-      />
-      <InputFormField
-        required={true}
-        placeholder={t('enterExperience')}
-        label={t('experience')}
-        name="experience"
-        type="text"
-        error={errors?.experience?.message ? t(errors.experience.message) : ''}
-        register={register as unknown}
-      />
+
+      <div className="flex justify-between gap-x-2">
+        <InputFormField
+          className="mt-4"
+          required={true}
+          placeholder={`${t('enterTitle')} (ru)`}
+          label={`${t('title')} (ru)`}
+          name="titleRu"
+          type="text"
+          error={errors?.titleRu?.message ? t(errors.titleRu.message) : ''}
+          register={register as unknown}
+        />
+        <InputFormField
+          className="mt-4"
+          placeholder={`${t('enterTitle')} (en)`}
+          label={`${t('title')} (en)`}
+          name="titleEn"
+          type="text"
+          error={errors?.titleEn?.message ? t(errors.titleEn.message) : ''}
+          register={register as unknown}
+        />
+      </div>
+
+      <div className="flex justify-between gap-x-2">
+        <InputFormField
+          required={true}
+          placeholder={`${t('enterExperience')} (ru)`}
+          label={`${t('experience')} (ru)`}
+          name="experienceRu"
+          type="text"
+          error={errors?.experienceRu?.message ? t(errors.experienceRu.message) : ''}
+          register={register as unknown}
+        />
+        <InputFormField
+          placeholder={`${t('enterExperience')} (en)`}
+          label={`${t('experience')} (en)`}
+          name="experienceEn"
+          type="text"
+          error={errors?.experienceEn?.message ? t(errors.experienceEn.message) : ''}
+          register={register as unknown}
+        />
+      </div>
+
       <div className="flex justify-between gap-x-2">
         <SelectFormField
-          options={Object.values(JobSchedule).map((item) => t(item))}
+          options={Object.values(JobSchedule).map((item) => ({id: item, localizedName: t(item)}))}
           required={true}
           label={t('selectWorkSchedule')}
           name="schedule"
@@ -157,7 +218,7 @@ export function VacanciesEditorForm({
           register={register as unknown}
         />
         <SelectFormField
-          options={Object.values(JobType).map((item) => t(item))}
+          options={Object.values(JobType).map((item) => ({id: item, localizedName: t(item)}))}
           required={true}
           label={t('selectVacancy')}
           name="type"
@@ -174,14 +235,24 @@ export function VacanciesEditorForm({
         />
       </div>
       <FormFieldWrapper
-        label={t('description')}
+        label={`${t('description')} (ru)`}
         required={true}
-        error={errors?.description?.message ? t(errors.description.message) : ''}
+        error={errors?.descriptionRu?.message ? t(errors.descriptionRu.message) : ''}
       >
         <TextEditor
-          placeholder={t('enterDescription')}
-          value={description}
-          onChange={descriptionChange}
+          placeholder={`${t('enterDescription')} (ru)`}
+          value={descriptionRu}
+          onChange={descriptionRuChange}
+        />
+      </FormFieldWrapper>
+      <FormFieldWrapper
+        label={`${t('description')} (en)`}
+        error={errors?.descriptionEn?.message ? t(errors.descriptionEn.message) : ''}
+      >
+        <TextEditor
+          placeholder={`${t('enterDescription')} (en)`}
+          value={descriptionEn}
+          onChange={descriptionEnChange}
         />
       </FormFieldWrapper>
       <Button

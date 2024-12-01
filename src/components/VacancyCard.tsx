@@ -4,6 +4,7 @@ import { RouterLinks } from '@/models/enums';
 import { Chip } from '@/UI/Chip';
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface IVacancyCardProps {
   data: IVacancy;
@@ -22,22 +23,34 @@ const hostClass = convertToClass([
 ]);
 
 export function VacancyCard({data}: IVacancyCardProps) {
+  const locale = useLocale();
+  const t = useTranslations();
+
+  let {title, experience} = data.localization[locale];
+
+  if (!title?.length) {
+    title = data.localization?.ru?.title;
+  }
+  if (!experience?.length) {
+    experience = data.localization?.ru?.experience;
+  }
+
   return <Link className={hostClass} href={`${RouterLinks.VACANCIES}/${data.id}`}>
     {
       data.hot
-        ? <Image className="absolute right-1.5 top-1.5" src="/icons/fire.svg" width={20} height={20} alt={data.title}/>
+        ? <Image className="absolute right-1.5 top-1.5" src="/icons/fire.svg" width={20} height={20} alt={title}/>
         : <></>
     }
 
-    <h4 className="text-lg font-bold text-center">{data.title}</h4>
+    <h4 className="text-lg font-bold text-center">{title}</h4>
 
     <div className="flex flex-wrap items-center justify-center gap-2 mt-1">
       {
-        data.schedule ? <Chip value={data.schedule}/> : <></>
+        data.schedule ? <Chip value={t(data.schedule)}/> : <></>
       }
       {
-        data.experience ? <Chip value={data.experience}/> : <></>
+        experience ? <Chip value={experience}/> : <></>
       }
     </div>
-  </Link>
+  </Link>;
 }
