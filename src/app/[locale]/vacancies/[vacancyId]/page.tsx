@@ -12,6 +12,7 @@ import { Metadata } from 'next';
 import { Props } from 'next/script';
 import { notFound } from 'next/navigation';
 import * as sanitizeHtml from 'sanitize-html';
+import { routing } from '@/i18n/routing';
 
 export async function generateMetadata(
   // @ts-expect-error need
@@ -20,6 +21,7 @@ export async function generateMetadata(
   // read route params
   const id = (await params).vacancyId;
   const locale = await getLocale();
+  const t = await getTranslations();
   const vacancyDocumentSnapshot = await getDoc(doc(db, FirestoreCollections.VACANCIES, id));
   const vacancy: IVacancy = vacancyDocumentSnapshot.data() as IVacancy;
 
@@ -30,23 +32,60 @@ export async function generateMetadata(
   // const previousImages = (await parent).openGraph?.images || []
 
   return {
-    title: `Increment - ${vacancy?.localization?.[locale]?.title}`,
+    title: `${vacancy?.localization?.[locale]?.title} - Increment`,
     description: vacancy?.localization?.[locale]?.description,
-    keywords: ['Increment', 'digital-решения', 'Outstaff', 'Вакансия', vacancy?.localization?.[locale]?.title],
-    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT),
+    formatDetection: {
+      telephone: false,
+    },
+    appleWebApp: {
+      title: 'Increment',
+    },
+    manifest: '/meta/site.webmanifest',
+    keywords: [
+      'Increment',
+      vacancy?.localization?.[locale]?.title,
+      t('vacancy'),
+      t('outstaff'),
+      t('outstaffing'),
+      t('outsource'),
+      t('outsourcing'),
+      t('digitalSolutionsDeveloping'),
+      t('internetSolutionsDeveloping'),
+      t('outsourceOutstaffService'),
+    ],
+    icons: [
+      {
+        rel: 'image/png',
+        url: '/meta/favicon-96x96.png',
+        sizes: '96x96',
+      },
+      {
+        rel: 'image/svg+xml',
+        url: '/meta/favicon.svg',
+      },
+      {
+        rel: 'apple-touch-icon',
+        url: '/meta/apple-touch-icon.png',
+        sizes: '180x180',
+      },
+      {
+        rel: 'shortcut icon',
+        url: '/meta/favicon.ico',
+      },
+    ],
     openGraph: {
-      title: 'Increment - Интегратор digital-решений для бизнеса и государства',
-      description: 'Разработчик портальных решений',
+      title: `${vacancy?.localization?.[locale]?.title} - Increment`,
+      description: vacancy?.localization?.[locale]?.description,
       url: process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT,
       siteName: 'Increment',
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/images/logo-red.png`,
+          url: '/images/logo-red.png',
           width: 600,
           height: 400,
         },
       ],
-      locale,
+      locale: locale === routing.defaultLocale ? 'ru_RU' : 'en_US',
       type: 'website',
     },
   };

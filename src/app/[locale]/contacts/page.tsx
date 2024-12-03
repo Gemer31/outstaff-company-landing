@@ -6,30 +6,73 @@ import { IConfig } from "@/models/common.model";
 import { FirestoreCollections } from "@/models/enums";
 import { ContentContainer } from "@/UI/ContentContainer";
 import { collection, getDocs } from "@firebase/firestore";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { routing } from '@/i18n/routing';
 
-export const metadata: Metadata = {
-  title: 'Increment - Контакты',
-  description: 'Разработчик digital-решений',
-  keywords: ['Increment', 'профессиональные', 'digital-решения', 'Outstaff', 'Контакты'],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT) ,
-  openGraph: {
-    title: 'Increment - Контакты',
-    description: 'Разработчик digital-решений',
-    url: process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT,
-    siteName: 'Increment',
-    images: [
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations();
+
+  return {
+    title: `${t('contacts')} - Increment`,
+    keywords: [
+      'Increment',
+      t('contacts'),
+      t('outstaff'),
+      t('outstaffing'),
+      t('outsource'),
+      t('outsourcing'),
+      t('digitalSolutionsDeveloping'),
+      t('internetSolutionsDeveloping'),
+      t('outsourceOutstaffService'),
+    ],
+    manifest: '/meta/site.webmanifest',
+    formatDetection: {
+      telephone: false,
+    },
+    description: `${t('contacts')} - Increment`,
+    appleWebApp: {
+      title: 'Increment',
+    },
+    icons: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT}/images/logo-red.png`,
-        width: 600,
-        height: 400,
+        rel: 'image/png',
+        url: '/meta/favicon-96x96.png',
+        sizes: '96x96',
+      },
+      {
+        rel: 'image/svg+xml',
+        url: '/meta/favicon.svg',
+      },
+      {
+        rel: 'apple-touch-icon',
+        url: '/meta/apple-touch-icon.png',
+        sizes: '180x180',
+      },
+      {
+        rel: 'shortcut icon',
+        url: '/meta/favicon.ico',
       },
     ],
-    locale: 'ru_RU',
-    type: 'website',
-  },
-};
+    openGraph: {
+      title: `${t('contacts')} - Increment`,
+      description: `${t('contacts')} - Increment`,
+      url: process.env.NEXT_PUBLIC_APP_SERVER_ENDPOINT,
+      siteName: 'Increment',
+      images: [
+        {
+          url: '/images/logo-red.png',
+          width: 600,
+          height: 400,
+        },
+      ],
+      locale: locale === routing.defaultLocale ? 'ru_RU' : 'en_US',
+      type: 'website',
+    },
+  };
+}
+
 
 export default async function ContactsPage() {
   const [settingsQuerySnapshot] = await Promise.all([
