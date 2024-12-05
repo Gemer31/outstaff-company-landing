@@ -16,6 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `Increment - ${t('mainPreviewTitle')}`,
+    verification: {
+      google: "tU7Z3851ANvnB-NnNUdGffYHM5TGkjd-S7kqxnuHqCM",
+    },
     keywords: [
       'Increment',
       t('outstaff'),
@@ -26,6 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       t('internetSolutionsDeveloping'),
       t('outsourceOutstaffService'),
     ],
+    // alternates.canonical
     manifest: '/meta/site.webmanifest',
     formatDetection: {
       telephone: false,
