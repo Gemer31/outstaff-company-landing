@@ -12,7 +12,7 @@ export function ContentContainer({
 }: IContentContainer) {
   return type === 'article' ? (
     <article
-      id={id || ''}
+      {...(id ? { id } : {})}
       style={{ position: 'relative' }}
       className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-10 md:py-14'} ${className || ''}`}
     >
@@ -20,7 +20,7 @@ export function ContentContainer({
     </article>
   ) : (
     <div
-      id={id || ''}
+      {...(id ? { id } : {})}
       style={{ position: 'relative' }}
       className={`w-full max-w-screen-2xl ${disableHorizontalPaddings ? '' : 'px-2'} ${disableVerticalPaddings ? '' : 'py-10 md:py-14'} ${className || ''}`}
     >

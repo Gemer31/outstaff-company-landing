@@ -4,3 +4,5 @@ Disallow: /ru/editor
 Disallow: /ru/signIn
 Disallow: /en/editor
 Disallow: /en/signIn
+
+https://increment.digital/meta/sitemap.xml
