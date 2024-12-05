@@ -12,7 +12,7 @@ export function InfoInCounts({counterBlocks}: IInfoInCountsProps) {
     <ContentContainer className="flex flex-wrap gap-x-8 gap-y-4 justify-around relative">
       {
         counterBlocks?.map((item, index) => {
-          return <article className="text-center" key={index}>
+          return <section className="text-center" key={index}>
             <div className="w-full flex justify-center 2xs:justify-start">
               <div className="flex items-center text-5xl md:text-6xl">
                 <CounterIncreaser value={item.number}/>
@@ -20,7 +20,7 @@ export function InfoInCounts({counterBlocks}: IInfoInCountsProps) {
               </div>
             </div>
             <div className="text-sm md:text-base">{item.text}</div>
-          </article>;
+          </section>;
         })
       }
     </ContentContainer>

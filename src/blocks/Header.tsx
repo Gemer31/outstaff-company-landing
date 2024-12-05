@@ -13,7 +13,6 @@ import { Link } from '@/i18n/routing';
 import { SessionProvider } from 'next-auth/react';
 import { HeaderAuthActions } from '@/components/HeaderAuthActions';
 import { Notification } from '@/UI/notification/Notification';
-import { Popup } from '@/UI/popup/Popup';
 import { ContactUsFormPopup } from '@/components/ContactUsFormPopup';
 import { LINK_CLASS } from '@/constants/common.constant';
 import { ContactLink } from '@/UI/ContactLink';
@@ -62,7 +61,6 @@ export function Header({ config }: IHeaderProps) {
   return (
     <>
       <Notification />
-      <Popup />
       <ContactUsFormPopup config={config} />
       <ScrollUpButton isScrollTop={isScrollTop} />
 

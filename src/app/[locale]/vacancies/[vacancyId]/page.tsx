@@ -150,7 +150,7 @@ export default async function VacancyPage({params: {vacancyId}}: IVacancyPagePro
       <Header config={config}/>
       <main className="w-full flex flex-col items-center bg-custom-black-1">
         <ContentContainer className="w-full py-5">
-          <section className="mb-4 flex justify-center items-center">
+          <article className="mb-4 flex justify-center items-center">
             <h1 className="text-3xl font-bold text-center">{title}</h1>
             {vacancy.hot ? (
               <Image
@@ -163,7 +163,7 @@ export default async function VacancyPage({params: {vacancyId}}: IVacancyPagePro
             ) : (
               <></>
             )}
-          </section>
+          </article>
 
           <article className="px-6 py-4 flex flex-col md:flex-row gap-4">
             <section className={vacancyMainInfoSectionClass}>

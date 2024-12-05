@@ -4,7 +4,7 @@ interface IBlockContainerProps {
 }
 
 export function BlockContainer({ className, children }: IBlockContainerProps) {
-  return <section className={`w-full flex justify-center ${className || ''}`}>
+  return <article className={`w-full flex justify-center ${className || ''}`}>
     {children}
-  </section>
+  </article>
 }

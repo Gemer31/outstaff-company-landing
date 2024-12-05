@@ -42,7 +42,9 @@ export function MainPreview({error}: IMainPreviewProps) {
           : <>
           <div style={{ height: '36vw', maxHeight: '600px' }}></div>
             <div className={`${textClass} main-preview-text-focus-in`}>
-              <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
+              <h1>
+                <span className="font-bold text-custom-red-1">Increment</span> - {t('mainPreviewTitle')}
+              </h1>
             </div>
             <video
               playsInline
@@ -50,12 +52,10 @@ export function MainPreview({error}: IMainPreviewProps) {
               style={{ position: 'absolute', bottom: 0 }}
               role="application"
               controls={false}
-              controlsList="nofullscreen"
               src="/videos/main-preview.mp4"
               muted
               autoPlay
             >
-              <source src="/videos/main-preview.mp4"/>
             </video>
           </>
       }
