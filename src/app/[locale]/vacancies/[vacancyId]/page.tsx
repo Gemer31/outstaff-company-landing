@@ -168,9 +168,9 @@ export default async function VacancyPage({params: {vacancyId}}: IVacancyPagePro
           <article className="px-6 py-4 flex flex-col md:flex-row gap-4">
             <section className={vacancyMainInfoSectionClass}>
               <div className={vacancyMainInfoClass}>
-                <div className="h-fit">{t(vacancy.type)}</div>
-                <div className="h-fit">{t(vacancy.schedule)}</div>
-                <div className="h-fit">{experience}</div>
+                <h3 className="h-fit">{t(vacancy.type)}</h3>
+                <h4 className="h-fit">{t(vacancy.schedule)}</h4>
+                <h4 className="h-fit">{experience}</h4>
               </div>
 
               <div className="h-full w-full top-0 left-0 flex justify-center items-center bg-white opacity-5">

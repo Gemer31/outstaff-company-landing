@@ -19,7 +19,7 @@ export function InfoInCounts({counterBlocks}: IInfoInCountsProps) {
                 <div>{item.numberPostfix}</div>
               </div>
             </div>
-            <div className="text-sm md:text-base">{item.text}</div>
+            <h4 className="text-sm md:text-base">{item.text}</h4>
           </section>;
         })
       }

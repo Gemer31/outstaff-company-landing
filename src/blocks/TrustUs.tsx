@@ -25,7 +25,7 @@ export function TrustUs({customerBlockConfig, images}: ITrustUsProps) {
       <div className="top-0 left-0 z-10 inner-shadow absolute w-full h-full"></div>
       <TitleContainer title={t('trustUs')}>
         <section className="pb-8 pt-2 w-full flex justify-center">
-          <div className="z-10 w-3/6 text-center">{t('companiesTrustUs')}</div>
+          <h3 className="z-10 w-3/6 text-center">{t('companiesTrustUs')}</h3>
         </section>
         <InfinitySlider
           images={customerBlockConfig.images.map(getImageUrl)}
