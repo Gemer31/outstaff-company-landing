@@ -1,5 +1,6 @@
 .main-preview-shadow-gorizontal {
-    background: radial-gradient(circle, rgba(40, 40, 40, 0) 0%, rgba(40, 40, 40, 1) 85%, rgba(40, 40, 40, 1) 100%);
+    /*background: radial-gradient(circle, rgba(40, 40, 40, 0) 0%, rgba(40, 40, 40, 1) 85%, rgba(40, 40, 40, 1) 100%);*/
+    background: linear-gradient(90deg, rgba(40,40,40,1) 0%, rgba(40,40,40,0.5047268907563025) 10%, rgba(40,40,40,0) 50%, rgba(40,40,40,0.5019257703081232) 90%, rgba(40,40,40,1) 100%);
 }
 
 .main-preview-shadow-vertical {

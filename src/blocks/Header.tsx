@@ -10,7 +10,6 @@ import { ContentContainer } from '@/UI/ContentContainer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { SessionProvider } from 'next-auth/react';
 import { HeaderAuthActions } from '@/components/HeaderAuthActions';
 import { Notification } from '@/UI/notification/Notification';
 import { ContactUsFormPopup } from '@/components/ContactUsFormPopup';
@@ -115,9 +114,10 @@ export function Header({ config }: IHeaderProps) {
                 </nav>
               </aside>
             </div>
-            <SessionProvider>
-              <HeaderAuthActions/>
-            </SessionProvider>
+            {/*<SessionProvider>*/}
+            {/*  <HeaderAuthActions/>*/}
+            {/*</SessionProvider>*/}
+            <HeaderAuthActions/>
           </div>
         </ContentContainer>
       </header>

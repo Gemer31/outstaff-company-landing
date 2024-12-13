@@ -4,23 +4,20 @@ import React from 'react';
 import { AdminEditor } from '@/blocks/AdminEditor';
 import { collection, getDocs } from '@firebase/firestore';
 import { db } from '@/lib/firebaseClient';
-import { FirestoreCollections, RouterLinks } from '@/models/enums';
+import { FirestoreCollections } from '@/models/enums';
 import { IConfig } from '@/models/common.model';
-import { redirect } from '@/i18n/routing';
-import { cookies } from 'next/headers';
-import { firebaseAdmin } from '@/lib/firebaseAdmin';
 
 export default async function EditorPage() {
   const settingsQuerySnapshot = await getDocs(collection(db, FirestoreCollections.SETTINGS));
   const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
 
-  try {
-    const cookiesFactory = await cookies();
-    const token = cookiesFactory.get('token');
-    await firebaseAdmin.auth().verifyIdToken(token.value);
-  } catch {
-    redirect(RouterLinks.HOME);
-  }
+  // try {
+  //   const cookiesFactory = await cookies();
+  //   const token = cookiesFactory.get('token');
+  //   await firebaseAdmin.auth().verifyIdToken(token.value);
+  // } catch {
+  //   redirect(RouterLinks.HOME);
+  // }
 
   return (
     <>

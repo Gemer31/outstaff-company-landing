@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { IConfig, ICounterBlock, ICustomersBlock, IVacancy } from '@/models/common.model';
 import { collection, getDocs } from '@firebase/firestore';
-import { db, storage } from '@/lib/firebaseClient';
-import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections } from '@/models/enums';
+import { auth, db, storage } from '@/lib/firebaseClient';
+import { ButtonColorOptions, ButtonTypes, EditGroup, FirestoreCollections, RouterLinks } from '@/models/enums';
 import { Loader } from '@/UI/loader/Loader';
 import { ContentContainer } from '@/UI/ContentContainer';
 import { Button } from '@/UI/banner/Button';
@@ -16,9 +16,11 @@ import { CounterBlocksEditorForm } from '@/components/CounterBlocksEditorForm';
 import { listAll, ref, StorageReference } from '@firebase/storage';
 import { ImagesEditorForm } from '@/components/ImagesEditorForm';
 import { CustomersBlockEditorForm } from '@/components/CustomersBlockEditorForm';
+import { useRouter } from "@/i18n/routing";
 
 export function AdminEditor() {
   const t = useTranslations();
+  const router = useRouter();
   const [config, setConfig] = useState<IConfig>();
   const [customersBlock, setCustomersBlock] = useState<ICustomersBlock>();
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
@@ -30,8 +32,13 @@ export function AdminEditor() {
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   useEffect(() => {
-    setIsDataLoading(true);
-    loadData().then(() => setIsDataLoading(false));
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        loadData().then(() => setIsDataLoading(false));
+      } else {
+        router.push(RouterLinks.HOME);
+      }
+    })
   }, []);
 
   const loadData = async () => {

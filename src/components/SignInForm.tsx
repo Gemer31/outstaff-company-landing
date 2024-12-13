@@ -3,7 +3,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useState } from 'react';
-import { signIn } from 'next-auth/react';
 import { YupUtil } from '@/utils/yup.util';
 import { useTranslations } from 'next-intl';
 import { InputFormField } from '@/UI/form-fields/InputFormField';
@@ -11,6 +10,8 @@ import { Button } from '@/UI/banner/Button';
 import { ButtonTypes, RouterLinks } from '@/models/enums';
 import { showNotification } from '@/UI/notification/notification.controller';
 import { useRouter } from '@/i18n/routing';
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "@/lib/firebaseClient";
 
 export function SignInForm() {
   const t = useTranslations();
@@ -28,21 +29,34 @@ export function SignInForm() {
   const submitForm = useCallback(
     async ({email, password}: { email?: string; password?: string }) => {
       setIsLoading(true);
+      // try {
+      //   const res = await signIn('credentials', {
+      //     email,
+      //     password,
+      //     redirect: false,
+      //   });
+      //   if (res?.ok) {
+      //     router.push(RouterLinks.EDITOR);
+      //   } else {
+      //     console.error('Login failed: ', res?.error);
+      //     showNotification(t('invalidLoginOrPassword'));
+      //     setIsLoading(false);
+      //   }
+      // } catch {
+      //   showNotification(t('invalidLoginOrPassword'));
+      // }
+
       try {
-        const res = await signIn('credentials', {
-          email,
-          password,
-          redirect: false,
-        });
-        if (res?.ok) {
+        const res = await signInWithEmailAndPassword(auth, email, password);
+        if (res?.user) {
           router.push(RouterLinks.EDITOR);
         } else {
-          console.error('Login failed: ', res?.error);
           showNotification(t('invalidLoginOrPassword'));
-          setIsLoading(false);
         }
       } catch {
         showNotification(t('invalidLoginOrPassword'));
+      } finally {
+        setIsLoading(false);
       }
     },
     [],
