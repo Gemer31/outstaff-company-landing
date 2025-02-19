@@ -39,7 +39,9 @@ export function GeneralEditorForm({
       setValue('email', config.email);
       setValue('counterBlocksVisible', config.counterBlocksVisible);
       setValue('customersBlockVisible', config.customersBlockVisible);
-      setValue('telegramLink', config.telegramLink);
+        setValue('telegramLink', config.telegramLink);
+        setValue('displayVacanciesAsSliderOnMainPage', config.displayVacanciesAsSliderOnMainPage);
+        setValue('vacanciesSlideElementsCount', config.vacanciesSlideElementsCount);
       companyInfoChange(config.companyInfo);
     }
   }, [config]);
@@ -48,7 +50,9 @@ export function GeneralEditorForm({
     email?: string;
     companyInfo?: string;
     counterBlocksVisible?: boolean;
-    customersBlockVisible?: boolean;
+      customersBlockVisible?: boolean;
+      displayVacanciesAsSliderOnMainPage?: boolean;
+      vacanciesSlideElementsCount?: number;
   }) => {
     setIsLoading(true);
     try {
@@ -70,62 +74,82 @@ export function GeneralEditorForm({
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
-      <InputFormField
-        required
-        placeholder="E-mail"
-        label="E-mail"
-        name="email"
-        type="text"
-        error={errors?.email?.message ? t(errors.email.message) : ''}
-        register={register}
-      />
-      <InputFormField
-        required
-        placeholder="Telegram"
-        label="Telegram"
-        name="telegramLink"
-        type="text"
-        error={errors?.telegramLink?.message ? t(errors.telegramLink.message) : ''}
-        register={register}
-      />
-      <FormFieldWrapper
-        required
-        label={t('companyInfo')}
-        error={errors?.companyInfo?.message ? t(errors.companyInfo.message) : ''}
-      >
-        <TextEditor
-          placeholder={t('enterCompanyInfo')}
-          value={config.companyInfo}
-          onChange={companyInfoChange}
-        />
-      </FormFieldWrapper>
-      <div className="flex justify-around">
-        <InputFormField
-          inLine
-          label={t('counterBlocksVisible')}
-          name="counterBlocksVisible"
-          type="checkbox"
-          error={t(errors.counterBlocksVisible?.message)}
-          register={register}
-        />
-        <InputFormField
-          inLine
-          label={t('customersBlockVisible')}
-          name="customersBlockVisible"
-          type="checkbox"
-          error={t(errors.customersBlockVisible?.message)}
-          register={register}
-        />
-      </div>
-      <Button
-        className="text-amber-50 w-full py-2"
-        disabled={isLoading}
-        loading={isLoading}
-        type={ButtonTypes.SUBMIT}
-      >
-        {t('save')}
-      </Button>
-    </form>
-  );
+      <form className="flex flex-col" onSubmit={handleSubmit(submitForm)}>
+          <InputFormField
+              required
+              placeholder="E-mail"
+              label="E-mail"
+              name="email"
+              type="text"
+              error={errors?.email?.message ? t(errors.email.message) : ''}
+              register={register}
+          />
+          <InputFormField
+              required
+              placeholder="Telegram"
+              label="Telegram"
+              name="telegramLink"
+              type="text"
+              error={errors?.telegramLink?.message ? t(errors.telegramLink.message) : ''}
+              register={register}
+          />
+          <FormFieldWrapper
+              required
+              label={t('companyInfo')}
+              error={errors?.companyInfo?.message ? t(errors.companyInfo.message) : ''}
+          >
+              <TextEditor
+                  placeholder={t('enterCompanyInfo')}
+                  value={config.companyInfo}
+                  onChange={companyInfoChange}
+              />
+          </FormFieldWrapper>
+          <div className="flex justify-around">
+              <InputFormField
+                  inLine
+                  label={t('counterBlocksVisible')}
+                  name="counterBlocksVisible"
+                  type="checkbox"
+                  error={t(errors.counterBlocksVisible?.message)}
+                  register={register}
+              />
+              <InputFormField
+                  inLine
+                  label={t('customersBlockVisible')}
+                  name="customersBlockVisible"
+                  type="checkbox"
+                  error={t(errors.customersBlockVisible?.message)}
+                  register={register}
+              />
+          </div>
+          <div className="flex justify-around my-2">
+              <InputFormField
+                  inLine
+                  label={t('displayVacanciesAsSliderOnMainPage')}
+                  name="displayVacanciesAsSliderOnMainPage"
+                  type="checkbox"
+                  error={t(errors.displayVacanciesAsSliderOnMainPage?.message) ? t(errors.displayVacanciesAsSliderOnMainPage.message) : ''}
+                  register={register}
+              />
+              <InputFormField
+                  inLine
+                  placeholder={t('enterNumber')}
+                  label={t('vacanciesSlideElementsCount') + ` (${t('For small screens this property will be ignored')})`}
+                  name="vacanciesSlideElementsCount"
+                  type="number"
+                  error={errors?.vacanciesSlideElementsCount?.message ? t(errors.vacanciesSlideElementsCount.message) : ''}
+                  register={register}
+              />
+          </div>
+
+              <Button
+                  className="text-amber-50 w-full py-2"
+                  disabled={isLoading}
+                  loading={isLoading}
+                  type={ButtonTypes.SUBMIT}
+              >
+                  {t('save')}
+              </Button>
+      </form>
+);
 }

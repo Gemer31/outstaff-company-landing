@@ -100,5 +100,9 @@
   "frontendSpecializationDescription": "Portals, control panels, spa/ssr/pwa applications",
   "mobileSpecializationDescription": "Native and cross-platform applications",
   "analyticsSpecializationDescription": "Development of user scenarios. Description of business processes",
-  "qaSpecializationDescription": "Analysis. Development of test scenarios"
+  "qaSpecializationDescription": "Analysis. Development of test scenarios",
+  "vacanciesSlideElementsCount": "Vacancies slide elements count",
+  "enterSlideElementsCount": "Enter slide elements count",
+  "For small screens this property will be ignored": "For small screens this property will be ignored",
+  "displayVacanciesAsSliderOnMainPage": "Display vacancies as slider on main page"
 }

@@ -88,7 +88,7 @@ export default async function VacanciesPage() {
     <>
       <Header config={config} />
       <main className="w-full flex flex-col items-center">
-        <Vacancies vacancies={vacancies} detailedView={true}/>
+        <Vacancies config={config} vacancies={vacancies} detailedView={true}/>
       </main>
       <Footer config={config} />
     </>

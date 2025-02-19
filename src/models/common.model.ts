@@ -6,6 +6,8 @@ export interface IConfig {
     companyInfo: string;
     counterBlocksVisible?: boolean;
     customersBlockVisible?: boolean;
+    displayVacanciesAsSliderOnMainPage?: boolean;
+    vacanciesSlideElementsCount?: number;
 }
 
 export interface ICustomersBlock {

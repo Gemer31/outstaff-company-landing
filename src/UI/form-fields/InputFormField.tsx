@@ -2,7 +2,7 @@
 
 import { convertToClass } from '@/utils/convert-to-class.util';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { FormFieldWrapper } from './FormFieldWrapper';
 
@@ -20,18 +20,6 @@ interface IInputFormFieldProps {
   register: unknown;
 }
 
-const hostClass: string = convertToClass([
-  'relative',
-  'bg-custom-black-2',
-  'border-custom-black-2',
-  'border-2',
-  'rounded-md',
-  'mt-1',
-  'w-full',
-  'px-2.5',
-  'py-1',
-]);
-
 export function InputFormField({
                                  className,
                                  label,
@@ -47,14 +35,28 @@ export function InputFormField({
                                }: IInputFormFieldProps) {
   const [hideValue, setHideValue] = useState(true);
 
+    const hostClass: string = useMemo(() => convertToClass([
+        'relative',
+        'bg-custom-black-2',
+        'border-custom-black-2',
+        'border-2',
+        'rounded-md',
+        'mt-1',
+        'w-full',
+        'px-2.5',
+        'py-1',
+        error ? 'border-custom-red-1' : '',
+        type === 'checkbox' ? 'h-[25px]' : '',
+    ]), [type, error]);
+
   return (
     <FormFieldWrapper
       label={label}
       error={error}
       required={required}
-      className={(className || '') + (inLine ? 'flex items-center' : '')}>
+      className={(className || '') + (inLine ? ' flex items-center' : '')}>
       <input
-        className={hostClass + ' ' + (error ? 'border-custom-red-1' : '')}
+        className={hostClass}
         placeholder={placeholder}
         type={hideValueAvailable && hideValue ? 'password' : type}
         onBlur={onBlur}

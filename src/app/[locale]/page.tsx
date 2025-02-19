@@ -9,7 +9,7 @@ import { db, storage } from '@/lib/firebaseClient';
 import { IConfig, ICounterBlock, ICustomersBlock, IVacancy } from '@/models/common.model';
 import { FirestoreCollections } from '@/models/enums';
 import { docsToData, getPlainStorageReferences } from '@/utils/firebase.util';
-import { collection, getDocs, limit, orderBy, query } from '@firebase/firestore';
+import { collection, getDocs, orderBy, query } from '@firebase/firestore';
 import { Header } from '@/blocks/Header';
 import { listAll, ref } from '@firebase/storage';
 import { AboutUs } from '@/blocks/AboutUs';
@@ -23,12 +23,7 @@ export default async function HomePage() {
   ] = await Promise.all([
     getDocs(collection(db, FirestoreCollections.SETTINGS)),
     getDocs(collection(db, FirestoreCollections.CUSTOMERS_BLOCK)),
-    getDocs(
-      query(
-        collection(db, FirestoreCollections.VACANCIES),
-        limit(4),
-      ),
-    ),
+    getDocs(collection(db, FirestoreCollections.VACANCIES)),
     getDocs(
       query(
         collection(db, FirestoreCollections.COUNTER_BLOCKS),
@@ -36,8 +31,8 @@ export default async function HomePage() {
       ),
     ),
   ]);
-  const images = await listAll(ref(storage));
   const config: IConfig = settingsQuerySnapshot.docs[0]?.data() as IConfig;
+  const images = await listAll(ref(storage));
   const customersBlockConfig: ICustomersBlock = customersBlockQuerySnapshot.docs[0].data() as ICustomersBlock;
   const vacancies: IVacancy[] = docsToData<IVacancy>(vacanciesQuerySnapshot.docs);
   const counterBlocks: ICounterBlock[] = docsToData<ICounterBlock>(counterBlockQuerySnapshot.docs);
@@ -50,11 +45,17 @@ export default async function HomePage() {
         <Specializations/>
         {config.counterBlocksVisible ? <InfoInCounts counterBlocks={counterBlocks}/> : <></>}
         {config.customersBlockVisible
-          ? <TrustUs
-            customerBlockConfig={customersBlockConfig}
-            images={getPlainStorageReferences(images.items)}
-          /> : <></>}
-        {vacancies.length ? <Vacancies vacancies={vacancies}/> : <></>}
+            ? <TrustUs
+                customerBlockConfig={customersBlockConfig}
+                images={getPlainStorageReferences(images.items)}
+            /> : <></>}
+        {vacancies.length
+            ? <Vacancies
+                config={config}
+                allVacanciesCount={vacancies?.length}
+                vacancies={config.displayVacanciesAsSliderOnMainPage ? vacancies : vacancies.slice(0, 4)}
+            />
+            : <></>}
         <AboutUs/>
         <ContactUs/>
       </main>

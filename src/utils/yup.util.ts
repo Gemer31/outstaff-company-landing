@@ -49,6 +49,8 @@ export class YupUtil {
       companyInfo: yup.string().required('fieldRequired'),
       counterBlocksVisible: yup.boolean(),
       customersBlockVisible: yup.boolean(),
+      displayVacanciesAsSliderOnMainPage: yup.boolean(),
+      vacanciesSlideElementsCount: yup.number(),
     });
   }
 

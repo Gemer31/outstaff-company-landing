@@ -101,5 +101,9 @@
   "frontendSpecializationDescription": "Порталы, панели управления, spa/ssr/pwa приложения",
   "mobileSpecializationDescription": "Нативные и кроссплатформенные приложения",
   "analyticsSpecializationDescription": "Проработка пользовательских сценариев. Описание бизнес-процессов",
-  "qaSpecializationDescription": "Анализ. Разработка сценариев тестирования"
+  "qaSpecializationDescription": "Анализ. Разработка сценариев тестирования",
+  "vacanciesSlideElementsCount": "Количество элементов на слайде с вакансиями",
+  "enterSlideElementsCount": "Введите количество элементов на слайде",
+  "For small screens this property will be ignored": "Для малых размеров экрана этот параметр будет игнорироваться",
+  "displayVacanciesAsSliderOnMainPage": "Отображать вакансии как слайдер на главной странице"
 }
